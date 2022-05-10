@@ -7,9 +7,12 @@ class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
+    firstname = db.Column(db.String(40), nullable=False, unique=True)
+    lastname = db.Column(db.String(40), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+    is_driver = db.Column(db.Boolean, nullable=False)
+    is_available = db.Column(db.Boolean, nullable=False)
 
     @property
     def password(self):
@@ -25,6 +28,9 @@ class User(db.Model, UserMixin):
     def to_dict(self):
         return {
             'id': self.id,
-            'username': self.username,
-            'email': self.email
+            'email': self.email,
+            'firstname': self.firstname,
+            'lastname': self.lastname,
+            'is_driver': self.is_driver,
+            'is_available': self.is_available
         }

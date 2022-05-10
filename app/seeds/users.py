@@ -3,16 +3,37 @@ from app.models import db, User
 
 # Adds a demo user, you can add other users here if you want
 def seed_users():
-    demo = User(
-        username='Demo', email='demo@aa.io', password='password')
-    marnie = User(
-        username='marnie', email='marnie@aa.io', password='password')
-    bobbie = User(
-        username='bobbie', email='bobbie@aa.io', password='password')
+    passenger_1 = User(
+        email='rider@ride.com', firstname='K.I.', lastname='T.T',
+        password='password', is_driver=False, is_available=False
+        )
+    driver_1 = User(
+        email='knight@rider.com', firstname='Michael', lastname="Knight",
+        password='oro', is_driver=True, is_available=True
+        )
+    passenger_2 = User(
+        email='roger@roger.com', firstname='Roger', lastname='Camps',
+        password='oro', is_driver=False, is_available=False
+        )
+    driver_2 = User(
+        email='damian@damian.com', firstname='Damian', lastname="Rojas",
+        password='oro', is_driver=True, is_available=True
+        )
+    passenger_3 = User(
+        email='jason@jason.com', firstname='Jason', lastname='Vien',
+        password='oro', is_driver=False, is_available=False
+        )
+    driver_3 = User(
+        email='chris@chris.com', firstname='Chris', lastname="Mizell",
+        password='oro', is_driver=True, is_available=True
+        )
 
-    db.session.add(demo)
-    db.session.add(marnie)
-    db.session.add(bobbie)
+    db.session.add(passenger_1)
+    db.session.add(driver_1)
+    db.session.add(passenger_2)
+    db.session.add(driver_2)
+    db.session.add(passenger_3)
+    db.session.add(driver_3)
 
     db.session.commit()
 
