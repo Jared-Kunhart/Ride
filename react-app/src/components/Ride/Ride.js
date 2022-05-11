@@ -1,17 +1,16 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
-import { getAllMarkers } from "../../store/markers"
+import { GoogleMap, useJsApiLoader, Marker, InfoWindow} from '@react-google-maps/api';
+import { getAllBookings } from "../../store/bookings"
 import { useDispatch, useSelector } from 'react-redux';
 import knight from '../../public/static/images/knightrider.png'
 
 
 
 const Ride = () => {
-    const markers = useSelector(state => state.Markers)
+    const bookings = useSelector(state => Object.values(state.Bookings))
     const dispatch = useDispatch()
-    const marker = markers?.markers[0]
     useEffect(()=>{
-        dispatch(getAllMarkers())
+        dispatch(getAllBookings())
     },[dispatch])
 
 //This sets the center of the map. This must be set BEFORE the map loads
@@ -48,14 +47,15 @@ const { isLoaded } = useJsApiLoader({
               center={currentPosition}
               onUnmount={onUnmount}
               >
-              {markers.map(marker => (
+              {bookings?.map(marker => (
+            <>
               <Marker
               key={marker.id}
-              position={{lat:marker.lat, lng:marker.lng}}
-              title={marker.name}
+              position={{lat:marker.destination.lat, lng:marker.destination.lng}}
+              title={marker.destination.name}
               icon={{
                 path: 'M 100 100 L 300 100 L 200 300 z',
-                fillColor: marker.color,
+                fillColor: marker.destination.color,
                 fillOpacity: 1,
                 scale: .2,
                 strokeColor: 'gold',
@@ -63,10 +63,15 @@ const { isLoaded } = useJsApiLoader({
               }}
               streetView={false}
               />
+              <InfoWindow position={{lat:marker.destination.lat, lng:marker.destination.lng}} >
+                <div>
+                    <span style={{color: `${marker.destination.color}`}}>{marker.destination.name}</span>
+                </div>
+              </InfoWindow>
+            </>
               ))}
             </GoogleMap>}
         </div>
-
       </div>
     );
 

@@ -15,8 +15,8 @@ class Booking(db.Model):
     updated_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
 
     user = db.relationship("User", back_populates="bookings")
-    origin = db.relationship("Marker", foreign_keys=[origin_id])
-    destination = db.relationship("Marker", foreign_keys=[destination_id])
+    origin = db.relationship("Marker", back_populates="origin_id", cascade='all,delete', foreign_keys=[origin_id])
+    destination = db.relationship("Marker", back_populates="destination_id", cascade='all,delete', foreign_keys=[destination_id])
 
     def to_dict(self):
         return {
@@ -25,5 +25,7 @@ class Booking(db.Model):
             'price': self.price,
             'user_id': self.user_id,
             'origin_id': self.origin_id,
-            'destination_id': self.destination_id
+            'destination_id': self.destination_id,
+            'origin': self.origin.to_dict(),
+            'destination': self.destination.to_dict()
         }

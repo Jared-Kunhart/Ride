@@ -13,6 +13,10 @@ class Marker(db.Model):
     lat = db.Column(db.Numeric(scale=13, asdecimal=False))
     lng = db.Column(db.Numeric(scale=13, asdecimal=False))
 
+    origin_id = db.relationship("Booking", foreign_keys="Booking.origin_id", back_populates="origin")
+    destination_id = db.relationship("Booking", foreign_keys="Booking.destination_id", back_populates="destination")
+
+
     def to_dict(self):
         return {
             "id": self.id,
