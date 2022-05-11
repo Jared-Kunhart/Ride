@@ -1,0 +1,7 @@
+fetch('/api/trip/markers', {
+    method: 'GET',
+    headers: {
+        "Content-Type": "application/json",
+        "csrf_token": `IjNlYjY1YTRlODk4MGVkYTQ0MDdhY2Y3NWE2YWM1ZGZhMmM2N2E0MDIi.YnwaFQ.iERP5MK1cvjsGZgFrpDt0CSQbgQ`
+},
+}).then(res => res.json()).then(data => console.log(data));

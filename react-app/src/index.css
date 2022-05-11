@@ -1,1 +1,14 @@
 /* TODO Add site wide styles */
+html {
+    margin: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#landing_page_wrapper {
+    height: 100%;
+    width: 100%;
+}
