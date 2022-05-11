@@ -8,11 +8,14 @@ class User(db.Model, UserMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
-    firstname = db.Column(db.String(40), nullable=False, unique=True)
-    lastname = db.Column(db.String(40), nullable=False, unique=True)
+    firstname = db.Column(db.String(40), nullable=False)
+    lastname = db.Column(db.String(40), nullable=False)
     hashed_password = db.Column(db.String(255), nullable=False)
     is_driver = db.Column(db.Boolean, nullable=False)
     is_available = db.Column(db.Boolean, nullable=False)
+
+    bookings = db.relationship("Booking", back_populates="user")
+    reviews = db.relationship("Review", back_populates="user")
 
     @property
     def password(self):
