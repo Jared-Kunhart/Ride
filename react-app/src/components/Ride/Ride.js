@@ -1,16 +1,18 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
 import { getAllMarkers } from "../../store/markers"
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import knight from '../../public/static/images/knightrider.png'
 
 
 
 const Ride = () => {
+    const markers = useSelector(state => state.Markers)
     const dispatch = useDispatch()
-
+    const marker = markers?.markers[0]
     useEffect(()=>{
         dispatch(getAllMarkers())
-    },[])
+    },[dispatch])
 
 //This sets the center of the map. This must be set BEFORE the map loads
 
@@ -34,20 +36,6 @@ const { isLoaded } = useJsApiLoader({
     setMap(null)
   }, [])
 
-//   <Marker key={marker.id}
-//   position={{lat:marker.lat, lng:marker.lng}}
-//   title={marker.name}
-//   icon={{
-//     path: 'M 100 100 L 300 100 L 200 300 z',
-//     fillColor: marker.color,
-//     fillOpacity: 1,
-//     scale: .2,
-//     strokeColor: 'gold',
-//     strokeWeight: 2
-//   }}
-//   streetView={false} />
-
-
     return (
       // Important! Always set the container height explicitly
 
@@ -60,6 +48,22 @@ const { isLoaded } = useJsApiLoader({
               center={currentPosition}
               onUnmount={onUnmount}
               >
+              {markers.map(marker => (
+              <Marker
+              key={marker.id}
+              position={{lat:marker.lat, lng:marker.lng}}
+              title={marker.name}
+              icon={{
+                path: 'M 100 100 L 300 100 L 200 300 z',
+                fillColor: marker.color,
+                fillOpacity: 1,
+                scale: .2,
+                strokeColor: 'gold',
+                strokeWeight: 2
+              }}
+              streetView={false}
+              />
+              ))}
             </GoogleMap>}
         </div>
 
