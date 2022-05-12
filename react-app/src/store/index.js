@@ -2,10 +2,12 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import session from './session'
 import booking_reducer from './bookings';
+import key_reducer from './key'
 
 const rootReducer = combineReducers({
   session,
-  Bookings: booking_reducer,
+  key_reducer,
+  Bookings: booking_reducer
 });
 
 

@@ -2,16 +2,42 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { GoogleMap, useJsApiLoader, Marker, InfoWindow} from '@react-google-maps/api';
 import { getAllBookings } from "../../store/bookings"
 import { useDispatch, useSelector } from 'react-redux';
-import knight from '../../public/static/images/knightrider.png'
-
+import Geocode from 'react-geocode'
 
 
 const Ride = () => {
     const bookings = useSelector(state => Object.values(state.Bookings))
+    const key = useSelector(state => state.key_reducer.key)
+    const [address, setAddress] = useState('')
+    const [infoWindow, setInfoWindow] = useState(null)
     const dispatch = useDispatch()
     useEffect(()=>{
         dispatch(getAllBookings())
     },[dispatch])
+
+    const changeInfoWindow = (marker) => {
+        setInfoWindow(marker)
+    }
+    Geocode.setApiKey(key);
+    // set response language. Defaults to english.
+    Geocode.setLanguage("en");
+    Geocode.setLocationType("ROOFTOP");
+    // Enable or disable logs. Its optional.
+    Geocode.enableDebug();
+    // Get latitude & longitude from address
+    const makeMap = (e) => {
+        e.preventDefault()
+        Geocode.fromAddress(address).then(
+            (response) => {
+            const {lat, lng} = response.results[0].geometry.location
+            setCurrentPosition({lat, lng})
+
+            },
+            (error) => {
+            console.error(error);
+            }
+        );
+    }
 
 //This sets the center of the map. This must be set BEFORE the map loads
 
@@ -37,11 +63,17 @@ const { isLoaded } = useJsApiLoader({
 
     return (
       // Important! Always set the container height explicitly
-
       <div className="map_page__container">
+          <form onSubmit={(e)=>makeMap(e)}>
+              <label>
+                  Starting Point
+                  <input type='text' value={address} onChange={(e)=>setAddress(e.target.value)} />
+              </label>
+              <button type="submit">Make Map</button>
+          </form>
 
         <div style={{ height: '900px', width: '900px' }}>
-            {isLoaded && <GoogleMap
+            {isLoaded &&  currentPosition ? <GoogleMap
               mapContainerStyle={containerStyle}
               zoom={8}
               center={currentPosition}
@@ -61,16 +93,17 @@ const { isLoaded } = useJsApiLoader({
                 strokeColor: 'gold',
                 strokeWeight: 2
               }}
+              onClick = {()=>changeInfoWindow(marker)}
               streetView={false}
               />
-              <InfoWindow position={{lat:marker.destination.lat, lng:marker.destination.lng}} >
+              {infoWindow && <InfoWindow position={{lat:infoWindow.lat, lng:infoWindow.lng}} >
                 <div>
-                    <span style={{color: `${marker.destination.color}`}}>{marker.destination.name}</span>
+                    <span style={{color: `${infoWindow.color}`}}>{infoWindow.name}</span>
                 </div>
-              </InfoWindow>
+              </InfoWindow>}
             </>
               ))}
-            </GoogleMap>}
+            </GoogleMap> : null}
         </div>
       </div>
     );
