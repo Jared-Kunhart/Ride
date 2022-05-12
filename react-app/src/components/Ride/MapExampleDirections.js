@@ -223,3 +223,28 @@ return (
 }
 
 export default Ride;
+
+
+const handleSubmitOrigin = (e) => {
+  e.preventDefault()
+  Geocode.fromAddress(originAddress).then(
+      (response) => {
+          const {lat, lng} = response.results[0].geometry.location
+          setOrigin({lat, lng})
+      },
+      (error) => {
+      console.error(error);
+      }
+      ).then(() => {
+      let marker = {
+      name: user.firstname,
+      color: "#75e062",
+      address: "testaddressfornow",
+      city: "testcityfornow",
+      state: "teststatefornow",
+      lat: origin.lat,
+      lng: origin.lng,
+      }
+      return marker
+  }).then((marker) => dispatch(create_origin_marker(marker)))
+};
