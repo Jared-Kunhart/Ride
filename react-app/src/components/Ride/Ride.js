@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import { GoogleMap, useJsApiLoader, Marker, InfoWindow} from '@react-google-maps/api';
+import { GoogleMap, useJsApiLoader, Marker, InfoWindow, DirectionsService, DirectionsRenderer } from '@react-google-maps/api';
 import { getAllBookings } from "../../store/bookings"
 import { useDispatch, useSelector } from 'react-redux';
 import Geocode from 'react-geocode'
@@ -9,15 +9,39 @@ const Ride = () => {
     const bookings = useSelector(state => Object.values(state.Bookings))
     const key = useSelector(state => state.key_reducer.key)
     const [address, setAddress] = useState('')
+    const [destinationAddress, setDestinationAddress] = useState('')
     const [infoWindow, setInfoWindow] = useState(null)
+    const [destination, setDestination] = useState('')
+    const [origin, setOrigin] = useState({lat:43.00952168472677, lng:-89.47153080578808})
+    const [response, setResponse] = useState(null)
     const dispatch = useDispatch()
+
     useEffect(()=>{
         dispatch(getAllBookings())
     },[dispatch])
 
+    const makeDestination = (e) => {
+        const lat = e.latLng.lat();
+        const lng = e.latLng.lng();
+
+        setDestination({lat, lng})
+      }
+
     const changeInfoWindow = (marker) => {
         setInfoWindow(marker)
     }
+
+    const directionsCallback = (response) => {
+
+        if (response !== null) {
+          if (response.status === 'OK') {
+            setResponse(response)
+        } else {
+            console.log("Route: " + response.status);
+        }
+        }
+      }
+
     Geocode.setApiKey(key);
     // set response language. Defaults to english.
     Geocode.setLanguage("en");
@@ -25,12 +49,26 @@ const Ride = () => {
     // Enable or disable logs. Its optional.
     Geocode.enableDebug();
     // Get latitude & longitude from address
-    const makeMap = (e) => {
+    const Origin = (e) => {
         e.preventDefault()
         Geocode.fromAddress(address).then(
             (response) => {
             const {lat, lng} = response.results[0].geometry.location
-            setCurrentPosition({lat, lng})
+            setOrigin({lat, lng})
+
+            },
+            (error) => {
+            console.error(error);
+            }
+        );
+    }
+
+    const Destination = (e) => {
+        e.preventDefault()
+        Geocode.fromAddress(destinationAddress).then(
+            (response) => {
+            const {lat, lng} = response.results[0].geometry.location
+            setDestination({lat, lng})
 
             },
             (error) => {
@@ -47,7 +85,7 @@ const [currentPosition, setCurrentPosition] = useState({lat:43.11016617798622,ln
 
 const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
-    googleMapsApiKey: process.env.REACT_APP_MAPS_KEY
+    googleMapsApiKey: key
   })
 
   const containerStyle = {
@@ -64,12 +102,19 @@ const { isLoaded } = useJsApiLoader({
     return (
       // Important! Always set the container height explicitly
       <div className="map_page__container">
-          <form onSubmit={(e)=>makeMap(e)}>
+          <form onSubmit={(e)=>Origin(e)}>
               <label>
                   Starting Point
                   <input type='text' value={address} onChange={(e)=>setAddress(e.target.value)} />
               </label>
-              <button type="submit">Make Map</button>
+              <button type="submit">Set Origin</button>
+          </form>
+          <form onSubmit={(e)=>Destination(e)}>
+              <label>
+                  Destination Point
+                  <input type='text' value={destinationAddress} onChange={(e)=>setDestinationAddress(e.target.value)} />
+              </label>
+              <button type="submit">Set Destination</button>
           </form>
 
         <div style={{ height: '900px', width: '900px' }}>
@@ -79,6 +124,10 @@ const { isLoaded } = useJsApiLoader({
               center={currentPosition}
               onUnmount={onUnmount}
               >
+              <Marker
+              title='Starting Point'
+              position={origin}
+              />
               {bookings?.map(marker => (
             <>
               <Marker
@@ -93,17 +142,51 @@ const { isLoaded } = useJsApiLoader({
                 strokeColor: 'gold',
                 strokeWeight: 2
               }}
-              onClick = {()=>changeInfoWindow(marker)}
-              streetView={false}
-              />
-              {infoWindow && <InfoWindow position={{lat:infoWindow.lat, lng:infoWindow.lng}} >
+              onClick={(e)=>makeDestination(e)}
+              streetView={false} >
+              {/* <InfoWindow
+              position={{lat:marker.destination.lat, lng:marker.destination.lng}}
+              >
                 <div>
-                    <span style={{color: `${infoWindow.color}`}}>{infoWindow.name}</span>
+                <h3>Click the Marker make directions</h3>
+                  <span style={{color: `${marker.color}`}}>{marker.name}</span>
                 </div>
-              </InfoWindow>}
+              </InfoWindow> */}
+             </Marker>
             </>
               ))}
-            </GoogleMap> : null}
+          { (destination !== '' && response === null) && (
+                <DirectionsService
+                  // required
+                  options={{
+                    destination: destination,
+                    origin: origin,
+                    travelMode: 'DRIVING'
+                  }}
+                  // required
+                  callback={directionsCallback}
+
+                />
+              )
+            }
+
+            {
+              response !== null && (
+                <DirectionsRenderer
+                  panel={document.getElementById("panel")}
+                  options={{
+                    directions: response
+                  }}
+
+                />
+              )
+            }
+
+        </GoogleMap>:null}
+        </div>
+
+        <div id='panel'>
+
         </div>
       </div>
     );
