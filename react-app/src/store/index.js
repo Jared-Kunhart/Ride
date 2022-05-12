@@ -3,11 +3,13 @@ import thunk from 'redux-thunk';
 import session from './session'
 import booking_reducer from './bookings';
 import key_reducer from './key'
+import marker_reducer from './marker'
 
 const rootReducer = combineReducers({
   session,
   key_reducer,
-  Bookings: booking_reducer
+  Bookings: booking_reducer,
+  Markers: marker_reducer
 });
 
 
