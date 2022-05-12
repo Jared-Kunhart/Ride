@@ -22,7 +22,8 @@ const RideForm = () => {
             (error) => {
             console.error(error);
             }
-        ).then(marker = {
+        );
+          const marker = {
             name: user.firstname,
             color: "#75e062",
             address: "testaddressfornow",
@@ -30,7 +31,8 @@ const RideForm = () => {
             state: "teststatefornow",
             lat: origin.lat,
             lng: origin.lng,
-          }).then(dispatch(create_origin_marker(marker)))
+          };
+          dispatch(create_origin_marker(marker));
       };
 
       const handleSubmitDestination = (e) => {
