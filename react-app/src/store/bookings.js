@@ -7,7 +7,6 @@ const getBookings = (bookings) => ({
 
 export const getAllBookings = () => async (dispatch) => {
     const response = await fetch(`/api/trip/bookings`);
-
     if (response.ok) {
         const data = await response.json();
       dispatch(getBookings(data.bookings));

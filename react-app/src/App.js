@@ -6,11 +6,16 @@ import { authenticate } from './store/session';
 import LandingPage from './components/Landing/LandingPage';
 import LogoutButton from './components/auth/LogoutButton';
 import Ride from './components/Ride/Ride';
+import { getKey } from './store/key';
 
 function App() {
   const user = useSelector(state => state.session.user)
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
+
+  useEffect(()=>{
+    dispatch(getKey())
+  },[dispatch])
 
   useEffect(() => {
     (async() => {
