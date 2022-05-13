@@ -16,14 +16,14 @@ const RideUpdateForm = ({booking}) => {
         if (destination && submitted) {
 
             const destination_marker = {
-                booking_id: booking.id,
-                destination_name: user.lastname,
+                booking_id: booking?.id,
+                destination_name: user?.lastname,
                 destination_color: "#75e062",
                 destination_address: "updateaddressfornow",
                 destination_city: "updatecityfornow",
                 destination_state: "updatestatefornow",
-                destination_lat: destination.lat,
-                destination_lng: destination.lng,
+                destination_lat: destination?.lat,
+                destination_lng: destination?.lng,
             };
             dispatch(updateBooking(destination_marker));
             setSubmitted(false)

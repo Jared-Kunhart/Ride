@@ -123,7 +123,7 @@ def delete_booking(id):
     booking = Booking.query.get(id)
     db.session.delete(booking)
     db.session.commit()
-    return "fuck you"
+    return "Deleted"
 
 
 """
