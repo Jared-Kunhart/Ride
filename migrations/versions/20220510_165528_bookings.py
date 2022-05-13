@@ -21,6 +21,7 @@ def upgrade():
     op.create_table('bookings',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('date', sa.DateTime(), nullable=False),
+    sa.Column('is_complete', sa.Boolean, nullable=True),
     sa.Column('price', sa.Float(precision=4), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('origin_id', sa.Integer(), nullable=False),

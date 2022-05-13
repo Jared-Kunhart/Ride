@@ -18,8 +18,13 @@ const Ride = () => {
     const [origin, setOrigin] = useState({})
     const dispatch = useDispatch()
 
-    const user_bookings = bookings?.filter(booking => booking.user_id === user.id)
+    const user_bookings = bookings?.filter(booking =>
+      booking.user_id === user.id && booking.is_complete === false)
+      // && booking.is_complete === False
+    // console.log(user_bookings, "<<<<<<<<<<<<<<<<<<<<<<<<user bookings")
     const user_booking = user_bookings[user_bookings?.length - 1]
+    // console.log(user_booking, "<<<<<<<<<<<<<<<<<<<<<<<<user bookings")
+    
     //Destination
     const dest_lat = user_booking?.destination.lat
     const dest_lng = user_booking?.destination.lng

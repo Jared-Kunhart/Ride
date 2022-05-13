@@ -58,6 +58,7 @@ def create_destination_marker():
         booking = Booking(
             date = "2020/10/2",
             price = "13.55",
+            is_complete = False,
             user_id = current_user.id,
             origin_id = marker.id - 1,
             destination_id = marker.id,
