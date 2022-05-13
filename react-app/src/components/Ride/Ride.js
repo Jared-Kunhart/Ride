@@ -2,27 +2,39 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { GoogleMap, useJsApiLoader, Marker, InfoWindow, DirectionsService, DirectionsRenderer } from '@react-google-maps/api';
 import { getAllBookings } from "../../store/bookings"
 import { useDispatch, useSelector } from 'react-redux';
-import Geocode from 'react-geocode'
+import RideForm from './RideForm';
+import stick from '../../public/static/images/stick.png'
+import ridersmall from '../../public/static/images/ridersmall.png'
+import './ride.css'
 
 
 const Ride = () => {
+    const user = useSelector(state => state.session.user)
     const bookings = useSelector(state => Object.values(state.Bookings))
     const key = useSelector(state => state.key_reducer.key)
-    const [address, setAddress] = useState('')
-    const [destinationAddress, setDestinationAddress] = useState('')
     const [infoWindow, setInfoWindow] = useState(null)
-    const [destination, setDestination] = useState('')
-    const [origin, setOrigin] = useState({lat:43.00952168472677, lng:-89.47153080578808})
     const [response, setResponse] = useState(null)
+    const [destination, setDestination] = useState('')
+    const [origin, setOrigin] = useState({})
     const dispatch = useDispatch()
+
+    const user_bookings = bookings?.filter(booking => booking.user_id === user.id)
+    const user_booking = user_bookings[user_bookings?.length - 1]
+    //Destination
+    const dest_lat = user_booking?.destination.lat
+    const dest_lng = user_booking?.destination.lng
+    //Origin
+    const origin_lat = user_booking?.origin.lat
+    const origin_lng = user_booking?.origin.lng
+
 
     useEffect(()=>{
         dispatch(getAllBookings())
     },[dispatch])
 
     const makeDestination = (e) => {
-        const lat = e.latLng.lat();
-        const lng = e.latLng.lng();
+        const lat = e.latLng?.lat();
+        const lng = e.latLng?.lng();
 
         setDestination({lat, lng})
       }
@@ -39,47 +51,12 @@ const Ride = () => {
         } else {
             console.log("Route: " + response.status);
         }
-        }
       }
-
-    Geocode.setApiKey(key);
-    // set response language. Defaults to english.
-    Geocode.setLanguage("en");
-    Geocode.setLocationType("ROOFTOP");
-    // Enable or disable logs. Its optional.
-    Geocode.enableDebug();
-    // Get latitude & longitude from address
-    const Origin = (e) => {
-        e.preventDefault()
-        Geocode.fromAddress(address).then(
-            (response) => {
-            const {lat, lng} = response.results[0].geometry.location
-            setOrigin({lat, lng})
-
-            },
-            (error) => {
-            console.error(error);
-            }
-        );
-    }
-
-    const Destination = (e) => {
-        e.preventDefault()
-        Geocode.fromAddress(destinationAddress).then(
-            (response) => {
-            const {lat, lng} = response.results[0].geometry.location
-            setDestination({lat, lng})
-
-            },
-            (error) => {
-            console.error(error);
-            }
-        );
     }
 
 //This sets the center of the map. This must be set BEFORE the map loads
 
-const [currentPosition, setCurrentPosition] = useState({lat:43.11016617798622,lng:-89.48826131670266})
+const [currentPosition, setCurrentPosition] = useState({lat:41.8823821,lng:-87.61936659999999})
 
 // This is the equivalent to a script tag
 
@@ -102,70 +79,38 @@ const { isLoaded } = useJsApiLoader({
     return (
       // Important! Always set the container height explicitly
       <div className="map_page__container">
-          <form onSubmit={(e)=>Origin(e)}>
-              <label>
-                  Starting Point
-                  <input type='text' value={address} onChange={(e)=>setAddress(e.target.value)} />
-              </label>
-              <button type="submit">Set Origin</button>
-          </form>
-          <form onSubmit={(e)=>Destination(e)}>
-              <label>
-                  Destination Point
-                  <input type='text' value={destinationAddress} onChange={(e)=>setDestinationAddress(e.target.value)} />
-              </label>
-              <button type="submit">Set Destination</button>
-          </form>
+        <div></div>
+
 
         <div style={{ height: '900px', width: '900px' }}>
             {isLoaded &&  currentPosition ? <GoogleMap
               mapContainerStyle={containerStyle}
-              zoom={8}
+              zoom={15}
               center={currentPosition}
               onUnmount={onUnmount}
               >
-              <Marker
-              title='Starting Point'
-              position={origin}
-              />
-              {bookings?.map(marker => (
-            <>
-              <Marker
-              key={marker.id}
-              position={{lat:marker.destination.lat, lng:marker.destination.lng}}
-              title={marker.destination.name}
-              icon={{
-                path: 'M 100 100 L 300 100 L 200 300 z',
-                fillColor: marker.destination.color,
-                fillOpacity: 1,
-                scale: .2,
-                strokeColor: 'gold',
-                strokeWeight: 2
-              }}
-              onClick={(e)=>makeDestination(e)}
-              streetView={false} >
-              {/* <InfoWindow
-              position={{lat:marker.destination.lat, lng:marker.destination.lng}}
-              >
-                <div>
-                <h3>Click the Marker make directions</h3>
-                  <span style={{color: `${marker.color}`}}>{marker.name}</span>
-                </div>
-              </InfoWindow> */}
-             </Marker>
-            </>
-              ))}
-          { (destination !== '' && response === null) && (
+
+                  <Marker key={user_booking?.id}
+                  position={{lat:user_booking?.destination.lat, lng:user_booking?.destination.lng}}
+                  title={user_booking?.name}
+                  icon={ridersmall}
+                  onClick={(e)=>makeDestination(e)}
+                  streetView={false} />
+                  <Marker key={user_bookings?.id}
+                  position={{lat:user_booking?.origin.lat, lng:user_booking?.origin.lng}}
+                  title={user_booking?.name}
+                  icon={stick}
+                  streetView={false} />
+            {(destination !== '' && response === null) && (
                 <DirectionsService
                   // required
                   options={{
-                    destination: destination,
-                    origin: origin,
+                    destination: {lat:dest_lat, lng:dest_lng},
+                    origin: {lat:origin_lat, lng:origin_lng},
                     travelMode: 'DRIVING'
                   }}
                   // required
                   callback={directionsCallback}
-
                 />
               )
             }
@@ -185,10 +130,13 @@ const { isLoaded } = useJsApiLoader({
         </GoogleMap>:null}
         </div>
 
-        <div id='panel'>
 
-        </div>
+        <div id='panel'>
+             <RideForm />
+             </div>
+
       </div>
+
     );
 
 }

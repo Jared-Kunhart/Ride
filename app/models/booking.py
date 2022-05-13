@@ -18,6 +18,8 @@ class Booking(db.Model):
     origin = db.relationship("Marker", back_populates="origin_id", cascade='all,delete', foreign_keys=[origin_id])
     destination = db.relationship("Marker", back_populates="destination_id", cascade='all,delete', foreign_keys=[destination_id])
 
+    #cascade='all,delete-orphan'
+
     def to_dict(self):
         return {
             'id': self.id,
