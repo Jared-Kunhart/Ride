@@ -20,7 +20,6 @@ const RideForm = () => {
     useEffect(() => {
         if (origin && destination && submitted) {
 
-
             const origin_marker = {
                 origin_name: user.firstname,
                 origin_color: "#75e062",
@@ -39,7 +38,6 @@ const RideForm = () => {
                 destination_lat: destination.lat,
                 destination_lng: destination.lng,
             };
-            console.log({...origin_marker, ...destination_marker}, "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<")
             dispatch(createBooking({...origin_marker, ...destination_marker}));
             setSubmitted(false)
         }
