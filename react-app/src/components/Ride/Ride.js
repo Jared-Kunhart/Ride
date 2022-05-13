@@ -6,12 +6,17 @@ import RideForm from './RideForm';
 
 
 const Ride = () => {
+    const user = useSelector(state => state.session.user)
     const bookings = useSelector(state => Object.values(state.Bookings))
     const key = useSelector(state => state.key_reducer.key)
     const [infoWindow, setInfoWindow] = useState(null)
     const [response, setResponse] = useState(null)
     const [destination, setDestination] = useState('')
     const dispatch = useDispatch()
+
+    const user_bookings = bookings?.filter(booking => booking.user_id === user.id)
+
+    const user_booking = user_bookings[user_bookings?.length - 1]
 
     useEffect(()=>{
         dispatch(getAllBookings())
@@ -66,7 +71,7 @@ const { isLoaded } = useJsApiLoader({
       <div className="map_page__container">
 
         <RideForm />
-        
+
         <div style={{ height: '900px', width: '900px' }}>
             {isLoaded &&  currentPosition ? <GoogleMap
               mapContainerStyle={containerStyle}
@@ -74,7 +79,32 @@ const { isLoaded } = useJsApiLoader({
               center={currentPosition}
               onUnmount={onUnmount}
               >
-          { (destination !== '' && response === null) && (
+
+                  <Marker key={user_booking?.id}
+                  position={{lat:user_booking?.destination.lat, lng:user_booking?.destination.lng}}
+                  title={user_booking?.name}
+                  icon={{
+                    path: 'M 100 100 L 300 100 L 200 300 z',
+                    fillColor: user_booking?.color,
+                    fillOpacity: 1,
+                    scale: .2,
+                    strokeColor: 'gold',
+                    strokeWeight: 2
+                  }}
+                  streetView={false} />
+                  <Marker key={user_bookings?.id}
+                  position={{lat:user_booking?.origin.lat, lng:user_booking?.origin.lng}}
+                  title={user_booking?.name}
+                  icon={{
+                    path: 'M 100 100 L 300 100 L 200 300 z',
+                    fillColor: user_booking?.color,
+                    fillOpacity: 1,
+                    scale: .2,
+                    strokeColor: 'gold',
+                    strokeWeight: 2
+                  }}
+                  streetView={false} />
+            {(destination !== '' && response === null) && (
                 <DirectionsService
                   // required
                   options={{

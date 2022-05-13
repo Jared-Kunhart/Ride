@@ -6,8 +6,6 @@ from app.forms.create_marker import CreateMarker
 
 booking_routes = Blueprint('bookings', __name__)
 
-#, "k":Config.REACT_APP_GOOGLE_MAPS_API
-
 @booking_routes.route("/bookings")
 def getBookings():
     bookings = Booking.query.all()
@@ -66,7 +64,7 @@ def create_destination_marker():
         )
         db.session.add(booking)
         db.session.commit()
-        return booking.to_dict()
+        return {"booking": booking.to_dict()}
 
 
 """
