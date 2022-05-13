@@ -1,7 +1,9 @@
 import Geocode from 'react-geocode'
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { create_origin_marker, create_destination_marker } from '../../store/marker';
+import { create_origin_marker } from '../../store/marker';
+import { createBooking } from '../../store/bookings';
+
 
 const RideForm = () => {
     const dispatch = useDispatch()
@@ -59,7 +61,7 @@ const RideForm = () => {
                 lat: destination.lat,
                 lng: destination.lng,
             };
-            dispatch(create_destination_marker(destination_marker));
+            dispatch(createBooking(destination_marker));
         }
     }, [destination])
 

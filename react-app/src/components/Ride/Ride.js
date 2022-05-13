@@ -3,7 +3,7 @@ import { GoogleMap, useJsApiLoader, Marker, InfoWindow, DirectionsService, Direc
 import { getAllBookings } from "../../store/bookings"
 import { useDispatch, useSelector } from 'react-redux';
 import RideForm from './RideForm';
-
+import { updateUser } from '../../store/session';
 
 const Ride = () => {
     const user = useSelector(state => state.session.user)
@@ -17,6 +17,10 @@ const Ride = () => {
     const user_bookings = bookings?.filter(booking => booking.user_id === user.id)
 
     const user_booking = user_bookings[user_bookings?.length - 1]
+
+    useEffect(()=> {
+      dispatch(updateUser())
+    },[dispatch])
 
     useEffect(()=>{
         dispatch(getAllBookings())

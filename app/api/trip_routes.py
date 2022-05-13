@@ -64,7 +64,7 @@ def create_destination_marker():
         )
         db.session.add(booking)
         db.session.commit()
-        return {"booking": booking.to_dict()}
+        return booking.to_dict()
 
 
 """
