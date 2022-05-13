@@ -3,6 +3,9 @@ import { GoogleMap, useJsApiLoader, Marker, InfoWindow, DirectionsService, Direc
 import { getAllBookings } from "../../store/bookings"
 import { useDispatch, useSelector } from 'react-redux';
 import RideForm from './RideForm';
+import RideUpdateForm from './RideUpdateForm';
+import RideComplete from './RideComplete';
+import CancelRide from './CancelRide';
 import stick from '../../public/static/images/stick.png'
 import ridersmall from '../../public/static/images/ridersmall.png'
 import './ride.css'
@@ -15,15 +18,14 @@ const Ride = () => {
     const [infoWindow, setInfoWindow] = useState(null)
     const [response, setResponse] = useState(null)
     const [destination, setDestination] = useState('')
-    const [origin, setOrigin] = useState({})
     const dispatch = useDispatch()
 
     const user_bookings = bookings?.filter(booking =>
-      booking.user_id === user.id && booking.is_complete === false)
-      // && booking.is_complete === False
+      booking?.user_id === user?.id && booking?.is_complete === false)
     // console.log(user_bookings, "<<<<<<<<<<<<<<<<<<<<<<<<user bookings")
     const user_booking = user_bookings[user_bookings?.length - 1]
-    // console.log(user_booking, "<<<<<<<<<<<<<<<<<<<<<<<<user bookings")
+    // {user_booking && user_booking.is_complete === false ? <RideUpdateForm /> : <RideForm>}
+    // console.log(user_booking, "<<<<<<<<<<<<<<<<<<<<<<<<user booking")
 
     //Destination
     const dest_lat = user_booking?.destination.lat
@@ -51,10 +53,10 @@ const Ride = () => {
     const directionsCallback = (response) => {
 
         if (response !== null) {
-          if (response.status === 'OK') {
+          if (response?.status === 'OK') {
             setResponse(response)
         } else {
-            console.log("Route: " + response.status);
+            console.log("Route: " + response?.status);
         }
       }
     }
@@ -94,7 +96,8 @@ const { isLoaded } = useJsApiLoader({
               center={currentPosition}
               onUnmount={onUnmount}
               >
-
+                {user_booking ?
+                <>
                   <Marker key={user_booking?.id}
                   position={{lat:user_booking?.destination.lat, lng:user_booking?.destination.lng}}
                   title={user_booking?.name}
@@ -106,6 +109,8 @@ const { isLoaded } = useJsApiLoader({
                   title={user_booking?.name}
                   icon={stick}
                   streetView={false} />
+                  </> : <></>
+                }
             {(destination !== '' && response === null) && (
                 <DirectionsService
                   // required
@@ -137,8 +142,9 @@ const { isLoaded } = useJsApiLoader({
 
 
         <div id='panel'>
-             <RideForm />
-             </div>
+
+        {user_booking && user_booking?.is_complete === false ? <><RideUpdateForm booking={user_booking} /> <RideComplete booking={user_booking} /> <CancelRide booking={user_booking} /> </>: <RideForm />}
+        </div>
 
       </div>
 

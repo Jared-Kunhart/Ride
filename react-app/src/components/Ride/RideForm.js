@@ -12,34 +12,31 @@ const RideForm = () => {
     const [originAddress, setOriginAddress] = useState('')
     const [destinationAddress, setDestinationAddress] = useState('')
     const [destination, setDestination] = useState('')
-    const [origin, setOrigin] = useState({})
+    const [origin, setOrigin] = useState('')
     const [submitted, setSubmitted] = useState(false)
 
     //  SUBMIT ORIGIN FUNCTIONS \\
     // origin refers to current state \\
     useEffect(() => {
         if (origin && destination && submitted) {
-
-
             const origin_marker = {
-                origin_name: user.firstname,
+                origin_name: user?.firstname,
                 origin_color: "#75e062",
-                origin_address: "testaddressfornow",
-                origin_city: "testcityfornow",
-                origin_state: "teststatefornow",
-                origin_lat: origin.lat,
-                origin_lng: origin.lng,
+                origin_address: "Test Origin Address",
+                origin_city: "Test Origin City",
+                origin_state: "Test Origin State",
+                origin_lat: origin?.lat,
+                origin_lng: origin?.lng,
             };
             const destination_marker = {
-                destination_name: user.lastname,
+                destination_name: user?.lastname,
                 destination_color: "#75e062",
-                destination_address: "testaddressfornow",
-                destination_city: "testcityfornow",
-                destination_state: "teststatefornow",
-                destination_lat: destination.lat,
-                destination_lng: destination.lng,
+                destination_address: "Test Destination Address",
+                destination_city: "Test Destination Address",
+                destination_state: "Test Destination Address",
+                destination_lat: destination?.lat,
+                destination_lng: destination?.lng,
             };
-            console.log({...origin_marker, ...destination_marker}, "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<")
             dispatch(createBooking({...origin_marker, ...destination_marker}));
             setSubmitted(false)
         }
