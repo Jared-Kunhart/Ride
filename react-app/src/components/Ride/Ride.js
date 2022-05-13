@@ -24,7 +24,7 @@ const Ride = () => {
     // console.log(user_bookings, "<<<<<<<<<<<<<<<<<<<<<<<<user bookings")
     const user_booking = user_bookings[user_bookings?.length - 1]
     // console.log(user_booking, "<<<<<<<<<<<<<<<<<<<<<<<<user bookings")
-    
+
     //Destination
     const dest_lat = user_booking?.destination.lat
     const dest_lng = user_booking?.destination.lng

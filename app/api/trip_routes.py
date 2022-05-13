@@ -37,35 +37,48 @@ def create_origin_marker():
         db.session.commit()
         return marker.to_dict()
 
-@booking_routes.route("/booking/destination", methods=["POST"])
-def create_destination_marker():
+@booking_routes.route("/booking/new", methods=["POST"])
+def create_booking():
     form = CreateMarker()
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
-        marker = Marker(
-            name = form.name.data,
-            color = form.color.data,
-            address = form.address.data,
-            city = form.city.data,
-            state = form.state.data,
-            lat = form.lat.data,
-            lng = form.lng.data
-        )
-        db.session.add(marker)
-        db.session.commit()
+        origin_marker = Marker(
+        name = form.origin_name.data,
+        color = form.origin_color.data,
+        address = form.origin_address.data,
+        city = form.origin_city.data,
+        state = form.origin_state.data,
+        lat = form.origin_lat.data,
+        lng = form.origin_lng.data
+    )
+    db.session.add(origin_marker)
+    db.session.commit()
 
-        booking = Booking(
-            date = "2020/10/2",
-            price = "13.55",
-            is_complete = False,
-            user_id = current_user.id,
-            origin_id = marker.id - 1,
-            destination_id = marker.id,
-        )
-        db.session.add(booking)
-        db.session.commit()
-        return booking.to_dict()
+    destination_marker = Marker(
+        name = form.destination_name.data,
+        color = form.destination_color.data,
+        address = form.destination_address.data,
+        city = form.destination_city.data,
+        state = form.destination_state.data,
+        lat = form.destination_lat.data,
+        lng = form.destination_lng.data
+    )
+    db.session.add(destination_marker)
+    db.session.commit()
+
+    booking = Booking(
+        date = "2020/10/2",
+        price = "13.55",
+        is_complete = False,
+        user_id = current_user.id,
+        origin_id = origin_marker.id,
+        destination_id = destination_marker.id,
+    )
+    db.session.add(booking)
+    db.session.commit()
+
+    return booking.to_dict()
 
 
 """

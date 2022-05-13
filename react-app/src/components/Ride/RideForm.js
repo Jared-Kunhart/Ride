@@ -18,65 +18,55 @@ const RideForm = () => {
     //  SUBMIT ORIGIN FUNCTIONS \\
     // origin refers to current state \\
     useEffect(() => {
-        if (origin && submitted) {
+        if (origin && destination && submitted) {
+
 
             const origin_marker = {
-                name: user.firstname,
-                color: "#75e062",
-                address: "testaddressfornow",
-                city: "testcityfornow",
-                state: "teststatefornow",
-                lat: origin.lat,
-                lng: origin.lng,
+                origin_name: user.firstname,
+                origin_color: "#75e062",
+                origin_address: "testaddressfornow",
+                origin_city: "testcityfornow",
+                origin_state: "teststatefornow",
+                origin_lat: origin.lat,
+                origin_lng: origin.lng,
             };
-            dispatch(create_origin_marker(origin_marker));
+            const destination_marker = {
+                destination_name: user.lastname,
+                destination_color: "#75e062",
+                destination_address: "testaddressfornow",
+                destination_city: "testcityfornow",
+                destination_state: "teststatefornow",
+                destination_lat: destination.lat,
+                destination_lng: destination.lng,
+            };
+            console.log({...origin_marker, ...destination_marker}, "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<")
+            dispatch(createBooking({...origin_marker, ...destination_marker}));
             setSubmitted(false)
         }
-    }, [origin])
+    }, [dispatch, origin, destination])
 
-    const handleSubmitOrigin = (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault()
         Geocode.fromAddress(originAddress).then(
             (response) => {
-                const {lat, lng} = response.results[0].geometry.location
+                const {lat, lng} = response?.results[0].geometry.location
                 setOrigin({lat, lng})
             },
             (error) => {
             console.error(error);
             }
         );
-        setSubmitted(true)
-      };
-
-     //  SUBMIT DESTINATION FUNCTIONS \\
-    // destination refers to current state \\
-    useEffect(() => {
-        if (destination) {
-            const destination_marker = {
-                name: user.firstname,
-                color: "#75e062",
-                address: "testaddressfornow",
-                city: "testcityfornow",
-                state: "teststatefornow",
-                lat: destination.lat,
-                lng: destination.lng,
-            };
-            dispatch(createBooking(destination_marker));
-        }
-    }, [destination])
-
-      const handleSubmitDestination = (e) => {
-        e.preventDefault()
         Geocode.fromAddress(destinationAddress).then(
             (response) => {
-            const {lat, lng} = response.results[0].geometry.location
+            const {lat, lng} = response?.results[0].geometry.location
             setDestination({lat, lng})
             },
             (error) => {
             console.error(error);
             }
         );
-      };
+        setSubmitted(true)
+    };
 
     Geocode.setApiKey(key);
     // set response language. Defaults to english.
@@ -88,19 +78,16 @@ const RideForm = () => {
 
     return (
         <>
-          <form onSubmit={(e)=>handleSubmitOrigin(e)}>
+          <form onSubmit={(e)=>handleSubmit(e)}>
               <label>
                   Starting Point
                   <input type='text' value={originAddress} onChange={(e)=>setOriginAddress(e.target.value)} />
               </label>
-              <button type="submit">Set Origin</button>
-          </form>
-          <form onSubmit={(e)=>handleSubmitDestination(e)}>
               <label>
                   Destination Point
                   <input type='text' value={destinationAddress} onChange={(e)=>setDestinationAddress(e.target.value)} />
               </label>
-              <button type="submit">Set Destination</button>
+              <button type="submit">Submit</button>
           </form>
         </>
     )

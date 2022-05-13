@@ -19,18 +19,18 @@ export const getAllBookings = () => async (dispatch) => {
     }
   };
 
-  export const createBooking = (marker) => async (dispatch) => {
-    const response = await fetch(`/api/trip/booking/destination`, {
+  export const createBooking = (booking) => async (dispatch) => {
+    const response = await fetch(`/api/trip/booking/new`, {
         method: "POST",
         headers: {
           'Accept': 'application/json',
           'content-type': 'application/json',
         },
-        body: JSON.stringify(marker)
+        body: JSON.stringify(booking)
       })
     if (response.ok) {
-        const booking = await response.json();
-      dispatch(create_booking(booking));
+        const new_booking = await response.json();
+      dispatch(create_booking(new_booking));
     } else {
         return "ERROR AT CREATE BOOKING MARKER THUNK"
     }
