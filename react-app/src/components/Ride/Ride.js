@@ -3,7 +3,10 @@ import { GoogleMap, useJsApiLoader, Marker, InfoWindow, DirectionsService, Direc
 import { getAllBookings } from "../../store/bookings"
 import { useDispatch, useSelector } from 'react-redux';
 import RideForm from './RideForm';
-import { updateUser } from '../../store/session';
+import stick from '../../public/static/images/stick.png'
+import ridersmall from '../../public/static/images/ridersmall.png'
+import './ride.css'
+
 
 const Ride = () => {
     const user = useSelector(state => state.session.user)
@@ -12,23 +15,26 @@ const Ride = () => {
     const [infoWindow, setInfoWindow] = useState(null)
     const [response, setResponse] = useState(null)
     const [destination, setDestination] = useState('')
+    const [origin, setOrigin] = useState({})
     const dispatch = useDispatch()
 
     const user_bookings = bookings?.filter(booking => booking.user_id === user.id)
-
     const user_booking = user_bookings[user_bookings?.length - 1]
+    //Destination
+    const dest_lat = user_booking?.destination.lat
+    const dest_lng = user_booking?.destination.lng
+    //Origin
+    const origin_lat = user_booking?.origin.lat
+    const origin_lng = user_booking?.origin.lng
 
-    useEffect(()=> {
-      dispatch(updateUser())
-    },[dispatch])
 
     useEffect(()=>{
         dispatch(getAllBookings())
     },[dispatch])
 
     const makeDestination = (e) => {
-        const lat = e.latLng.lat();
-        const lng = e.latLng.lng();
+        const lat = e.latLng?.lat();
+        const lng = e.latLng?.lng();
 
         setDestination({lat, lng})
       }
@@ -73,8 +79,8 @@ const { isLoaded } = useJsApiLoader({
     return (
       // Important! Always set the container height explicitly
       <div className="map_page__container">
+        <div></div>
 
-        <RideForm />
 
         <div style={{ height: '900px', width: '900px' }}>
             {isLoaded &&  currentPosition ? <GoogleMap
@@ -87,38 +93,24 @@ const { isLoaded } = useJsApiLoader({
                   <Marker key={user_booking?.id}
                   position={{lat:user_booking?.destination.lat, lng:user_booking?.destination.lng}}
                   title={user_booking?.name}
-                  icon={{
-                    path: 'M 100 100 L 300 100 L 200 300 z',
-                    fillColor: user_booking?.color,
-                    fillOpacity: 1,
-                    scale: .2,
-                    strokeColor: 'gold',
-                    strokeWeight: 2
-                  }}
+                  icon={ridersmall}
+                  onClick={(e)=>makeDestination(e)}
                   streetView={false} />
                   <Marker key={user_bookings?.id}
                   position={{lat:user_booking?.origin.lat, lng:user_booking?.origin.lng}}
                   title={user_booking?.name}
-                  icon={{
-                    path: 'M 100 100 L 300 100 L 200 300 z',
-                    fillColor: user_booking?.color,
-                    fillOpacity: 1,
-                    scale: .2,
-                    strokeColor: 'gold',
-                    strokeWeight: 2
-                  }}
+                  icon={stick}
                   streetView={false} />
             {(destination !== '' && response === null) && (
                 <DirectionsService
                   // required
                   options={{
-                    destination: destination,
-                    origin: origin,
+                    destination: {lat:dest_lat, lng:dest_lng},
+                    origin: {lat:origin_lat, lng:origin_lng},
                     travelMode: 'DRIVING'
                   }}
                   // required
                   callback={directionsCallback}
-
                 />
               )
             }
@@ -138,10 +130,13 @@ const { isLoaded } = useJsApiLoader({
         </GoogleMap>:null}
         </div>
 
-        <div id='panel'>
 
-        </div>
+        <div id='panel'>
+             <RideForm />
+             </div>
+
       </div>
+
     );
 
 }
