@@ -12,14 +12,13 @@ const RideForm = () => {
     const [originAddress, setOriginAddress] = useState('')
     const [destinationAddress, setDestinationAddress] = useState('')
     const [destination, setDestination] = useState('')
-    const [origin, setOrigin] = useState({})
+    const [origin, setOrigin] = useState('')
     const [submitted, setSubmitted] = useState(false)
 
     //  SUBMIT ORIGIN FUNCTIONS \\
     // origin refers to current state \\
     useEffect(() => {
         if (origin && destination && submitted) {
-
             const origin_marker = {
                 origin_name: user?.firstname,
                 origin_color: "#75e062",
@@ -30,7 +29,7 @@ const RideForm = () => {
                 origin_lng: origin?.lng,
             };
             const destination_marker = {
-                destination_name: user.lastname,
+                destination_name: user?.lastname,
                 destination_color: "#75e062",
                 destination_address: "Test Destination Address",
                 destination_city: "Test Destination Address",
