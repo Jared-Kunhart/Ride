@@ -1,7 +1,6 @@
 import Geocode from 'react-geocode'
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { create_origin_marker } from '../../store/marker';
 import { createBooking } from '../../store/bookings';
 
 
@@ -15,8 +14,6 @@ const RideForm = () => {
     const [origin, setOrigin] = useState('')
     const [submitted, setSubmitted] = useState(false)
 
-    //  SUBMIT ORIGIN FUNCTIONS \\
-    // origin refers to current state \\
     useEffect(() => {
         if (origin && destination && submitted) {
             const origin_marker = {
@@ -66,12 +63,9 @@ const RideForm = () => {
     };
 
     Geocode.setApiKey(key);
-    // set response language. Defaults to english.
     Geocode.setLanguage("en");
     Geocode.setLocationType("ROOFTOP");
-    // Enable or disable logs. Its optional.
     Geocode.enableDebug();
-    // Get latitude & longitude from address
 
     return (
         <>
