@@ -1,11 +1,13 @@
 import React, { useState, useCallback, useMemo, useRef, useEffect } from 'react';
-import { GoogleMap, useJsApiLoader, Marker, DirectionsService, DirectionsRenderer } from '@react-google-maps/api';
+import { GoogleMap, useJsApiLoader, Marker, DirectionsService, DirectionsRenderer, LoadScript } from '@react-google-maps/api';
 import { getAllBookings } from "../../store/bookings"
 import { useDispatch, useSelector } from 'react-redux';
+import {GoogleMapsOverlay} from '@deck.gl/google-maps';
 import RideForm from './RideForm';
 import RideUpdateForm from './RideUpdateForm';
 import RideComplete from './RideComplete';
 import CancelRide from './CancelRide';
+import { nightblue, waterblue, sincity } from './utils';
 import stick from '../../public/static/images/stick.png'
 import ridersmall from '../../public/static/images/ridersmall.png'
 import './ride.css'
@@ -82,9 +84,11 @@ const Ride = () => {
       // Important! Always set the container height explicitly
       <div className="map_page__container">
         <div style={{ height: '900px', width: '900px' }}>
-            {isLoaded &&  center ? <GoogleMap
+            {isLoaded &&  center ?
+            <GoogleMap
               mapContainerStyle={containerStyle}
               zoom={15}
+              options={{ styles: waterblue}}
               center={center}
               onLoad={onLoad}
               >
