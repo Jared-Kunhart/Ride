@@ -7,6 +7,7 @@ import LandingPage from './components/Landing/LandingPage';
 import LogoutButton from './components/auth/LogoutButton';
 import Ride from './components/Ride/Ride';
 import { getKey } from './store/key';
+import LoginForm from './components/auth/LoginForm';
 
 function App() {
   const user = useSelector(state => state.session.user)
@@ -47,7 +48,7 @@ function App() {
             <Ride />
           </ProtectedRoute>
           <Route path="/login">
-            {/* <Login /> */}
+            <LoginForm />
           </Route>
           <Route path="/rider">
             {/* <RiderSignUp /> */}

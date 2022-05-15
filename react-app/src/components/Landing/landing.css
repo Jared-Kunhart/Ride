@@ -3,6 +3,16 @@
     src: url("../../public/static/fonts/ProximaNova-Regular.otf");
 }
 
+@font-face {
+    font-family: Gotham;
+    src: url("../../public/static/fonts/Gotham\ Book.otf");
+}
+
+@font-face {
+    font-family: GothamBold;
+    src: url("../../public/static/fonts/Gotham\ Bold.otf");
+}
+
 #landing_page {
     height: 100%;
     width: 100%;
@@ -24,6 +34,11 @@
     justify-content: center;
     width: 1280px;
     height: 81px;
+}
+
+#nav_content a {
+    color: #0C0B31;
+    text-decoration: none !important;
 }
 
 #nav_logo {
@@ -54,7 +69,6 @@
     height: 100%;
     border-right: 1px solid rgba(0, 0, 0, 0.141);
     width: 100px;
-
 }
 
 #nav_rider {
@@ -87,4 +101,98 @@
 #page_content {
     display: flex;
     justify-content: center;
+    padding-top: 64px;
+    padding-bottom: 64px;
+}
+
+#roger {
+    width: 712px;
+    height: 400px;
+    object-fit: cover;
+}
+
+#page_content_side_content {
+    padding-left: 15px;
+    width: 504px;
+    height: 405px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+#page_content_text {
+    padding-bottom: 30px;
+    font-family: GothamBold;
+    font-weight: 1000;
+    font-size: 30px;
+    width: 504px;
+    height: 92px;
+}
+
+#page_content_buttons {
+    display: flex;
+    width: 504px;
+    height: 64px;
+    padding-top: 20px;
+}
+
+#button_drive {
+    width: 150px;
+    height: 48px;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid transparent;
+    border-radius: 48px;
+    box-sizing: border-box;
+    padding: 0px 24px;
+    user-select: none;
+    min-height: 48px;
+    font-family: ProximaNova, sans-serif;
+    font-weight: 700;
+    color: #FFFFFF;
+    min-width: 120px;
+    font-size: 16px;
+    background-color: #523BE4;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none !important;
+    margin-top: 5px;
+    margin-right: 10px;
+}
+
+#button_drive:hover {
+     background-color: #220f9f;
+}
+
+#button_ride {
+    margin-top: 5px;
+    margin-left: 10px;
+    font-family: ProximaNova, sans-serif;
+    color: #0C0B31;
+    font-size: 16px;
+    font-weight: 700;
+    width: 155px;
+    height: 48px;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(0, 0, 0, 0.499);
+    border-radius: 48px;
+    box-sizing: border-box;
+    padding: 0px 24px;
+    user-select: none;
+    min-height: 48px;
+    min-width: 120px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none !important;
+    background-color: transparent;
+}
+
+#button_ride:hover {
+    background-color: rgba(207, 207, 207, 0.717);
 }
