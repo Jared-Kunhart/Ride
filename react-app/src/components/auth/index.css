@@ -1,0 +1,154 @@
+@font-face {
+    font-family: GothamBold;
+    src: url("../../public/static/fonts/Gotham\ Bold.otf");
+}
+
+@font-face {
+    font-family: ProximaNova;
+    src: url("../../public/static/fonts/ProximaNova-Regular.otf");
+}
+
+@font-face {
+    font-family: Gotham;
+    src: url("../../public/static/fonts/Gotham\ Book.otf");
+}
+
+#sign_up_page_layout {
+    background-color: #5b6467;
+    background-image: linear-gradient(315deg, #5b6467 0%, #8b939a 74%);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#sign_up_container {
+    display: flex;
+    align-tracks: center;
+}
+
+#sign_up_panel {
+    display: flex;
+    max-width: 424px;
+    min-height: 530px;
+    width: 376px;
+    height: 53px;
+    background-color: #FFFFFF;
+    padding: 24px 24px 24px 24px;
+    box-shadow: rgb(0 0 0 / 12%) 0px 0px 1px 0px, rgb(0 0 0 / 16%) 0px 0px 14px 0px;
+    border-radius: 8px;
+}
+
+#ride_logo_form {
+    width: 376px;
+    height: 53px;
+}
+
+#ride_logo_small {
+    width: 48px;
+    height: 28px;
+}
+
+#login_welcome_text {
+    width: 376px;
+    height: 44px;
+}
+
+#login_welcome_text h1 {
+    font-weight: 1000;
+    font-size: 30px;
+    font-family: Gotham;
+    padding-top: 20px;
+}
+
+.login_input {
+    font-family: ProximaNova;
+    font-size: 16px;
+    width: 376px;
+    height: 56px;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.353);
+    text-indent: 20px;
+    text-shadow: none;
+    text-align: start;
+    cursor: text;
+    margin-top: 15px;
+}
+
+.blue_login_button {
+    width: 150px;
+    height: 48px;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid transparent;
+    border-radius: 48px;
+    box-sizing: border-box;
+    padding: 0px 24px;
+    user-select: none;
+    min-height: 48px;
+    font-family: ProximaNova, sans-serif;
+    font-weight: 700;
+    color: #FFFFFF;
+    min-width: 120px;
+    font-size: 16px;
+    background-color: #523BE4;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none !important;
+    margin-top: 15px;
+    margin-right: 10px;
+}
+
+.blue_login_button:hover {
+    background-color: #220f9f;
+}
+
+#filler_text {
+    color: #0C0B31;
+    font-size: 16px;
+    line-height: 22px;
+    font-family: ProximaNova, sans-serif;
+    font-weight: 400;
+}
+
+#robot_div {
+    display: flex;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#login_checkboxa {
+    height: 20px;
+    width: 20px;
+}
+
+.login_label {
+    font-family: ProximaNova, sans-serif;
+    font-weight: 400;
+    color: #0C0B31;
+    font-size: 16px;
+    padding-left: 5px;
+}
+
+#button_align_center {
+    display: flex;
+    justify-content: center;
+}
+
+#footer_login {
+    font-family: ProximaNova, sans-serif;
+    font-weight: 400;
+    color: #0C0B31;
+    font-size: 16px;
+    position: relative;
+    left: 70px;
+    top: 100px;
+}
+
+#footer_login a {
+    text-decoration: none;
+}

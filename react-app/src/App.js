@@ -7,6 +7,9 @@ import LandingPage from './components/Landing/LandingPage';
 import LogoutButton from './components/auth/LogoutButton';
 import Ride from './components/Ride/Ride';
 import { getKey } from './store/key';
+import LoginForm from './components/auth/LoginForm';
+import Demo from './components/auth/Demo';
+import SignUpForm from './components/auth/SignUpForm';
 
 function App() {
   const user = useSelector(state => state.session.user)
@@ -46,6 +49,18 @@ function App() {
             <LogoutButton />
             <Ride />
           </ProtectedRoute>
+          <Route path="/login">
+            <LoginForm />
+          </Route>
+          <Route path="/rider">
+            <SignUpForm />
+          </Route>
+          <Route path="/driver">
+            {/* <DriverSignUp /> */}
+          </Route>
+          <Route path="/demo">
+            <Demo />
+          </Route>
           {user ?
           <>
             <Switch>

@@ -2,7 +2,8 @@ import React, { useState, useCallback, useMemo, useRef, useEffect } from 'react'
 import { GoogleMap, useJsApiLoader, Marker, DirectionsService, DirectionsRenderer, LoadScript } from '@react-google-maps/api';
 import { getAllBookings } from "../../store/bookings"
 import { useDispatch, useSelector } from 'react-redux';
-import {GoogleMapsOverlay} from '@deck.gl/google-maps';
+import DeckGL from 'deck.gl';
+import {GoogleMapsOverlay as DeckOverlay} from '@deck.gl/google-maps';
 import RideForm from './RideForm';
 import RideUpdateForm from './RideUpdateForm';
 import RideComplete from './RideComplete';
@@ -65,7 +66,7 @@ const Ride = () => {
       height: '800px'
     };
 
-    // const [map, setMap] = useState(null) - What does all this do ???
+    // const [map, setMap] = useState(null) - What does this do ???
     // onUnmount={onUnmount}
     // const onUnmount = useCallback(function callback(map) {
     //   setMap(null)
@@ -88,7 +89,7 @@ const Ride = () => {
             <GoogleMap
               mapContainerStyle={containerStyle}
               zoom={15}
-              options={{ styles: waterblue}}
+              options={{ styles: nightblue}}
               center={center}
               onLoad={onLoad}
               >
