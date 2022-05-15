@@ -35,7 +35,7 @@ const LoginForm = () => {
     <div id='sign_up_page_layout'>
       <div id='sign_up_container'>
         <div id='sign_up_panel'>
-          <div id='ride_logo_form'><img id='ride_logo_small' alt='' src='/static/images/rideblack.png'></img>
+          <div id='ride_logo_form'><Link to='/'><img id='ride_logo_small' alt='' src='/static/images/rideblack.png'></img></Link>
             <div id='login_welcome_text'><h1>Welcome back to Ride!</h1>
               <div id='filler_text'>Please enter your email and password.</div>
     <form id='login_form' onSubmit={onLogin}>

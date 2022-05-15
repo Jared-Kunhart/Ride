@@ -196,3 +196,19 @@
 #button_ride:hover {
     background-color: rgba(207, 207, 207, 0.717);
 }
+
+.no_text_decoration {
+    color: #0C0B31;
+    text-decoration: none !important;
+}
+
+#sub_page_content {
+    display: flex;
+    justify-content: center;
+    height: 663px;
+    width: 100%;
+    margin-top: 25px;
+    background-color: #5b64671a;
+    background-image: linear-gradient(315deg, #5b646713 0%, #8b939a12 74%);
+}
+

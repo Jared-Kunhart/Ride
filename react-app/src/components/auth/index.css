@@ -8,14 +8,17 @@
     src: url("../../public/static/fonts/ProximaNova-Regular.otf");
 }
 
+@font-face {
+    font-family: Gotham;
+    src: url("../../public/static/fonts/Gotham\ Book.otf");
+}
+
 #sign_up_page_layout {
-    background:  0% 0% / cover rgb(255, 225, 233);
+    background-color: #5b6467;
+    background-image: linear-gradient(315deg, #5b6467 0%, #8b939a 74%);
     height: 100vh;
     display: flex;
-    box-sizing: border-box;
-    -webkit-box-align: center;
     align-items: center;
-    -webkit-box-pack: center;
     justify-content: center;
 }
 
@@ -52,14 +55,10 @@
 }
 
 #login_welcome_text h1 {
-    font-weight: bolder;
+    font-weight: 1000;
     font-size: 30px;
-    font-family: GothamBold;
+    font-family: Gotham;
     padding-top: 20px;
-}
-
-#login_form {
-
 }
 
 .login_input {
