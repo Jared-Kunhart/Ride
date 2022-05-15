@@ -13,11 +13,10 @@
     justify-content: center;
     border-bottom: 1px solid rgba(0, 0, 0, 0.141);
     font-family: ProximaNova,sans-serif;
-    font-weight: 800;
-    background-color: white;
+    font-weight: 1000;
+    background-color: #FFFFFF;
     color: #0C0B31;
     font-size: 16px;
-
 }
 
 #nav_content {
@@ -31,6 +30,21 @@
     position: relative;
     right: 200px;
     width: 455px;
+    align-self: center;
+}
+
+#ride_logo_png {
+    width: 85px;
+    height: 45px;
+    background-size: cover;
+    background-image: url("../../public/static/images/rideblack.png");
+}
+
+#ride_logo_png:hover {
+    width: 85px;
+    height: 45px;
+    background-size: cover;
+    background-image: url("../../public/static/images/ridegrey.png");
 }
 
 #nav_driver {

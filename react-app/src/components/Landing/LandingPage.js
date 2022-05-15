@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import LoginForm from '../auth/LoginForm';
 import SignUpForm from '../auth/SignUpForm';
 import './landing.css'
@@ -8,7 +9,7 @@ export default function LandingPage() {
             <div id='main_content'>
                 <div id='nav'>
                     <div id='nav_content'>
-                        <div id='nav_logo'>Ride Logo</div>
+                        <div id='nav_logo'><Link to="/"><div id='ride_logo_png'></div></Link></div>
                         <div id='nav_driver'>DRIVER</div>
                         <div id='nav_rider'>RIDER</div>
                         <div id='nav_login'>LOGIN</div>
