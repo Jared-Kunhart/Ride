@@ -13,7 +13,7 @@
     src: url("../../public/static/fonts/Gotham\ Book.otf");
 }
 
-#sign_up_page_layout {
+.sign_up_page_layout {
     background-color: #5b6467;
     background-image: linear-gradient(315deg, #5b6467 0%, #8b939a 74%);
     height: 100vh;
@@ -22,43 +22,66 @@
     justify-content: center;
 }
 
-#sign_up_container {
+.sign_up_container {
     display: flex;
     align-tracks: center;
 }
 
-#sign_up_panel {
+.sign_up_panel {
     display: flex;
     max-width: 424px;
-    min-height: 530px;
+    min-height: 550px;
     width: 376px;
-    height: 53px;
+    height: 535px;
     background-color: #FFFFFF;
     padding: 24px 24px 24px 24px;
     box-shadow: rgb(0 0 0 / 12%) 0px 0px 1px 0px, rgb(0 0 0 / 16%) 0px 0px 14px 0px;
     border-radius: 8px;
 }
 
-#ride_logo_form {
+.sign_up_panel_large {
+    display: flex;
+    max-width: 424px;
+    min-height: 600px;
+    width: 376px;
+    height: 535px;
+    background-color: #FFFFFF;
+    padding: 24px 24px 24px 24px;
+    box-shadow: rgb(0 0 0 / 12%) 0px 0px 1px 0px, rgb(0 0 0 / 16%) 0px 0px 14px 0px;
+    border-radius: 8px;
+}
+
+.ride_logo_form {
     width: 376px;
     height: 53px;
 }
 
-#ride_logo_small {
+.ride_logo_small {
     width: 48px;
     height: 28px;
 }
 
-#login_welcome_text {
+.login_welcome_text {
     width: 376px;
     height: 44px;
 }
 
-#login_welcome_text h1 {
+.login_welcome_text h1 {
     font-weight: 1000;
     font-size: 30px;
     font-family: Gotham;
     padding-top: 20px;
+}
+
+.signup_welcome_text {
+    width: 376px;
+    height: 44px;
+}
+
+.signup_welcome_text h1 {
+    font-weight: 1000;
+    font-size: 30px;
+    font-family: Gotham;
 }
 
 .login_input {
@@ -73,6 +96,29 @@
     text-align: start;
     cursor: text;
     margin-top: 15px;
+}
+
+.signup_name {
+    display: flex;
+    flex-direction: row;
+}
+
+.signup_input_name {
+    font-family: ProximaNova;
+    font-size: 16px;
+    width: 180px;
+    height: 56px;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.353);
+    text-indent: 20px;
+    text-shadow: none;
+    text-align: start;
+    cursor: text;
+    margin-top: 15px;
+}
+
+#input_name {
+    margin-right: 10px;
 }
 
 .blue_login_button {
@@ -105,7 +151,7 @@
     background-color: #220f9f;
 }
 
-#filler_text {
+.filler_text {
     color: #0C0B31;
     font-size: 16px;
     line-height: 22px;
@@ -139,16 +185,32 @@
     justify-content: center;
 }
 
-#footer_login {
+.footer_login {
     font-family: ProximaNova, sans-serif;
     font-weight: 400;
     color: #0C0B31;
     font-size: 16px;
     position: relative;
     left: 70px;
-    top: 100px;
+    top: 90px;
 }
 
-#footer_login a {
+.footer_login a {
     text-decoration: none;
+}
+
+.footer_signup {
+    font-family: ProximaNova, sans-serif;
+    font-weight: 400;
+    color: #0C0B31;
+    font-size: 16px;
+    position: relative;
+    left: 70px;
+    top: 20px;
+}
+
+#error_div {
+    font-family: ProximaNova, sans-serif;
+    font-weight: 1000;
+    color: #ba056f;
 }

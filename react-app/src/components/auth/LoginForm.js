@@ -32,14 +32,14 @@ const LoginForm = () => {
   }
 
   return (
-    <div id='sign_up_page_layout'>
-      <div id='sign_up_container'>
-        <div id='sign_up_panel'>
-          <div id='ride_logo_form'><Link to='/'><img id='ride_logo_small' alt='' src='/static/images/rideblack.png'></img></Link>
-            <div id='login_welcome_text'><h1>Welcome back to Ride!</h1>
-              <div id='filler_text'>Please enter your email and password.</div>
+    <div className='sign_up_page_layout'>
+      <div className='sign_up_container'>
+        <div className='sign_up_panel'>
+          <div className='ride_logo_form'><Link to='/'><img className='ride_logo_small' alt='' src='/static/images/rideblack.png'></img></Link>
+            <div className='login_welcome_text'><h1>Welcome back to Ride!</h1>
+              <div className='filler_text'>Please enter your email and password.</div>
     <form id='login_form' onSubmit={onLogin}>
-      <div>
+      <div id='error_div'>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
@@ -73,7 +73,7 @@ const LoginForm = () => {
       </div>
       </div>
     </form>
-    <div id='footer_login'>Ride. A lyft clone by<a href='https://github.com/Jared-Kunhart/'> Jared Kunhart.</a></div>
+    <div className='footer_login'>Ride. A lyft clone by<a href='https://github.com/Jared-Kunhart/'> Jared Kunhart.</a></div>
     </div>
     </div>
     </div>
