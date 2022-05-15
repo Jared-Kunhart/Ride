@@ -1,6 +1,6 @@
+import { Link } from 'react-router-dom';
 import { Pagination, Navigation } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react/swiper-react'
-import { Link } from 'react-router-dom';
 import 'swiper/swiper.min.css'
 import 'swiper/modules/pagination/pagination.min.css'
 import 'swiper/modules/navigation/navigation.min.css'
@@ -76,12 +76,22 @@ export default function LandingPage() {
                      </SwiperSlide>
                     <SwiperSlide><div><div className='slider_pics'>
                     <img alt='' id='slider_jfif' src='/static/images/jason.jfif'/></div>
-                    "I got to the drop-off address, and he said it wasn't where he lived. He couldn't communicate an address because he was so drunk. He told me to turn on certain streets, but we were going in circles. We approached a liquor store, and he told me to stop so he could go in. He stayed in the car for five minutes with his hand in his pocket and told me I was going to be a good boy and wait for him. Then he threatened me and left his food in the car."
+                    "I got to the drop-off address, and he said it wasn't where he lived. He couldn't communicate an address because he was so drunk. He told me to turn on certain streets, but we were going in circles. We approached a liquor store, and he told me to stop so he could go in. Then he threatened me and left his food in the car."
                     {"\n"}
                     {"\n"}
                     — Jason
                     {"\n"}
                     Driving with Ride since 2014.
+                    </div>
+                    </SwiperSlide>
+                    <SwiperSlide><div><div className='slider_pics'>
+                    <img alt='' id='slider_jfif' src='/static/images/chris.jfif'/></div>
+                    "I picked up this guy who was drunk, and he asked me to take him to this bar. It was the bar he had just come out of."
+                    {"\n"}
+                    {"\n"}
+                    — Chris
+                    {"\n"}
+                    Driving with Ride since 1999.
                     </div>
                     </SwiperSlide>
                 </Swiper>

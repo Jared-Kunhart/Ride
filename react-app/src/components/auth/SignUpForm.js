@@ -1,29 +1,38 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
+import './index.css'
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
-  const [username, setUsername] = useState('');
+  const [firstname, setFirstname] = useState('');
+  const [lastname, setLastname] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
+  const is_driver = false
+  const is_available = false
+
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
+      const data = await dispatch(signUp(email, firstname, lastname, password, is_driver, is_available));
       if (data) {
         setErrors(data)
       }
     }
   };
 
-  const updateUsername = (e) => {
-    setUsername(e.target.value);
+  const updatefirstname = (e) => {
+    setFirstname(e.target.value);
+  };
+
+  const updatelastname = (e) => {
+    setLastname(e.target.value);
   };
 
   const updateEmail = (e) => {
@@ -43,51 +52,83 @@ const SignUpForm = () => {
   }
 
   return (
+    <div className='sign_up_page_layout'>
+    <div className='sign_up_container'>
+      <div className='sign_up_panel_large'>
+        <div className='ride_logo_form'><Link to='/'><img className='ride_logo_small' alt='' src='/static/images/rideblack.png'></img></Link>
+          <div className='signup_welcome_text'><h1>Sign up to Ride!</h1>
+            <div className='filler_text'>Whether you've been riding with us or it's your first time, let's get your info.</div>
     <form onSubmit={onSignUp}>
-      <div>
+      <div id='error_div'>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
       </div>
+      <div className='signup_name'>
       <div>
-        <label>User Name</label>
         <input
+          className='signup_input_name'
+          id='input_name'
           type='text'
-          name='username'
-          onChange={updateUsername}
-          value={username}
+          name='firstname'
+          onChange={updatefirstname}
+          value={firstname}
+          placeholder='First name*'
         ></input>
       </div>
       <div>
-        <label>Email</label>
         <input
+          className='signup_input_name'
+          type='text'
+          name='lastname'
+          onChange={updatelastname}
+          value={lastname}
+          placeholder='Last name*'
+        ></input>
+      </div>
+      </div>
+      <div>
+        <input
+          className='login_input'
           type='text'
           name='email'
           onChange={updateEmail}
           value={email}
+          placeholder='Email address*'
         ></input>
       </div>
       <div>
-        <label>Password</label>
         <input
+          className='login_input'
           type='password'
           name='password'
           onChange={updatePassword}
           value={password}
+          placeholder='Password*'
         ></input>
       </div>
       <div>
-        <label>Repeat Password</label>
         <input
+          className='login_input'
           type='password'
           name='repeat_password'
           onChange={updateRepeatPassword}
           value={repeatPassword}
           required={true}
+          placeholder='Password*'
         ></input>
       </div>
-      <button type='submit'>Sign Up</button>
+      <div id='button_align_center'>
+      <button className='blue_login_button' type='submit'>Sign Up</button>
+        <Link to='/demo'><button className='blue_login_button'>Demo</button></Link>
+      </div>
     </form>
+    <div className='footer_signup'>Ride. A lyft clone by<a href='https://github.com/Jared-Kunhart/'> Jared Kunhart.</a></div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
   );
 };
 

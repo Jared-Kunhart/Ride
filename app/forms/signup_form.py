@@ -18,7 +18,7 @@ class SignUpForm(FlaskForm):
     firstname = StringField('firstname', validators=[DataRequired()])
     lastname = StringField('lastname', validators=[DataRequired()])
     password = StringField('password', validators=[DataRequired()])
-    is_driver = BooleanField('is_driver', validators=[DataRequired()])
+    is_driver = BooleanField('is_driver')
     is_available = BooleanField('is_available')
 
 # def username_exists(form, field):
