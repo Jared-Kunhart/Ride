@@ -46,6 +46,18 @@ function App() {
             <LogoutButton />
             <Ride />
           </ProtectedRoute>
+          <Route path="/login">
+            {/* <Login /> */}
+          </Route>
+          <Route path="/rider">
+            {/* <RiderSignUp /> */}
+          </Route>
+          <Route path="/driver">
+            {/* <DriverSignUp /> */}
+          </Route>
+          <Route path="/demo">
+            {/* <Demo /> */}
+          </Route>
           {user ?
           <>
             <Switch>
