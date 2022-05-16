@@ -51,16 +51,24 @@ const RideUpdateForm = ({booking}) => {
 
     return (
         <>
+        <div className='update_destination'>
+            <h3>Heading to {booking?.destination?.address}.{"\n"}</h3>
+            <h5>Not your route ?</h5>
+            <h1>Update your route</h1>
+        </div>
           <form onSubmit={(e)=>handleSubmit(e)}>
-              <label>
-                  Destination Point
-                  <input type='text' value={destinationAddress} onChange={(e)=>setDestinationAddress(e.target.value)} />
-              </label>
-              <button type="submit">Update Destination</button>
+                  <input type='text'
+                   className='update_destination_input'
+                   value={destinationAddress}
+                   placeholder="Update your destination"
+                   onChange={(e)=>setDestinationAddress(e.target.value)}
+                   />
+                   <div id='submit_button_line'>
+              <button id='update_submit_button' type="submit">Update Destination</button>
+              </div>
           </form>
         </>
     )
-
 }
 
 export default RideUpdateForm;

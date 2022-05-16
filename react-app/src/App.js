@@ -10,6 +10,7 @@ import { getKey } from './store/key';
 import LoginForm from './components/auth/LoginForm';
 import Demo from './components/auth/Demo';
 import SignUpForm from './components/auth/SignUpForm';
+import NavBar from './components/NavBar';
 
 function App() {
   const user = useSelector(state => state.session.user)
@@ -46,7 +47,7 @@ function App() {
             {user ? <Redirect to="/home" /> : <Splash />}
           </Route>
           <ProtectedRoute path='/home' exact={true} >
-            <LogoutButton />
+            <NavBar />
             <Ride />
           </ProtectedRoute>
           <Route path="/login">
