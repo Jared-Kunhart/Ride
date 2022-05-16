@@ -209,6 +209,10 @@
     top: 20px;
 }
 
+.footer_signup a {
+    text-decoration: none;
+}
+
 #error_div {
     font-family: ProximaNova, sans-serif;
     font-weight: 1000;

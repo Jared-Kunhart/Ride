@@ -20,6 +20,8 @@ const Ride = () => {
     const [response, setResponse] = useState(null)
     const [destination, setDestination] = useState('')
     const dispatch = useDispatch()
+    // console.log(response?.routes[0]?.legs[0]?.end_address) Only works, response is on click
+    //console.log(response.routes[0].legs[0].start_address)
 
     const user_bookings = bookings?.filter(booking =>
       booking?.user_id === user?.id && booking?.is_complete === false)
@@ -62,8 +64,8 @@ const Ride = () => {
     })
 
     const containerStyle = {
-      width: '800px',
-      height: '800px'
+      width: '100%',
+      height: '100%'
     };
 
     // const [map, setMap] = useState(null) - What does this do ???
@@ -84,15 +86,31 @@ const Ride = () => {
     return (
       // Important! Always set the container height explicitly
       <div className="map_page__container">
-        <div style={{ height: '900px', width: '900px' }}>
+        <div style={{ height: '100%', width: '100%' }}>
             {isLoaded &&  center ?
             <GoogleMap
               mapContainerStyle={containerStyle}
-              zoom={15}
-              options={{ styles: nightblue}}
+              zoom={16}
+              options={{
+              styles: nightblue,
+              fullscreenControl: false,
+              mapTypeControl: false,
+              zoomControl: false,
+              streetViewControl: false,
+              }}
               center={center}
               onLoad={onLoad}
               >
+                <div id='directions_modal_form'>
+                {user_booking && user_booking?.is_complete === false ?
+                <>
+                <RideUpdateForm booking={user_booking} />
+                <div id='submit_button_line'>
+                <CancelRide booking={user_booking}/> <RideComplete booking={user_booking} />
+                </div>
+                </>
+                : <RideForm />}
+                </div>
                 {user_booking ?
                 <>
                   <Marker key={user_booking?.id}
@@ -125,7 +143,6 @@ const Ride = () => {
             {
               response !== null && (
                 <DirectionsRenderer
-                  panel={document.getElementById("panel")}
                   options={{
                     directions: response
                   }}
@@ -135,13 +152,6 @@ const Ride = () => {
             }
         </GoogleMap>:null}
         </div>
-
-
-        <div id='panel'>
-
-        {user_booking && user_booking?.is_complete === false ? <><RideUpdateForm booking={user_booking} /> <RideComplete booking={user_booking} /> <CancelRide booking={user_booking} /> </>: <RideForm />}
-        </div>
-
       </div>
 
     );

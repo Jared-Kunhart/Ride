@@ -1,3 +1,362 @@
-.map_page__container {
+@font-face {
+    font-family: GothamBold;
+    src: url("../../public/static/fonts/Gotham\ Bold.otf");
+}
+
+@font-face {
+    font-family: ProximaNova;
+    src: url("../../public/static/fonts/ProximaNova-Regular.otf");
+}
+
+@font-face {
+    font-family: Gotham;
+    src: url("../../public/static/fonts/Gotham\ Book.otf");
+}
+
+#nav_container {
+    background-color: #17171F;
+    width: 100vw;
+    height: 48px;
     display: flex;
+    align-items: center;
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    z-index: 10;
+}
+
+#nav_home {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.map_page__container {
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+#nav_logo_home {
+    margin-top: 15px;
+    margin-left: 15px;
+    width: 48px;
+    height: 48px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url("../../public/static/images/ridegrey.png");
+}
+
+#nav_logo_home:hover {
+    width: 48px;
+    height: 48px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url("../../public/static/images/ridered.png");
+}
+
+#nav_logout_home {
+    margin-top: 15px;
+    margin-right: 15px;
+    width: 48px;
+    height: 48px;
+}
+
+#logout_div {
+    position: relative;
+    right: 10px;
+    margin-top: 6px;
+    color: #FFFFFFB3;
+    font-weight: 1000;
+    font-size: 15px;
+    cursor: pointer;
+    line-height: 18px;
+    font-family: ProximaNova, sans-serif;
+}
+
+#directions_modal_form {
+    width: 400px;
+    height: 800px;
+    top: 48px;
+    bottom: 0px;
+    left: 32px;
+    margin: 24px 0px;
+    z-index: 2;
+    position: fixed;
+    border-radius: 12px;
+    background-color: #17171F;
+}
+
+#origin_input {
+    font-family: ProximaNova,sans-serif;
+    font-weight: 1000;
+    border-bottom-left-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+    font-size: 16px;
+    color: #FFFFFF;
+    width: 365px;
+    height: 55px;
+    background: none;
+    border: 1px solid rgba(255, 255, 255, 0.519);
+    border-radius: 12px;
+    min-width: 80px;
+    text-indent: 35px;
+    -webkit-box-align: center;
+    align-items: center;
+    overflow-x: hidden;
+    white-space: nowrap;
+    margin-left: 15px;
+}
+
+#origin_input::placeholder {
+    color: #FFFFFFB3;
+    font-weight: 500;
+}
+
+#destination_input {
+    font-family: ProximaNova,sans-serif;
+    font-weight: 1000;
+    border-top-left-radius: 0px !important;
+    border-top-right-radius: 0px !important;
+    font-size: 16px;
+    color: #FFFFFF;
+    width: 365px;
+    height: 55px;
+    background: none;
+    border: 1px solid rgba(255, 255, 255, 0.519);
+    border-radius: 12px;
+    min-width: 80px;
+    text-indent: 35px;
+    -webkit-box-align: center;
+    align-items: center;
+    overflow-x: hidden;
+    white-space: nowrap;
+    margin-left: 15px;
+}
+
+#destination_input::placeholder {
+    color: #FFFFFFB3;
+    font-weight: 500;
+}
+
+#form_header {
+    color: #FFFFFF;
+    width: 365px;
+    height: 45px;
+    font-weight: bold;
+    font-family: GothamBold, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 32px;
+    margin-top: 15px;
+    margin-left: 15px;
+}
+
+#ride_pickup_logo {
+    position: relative;
+    height: 20px;
+    width: 20px;
+    top: -98px;
+    left: 25px;
+}
+
+#ride_dropoff_logo {
+    position: relative;
+    height: 20px;
+    width: 20px;
+    top: -40px;
+    left: 5px;
+}
+
+#submit_button_line {
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    width: 400px;
+    height: 81px;
+    border-top: 2px inset #8c8c8cbe;
+    position: relative;
+    top: 500px;
+    text-align: center;
+    z-index: 2;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#ride_submit_button {
+    position: relative;
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    border: 1px solid transparent;
+    border-radius: 48px;
+    box-sizing: border-box;
+    margin-top: 20px;
+    padding: 0px 24px;
+    user-select: none;
+    min-height: 48px;
+    min-width: 320px;
+    cursor: pointer;
+    appearance: none !important;
+    background-color: #BCB4FF;
+    font-family: ProximaNova, sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+#ride_submit_button:hover {
+    background-color: #bcb4ffdf;
+}
+
+#ride_submit_button:disabled {
+    color: rgba(0, 0, 0, 0.6);
+    background-color: #bcb4ff55;
+    cursor: not-allowed;
+}
+
+.update_destination_input {
+    font-family: ProximaNova,sans-serif;
+    font-weight: 1000;
+    font-size: 16px;
+    color: #FFFFFF;
+    width: 365px;
+    height: 55px;
+    background: none;
+    border: 1px solid rgba(255, 255, 255, 0.519);
+    border-radius: 12px;
+    min-width: 80px;
+    text-indent: 35px;
+    -webkit-box-align: center;
+    align-items: center;
+    overflow-x: hidden;
+    white-space: nowrap;
+    margin-left: 15px;
+}
+
+.update_destination_input::placeholder {
+    color: #FFFFFFB3;
+    font-weight: 500;
+}
+
+.update_destination {
+    color: #FFFFFF;
+    width: 365px;
+    font-weight: bold;
+    font-family: GothamBold, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    margin-left: 15px;
+    margin-top: 10px;
+    white-space: pre-wrap;
+    word-wrap: normal;
+}
+
+.update_destination h3 {
+    font-size: 16px;
+    margin-bottom: 40px;
+}
+
+.update_destination h5 {
+    padding: 0px;
+    margin: 0px;
+    font-size: 16px;
+    color: #FFFFFFB3;
+    border-bottom: 1px inset #84848492;
+    width: 135px;
+}
+
+.update_destination h1 {
+    font-size: 24px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+#update_submit_button {
+    position: relative;
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    border: 1px solid transparent;
+    border-radius: 48px;
+    box-sizing: border-box;
+    margin-top: 20px;
+    padding: 0px 24px;
+    user-select: none;
+    min-height: 48px;
+    min-width: 300px;
+    cursor: pointer;
+    appearance: none !important;
+    background-color: #BCB4FF;
+    font-family: ProximaNova, sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    bottom: 100px;
+}
+
+#update_submit_button:hover {
+    background-color: #bcb4ffdf;
+}
+
+#complete_ride_button {
+    position: relative;
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    border: 1px solid transparent;
+    border-radius: 48px;
+    box-sizing: border-box;
+    margin-top: 20px;
+    padding: 0px 24px;
+    user-select: none;
+    min-height: 48px;
+    min-width: 150px;
+    cursor: pointer;
+    appearance: none !important;
+    background-color: #07759e;
+    font-family: ProximaNova, sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    bottom: 90px;
+}
+
+#complete_ride_button:hover {
+    background-color: #00d0ff;
+}
+
+#cancel_ride_button {
+    position: relative;
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    border: 1px solid transparent;
+    border-radius: 48px;
+    box-sizing: border-box;
+    margin-top: 20px;
+    padding: 0px 24px;
+    user-select: none;
+    min-height: 48px;
+    min-width: 150px;
+    cursor: pointer;
+    appearance: none !important;
+    background-color: #9e073e;
+    font-family: ProximaNova, sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    bottom: 90px;
+}
+
+#cancel_ride_button:hover {
+    background-color: #e80000;
 }

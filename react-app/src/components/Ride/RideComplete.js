@@ -18,7 +18,7 @@ const RideComplete = ({booking}) => {
         <>
           <form onSubmit={(e)=>handleSubmit(e)}>
               <label>
-                  <button>
+                  <button id="complete_ride_button">
                     Complete Ride
                   </button>
               </label>

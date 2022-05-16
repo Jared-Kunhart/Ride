@@ -17,7 +17,7 @@ const CancelRide = ({booking}) => {
         <>
         <form onSubmit={(e)=>handleSubmit(e)}>
             <label>
-                <button>
+                <button id="cancel_ride_button">
                   Cancel Ride
                 </button>
             </label>

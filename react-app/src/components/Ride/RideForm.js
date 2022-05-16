@@ -2,7 +2,7 @@ import Geocode from 'react-geocode'
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createBooking } from '../../store/bookings';
-
+import './ride.css'
 
 const RideForm = () => {
     const dispatch = useDispatch()
@@ -13,6 +13,7 @@ const RideForm = () => {
     const [destination, setDestination] = useState('')
     const [origin, setOrigin] = useState('')
     const [submitted, setSubmitted] = useState(false)
+
 
     useEffect(() => {
         if (origin && destination && submitted) {
@@ -69,20 +70,34 @@ const RideForm = () => {
 
     return (
         <>
+        <div id='form_header'><h1>Where to {user.firstname}{user.lastname} ?</h1></div>
           <form onSubmit={(e)=>handleSubmit(e)}>
-              <label>
-                  Starting Point
-                  <input type='text' value={originAddress} onChange={(e)=>setOriginAddress(e.target.value)} />
-              </label>
-              <label>
-                  Destination Point
-                  <input type='text' value={destinationAddress} onChange={(e)=>setDestinationAddress(e.target.value)} />
-              </label>
-              <button type="submit">Submit</button>
+                  <input
+                    id='origin_input'
+                    type='text'
+                    value={originAddress}
+                    placeholder="Enter a pickup location"
+                    onChange={(e)=>setOriginAddress(e.target.value)} />
+                  <input
+                   type='text'
+                   id='destination_input'
+                   value={destinationAddress}
+                   placeholder="Where are you going ?"
+                   onChange={(e)=>setDestinationAddress(e.target.value)} />
+                <img alt='' id='ride_pickup_logo' src='/static/images/ridepickup.png' />
+                <img alt='' id='ride_dropoff_logo' src='/static/images/ridedropoff.png' />
+              <div id='submit_button_line'>
+              <button
+              id='ride_submit_button'
+              type="submit"
+              disabled={originAddress && destinationAddress ? false : true}
+              >
+                  Ride
+              </button>
+              </div>
           </form>
         </>
     )
-
 }
 
 export default RideForm;
