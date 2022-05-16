@@ -8,6 +8,7 @@ import RideForm from './RideForm';
 import RideUpdateForm from './RideUpdateForm';
 import RideComplete from './RideComplete';
 import CancelRide from './CancelRide';
+import Review from '../RideReview'
 import { nightblue, waterblue, sincity } from './utils';
 import stick from '../../public/static/images/stick.png'
 import ridersmall from '../../public/static/images/ridersmall.png'
@@ -109,7 +110,7 @@ const Ride = () => {
                 <CancelRide booking={user_booking}/> <RideComplete booking={user_booking} />
                 </div>
                 </>
-                : <RideForm />}
+                : <RideForm /> }
                 </div>
                 {user_booking ?
                 <>
