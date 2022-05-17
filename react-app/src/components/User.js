@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import Review from './RideReview';
+import './User.css'
 
 function User() {
   const [user, setUser] = useState({});
@@ -21,17 +23,25 @@ function User() {
   }
 
   return (
-    <ul>
-      <li>
-        <strong>User Id</strong> {userId}
-      </li>
-      <li>
-        <strong>Username</strong> {user.username}
-      </li>
-      <li>
-        <strong>Email</strong> {user.email}
-      </li>
-    </ul>
+    <>
+      <div id='user_content'>
+        <div id='user_content_container'>
+          <div id='user_left_side_content'>
+            <div id='user_left_side_profile'>
+              {user.firstname}{user.lastname}
+              <div>
+              {user.email}
+              </div>
+            </div>
+          </div>
+          <div id='user_right_side_content'>
+            <div id='user_right_side_reviews'>
+              <Review />
+            </div>
+            </div>
+        </div>
+      </div>
+    </>
   );
 }
 export default User;

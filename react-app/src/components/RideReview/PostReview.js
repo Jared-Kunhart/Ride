@@ -86,7 +86,7 @@ const PostReview = ({booking}) => {
                 'Bad',
                 'Average',
                 'Great',
-                'Perfect'
+                'G.O.A.T'
               ]}
             />
             </div>
