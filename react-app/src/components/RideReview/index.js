@@ -11,13 +11,16 @@ const Review = () => {
     const dispatch = useDispatch()
     const reviews = useSelector(store => Object.values(store.Reviews))
 
+    // .sort
+
     useEffect(() => {
         dispatch(get_all_reviews(user?.id))
     }, [dispatch])
 
     return (
         <>
-        {reviews?.map(review => (
+        {reviews?.sort((review1, review2) => review2?.id - review1?.id)
+                 .map(review => (
             <div key={review?.id}>
                 {review?.content}
             <div id='edit_review_index'>
