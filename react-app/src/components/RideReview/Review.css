@@ -1,0 +1,8 @@
+#edit_review_index {
+   display: flex;
+   margin-bottom: 50px;
+}
+
+#review_edit_rating_div {
+    display: flex;
+}

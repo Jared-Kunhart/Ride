@@ -42,7 +42,7 @@ def update_user_review(id):
 
     if review:
         review.content = form.content.data
-        review.rating = form.content.data
+        review.rating = form.rating.data
 
     db.session.commit()
     return review.to_dict()

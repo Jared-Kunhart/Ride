@@ -11,6 +11,7 @@ import LoginForm from './components/auth/LoginForm';
 import Demo from './components/auth/Demo';
 import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar';
+import User from './components/User';
 
 function App() {
   const user = useSelector(state => state.session.user)
@@ -49,6 +50,10 @@ function App() {
           <ProtectedRoute path='/home' exact={true} >
             <NavBar />
             <Ride />
+          </ProtectedRoute>
+          <ProtectedRoute exact path="/home/:userId">
+            <NavBar />
+            <User />
           </ProtectedRoute>
           <Route path="/login">
             <LoginForm />
