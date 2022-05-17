@@ -21,7 +21,7 @@
   font-size: 12px;
   background-color: #17171F;
   width: 600px;
-  height: 271px;
+  height: 300px;
   border-radius: 10px;
   box-shadow: 0 .2em .2em #BCB4FF, 0 0 10px #BCB4FF, 0 0 20px #BCB4FF;
 }
@@ -106,14 +106,14 @@
   min-width: 150px;
   cursor: pointer;
   appearance: none !important;
-  background-color: #BCB4FF;
+  background-color: #a99fffde;
   font-family: ProximaNova, sans-serif;
   font-weight: 700;
   font-size: 16px;
 }
 
 .modal_complete_ride_button:hover {
-  background-color: #bcb4ffdf;
+  background-color: #BCB4FF;
 }
 
 #review_content_input {
@@ -128,10 +128,10 @@
   border: 1px solid rgba(255, 255, 255, 0.299);
   border-radius: 12px;
   min-width: 80px;
-  text-indent: 15px;
-  padding-top: 10px;
+  text-indent: 5px;
+  padding: 10px;
   overflow-x: hidden;
-  white-space: nowrap;
+  word-wrap:break-word;
   resize: none;
 }
 

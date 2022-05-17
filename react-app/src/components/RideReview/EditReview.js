@@ -7,7 +7,7 @@ import ReviewRating from './ReviewRating';
 const EditReview = ({review}) => {
     const dispatch = useDispatch();
     const [content, setContent] = useState("");
-    const [rating, setRating] = useState("")
+    const [rating, setRating] = useState(review?.rating)
     const [errors, setErrors] = useState([]);
 
     const handleRating = (rate = Number) => setRating(rate)
@@ -39,7 +39,7 @@ const EditReview = ({review}) => {
         <Rating
           id='review_rating_stars'
           onClick={handleRating}
-          ratingValue={review?.rating}
+          ratingValue={rating}
           transition
           size={35}
           showTooltip
