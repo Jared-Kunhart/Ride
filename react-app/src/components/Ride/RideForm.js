@@ -86,7 +86,7 @@ const RideForm = () => {
                    onChange={(e)=>setDestinationAddress(e.target.value)} />
                 <img alt='' id='ride_pickup_logo' src='/static/images/ridepickup.png' />
                 <img alt='' id='ride_dropoff_logo' src='/static/images/ridedropoff.png' />
-              <div id='submit_button_line'>
+                <div id='future_auto_complete_div'>
               <button
               id='ride_submit_button'
               type="submit"

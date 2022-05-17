@@ -81,7 +81,9 @@
 
 #directions_modal_form {
     width: 400px;
-    height: 800px;
+    height: 80vh;
+    /* height: 800px; */
+    max-height: 800px;
     top: 48px;
     bottom: 0px;
     left: 32px;
@@ -90,6 +92,24 @@
     position: fixed;
     border-radius: 12px;
     background-color: #17171F;
+}
+
+#submit_button_line {
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    width: 400px;
+    height: 81px;
+    border-top: 2px inset #8c8c8cbe;
+    text-align: center;
+    z-index: 2;
+    display: flex;
+    justify-content: space-evenly;
+    position: relative;
+    bottom: 5px;
+}
+
+#reposition_please {
+    height: 69vh;
 }
 
 #origin_input {
@@ -173,20 +193,6 @@
     left: 5px;
 }
 
-#submit_button_line {
-    border-bottom-left-radius: 12px;
-    border-bottom-right-radius: 12px;
-    width: 400px;
-    height: 81px;
-    border-top: 2px inset #8c8c8cbe;
-    position: relative;
-    top: 500px;
-    text-align: center;
-    z-index: 2;
-    display: flex;
-    justify-content: space-evenly;
-}
-
 #ride_submit_button {
     position: relative;
     display: inline-flex;
@@ -244,6 +250,22 @@
     font-weight: 500;
 }
 
+#update_separator_button_div {
+    height: 40vh;
+}
+
+#future_auto_complete_div {
+    position: absolute;
+    left: 40px;
+    bottom: 50px;
+}
+
+#update_dest_button_div {
+    position: absolute;
+    left: 50px;
+    bottom: 100px;
+}
+
 .update_destination {
     color: #FFFFFF;
     width: 365px;
@@ -278,15 +300,8 @@
 }
 
 #update_submit_button {
-    position: relative;
-    display: inline-flex;
-    -webkit-box-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    justify-content: center;
     border: 1px solid transparent;
     border-radius: 48px;
-    box-sizing: border-box;
     margin-top: 20px;
     padding: 0px 24px;
     user-select: none;
@@ -298,7 +313,6 @@
     font-family: ProximaNova, sans-serif;
     font-weight: 700;
     font-size: 16px;
-    bottom: 100px;
 }
 
 #update_submit_button:hover {
@@ -306,15 +320,8 @@
 }
 
 #complete_ride_button {
-    position: relative;
-    display: inline-flex;
-    -webkit-box-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    justify-content: center;
     border: 1px solid transparent;
     border-radius: 48px;
-    box-sizing: border-box;
     margin-top: 20px;
     padding: 0px 24px;
     user-select: none;
@@ -326,7 +333,6 @@
     font-family: ProximaNova, sans-serif;
     font-weight: 700;
     font-size: 16px;
-    bottom: 90px;
 }
 
 #complete_ride_button:hover {
@@ -354,7 +360,6 @@
     font-family: ProximaNova, sans-serif;
     font-weight: 700;
     font-size: 16px;
-    bottom: 90px;
 }
 
 #cancel_ride_button:hover {

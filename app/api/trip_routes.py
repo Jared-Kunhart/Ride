@@ -8,6 +8,10 @@ from app.forms.edit_booking import EditBooking
 
 booking_routes = Blueprint('bookings', __name__)
 
+"""
+filter by date
+"""
+
 @booking_routes.route("/bookings")
 def getBookings():
     bookings = Booking.query.all()
@@ -126,11 +130,11 @@ def delete_booking(id):
     return "Deleted"
 
 
-"""
-filter by date
-"""
-
-
 @booking_routes.route("/key")
 def getKey():
     return {"key":Config.REACT_APP_GOOGLE_MAPS_API}
+
+
+@booking_routes.errorhandler(500)
+def internal_server_error(e):
+    return {'errors': ["Internal Server Error"]}, 500

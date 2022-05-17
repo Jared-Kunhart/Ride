@@ -6,8 +6,9 @@ import DeckGL from 'deck.gl';
 import {GoogleMapsOverlay as DeckOverlay} from '@deck.gl/google-maps';
 import RideForm from './RideForm';
 import RideUpdateForm from './RideUpdateForm';
-import RideComplete from './RideComplete';
+import PostReview from '../RideReview/PostReview';
 import CancelRide from './CancelRide';
+import Review from '../RideReview'
 import { nightblue, waterblue, sincity } from './utils';
 import stick from '../../public/static/images/stick.png'
 import ridersmall from '../../public/static/images/ridersmall.png'
@@ -104,12 +105,14 @@ const Ride = () => {
                 <div id='directions_modal_form'>
                 {user_booking && user_booking?.is_complete === false ?
                 <>
+                <div id='reposition_please'>
                 <RideUpdateForm booking={user_booking} />
+                </div>
                 <div id='submit_button_line'>
-                <CancelRide booking={user_booking}/> <RideComplete booking={user_booking} />
+                <CancelRide booking={user_booking}/> <PostReview booking={user_booking} />
                 </div>
                 </>
-                : <RideForm />}
+                : <RideForm /> }
                 </div>
                 {user_booking ?
                 <>

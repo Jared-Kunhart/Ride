@@ -4,12 +4,14 @@ import session from './session'
 import booking_reducer from './bookings';
 import key_reducer from './key'
 import marker_reducer from './marker'
+import review_reducer from './review'
 
 const rootReducer = combineReducers({
   session,
   key_reducer,
   Bookings: booking_reducer,
-  Markers: marker_reducer
+  Markers: marker_reducer,
+  Reviews: review_reducer,
 });
 
 

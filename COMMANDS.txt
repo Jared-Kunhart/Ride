@@ -1,4 +1,4 @@
-fetch('/api/trip/markers', {
+fetch('/api/reviews/user/1/reviews', {
     method: 'GET',
     headers: {
         "Content-Type": "application/json",
