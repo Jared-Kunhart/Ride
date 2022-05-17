@@ -15,7 +15,7 @@ def get_user_reviews(id):
     return {'reviews': review_list}
 
 
-@review_routes.route("/new")
+@review_routes.route("/new", methods=["POST"])
 def create_user_review():
     form = ReviewForm()
     form['csrf_token'].data = request.cookies['csrf_token']

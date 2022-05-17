@@ -63,9 +63,10 @@ const RideUpdateForm = ({booking}) => {
                    placeholder="Update your destination"
                    onChange={(e)=>setDestinationAddress(e.target.value)}
                    />
-                   <div id='submit_button_line'>
+                   <div id='update_separator_button_div'></div>
+                   <div id='update_dest_button_div'>
               <button id='update_submit_button' type="submit">Update Destination</button>
-              </div>
+            </div>
           </form>
         </>
     )
