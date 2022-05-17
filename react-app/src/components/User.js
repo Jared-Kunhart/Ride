@@ -28,8 +28,13 @@ function User() {
         <div id='user_content_container'>
           <div id='user_left_side_content'>
             <div id='user_left_side_profile'>
-              {user.firstname}{user.lastname}
-              <div>
+              <div className='profile_div'>
+              <img id='profile_placeholder' alt='' src='/static/images/profile_placeholder.png' />
+              </div>
+              <div className='profile_div'>
+              {user.firstname} {user.lastname}
+              </div>
+              <div id='email_div' className='profile_div'>
               {user.email}
               </div>
             </div>

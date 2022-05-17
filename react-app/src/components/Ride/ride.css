@@ -62,22 +62,11 @@
 }
 
 #nav_logout_home {
-    margin-top: 15px;
-    margin-right: 15px;
+    margin-top: 8px;
+    margin-right: 25px;
     width: 48px;
     height: 48px;
-}
-
-#logout_div {
-    position: relative;
-    right: 10px;
-    margin-top: 6px;
-    color: #FFFFFFB3;
-    font-weight: 1000;
-    font-size: 15px;
-    cursor: pointer;
-    line-height: 18px;
-    font-family: ProximaNova, sans-serif;
+    color: #FFFFFF;
 }
 
 #directions_modal_form {
@@ -366,3 +355,182 @@
 #cancel_ride_button:hover {
     background-color: #e80000;
 }
+
+#nav_popup_content {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 5px;
+    box-shadow: 0 .1em .1em #000000;
+    background-color: #17171fd2;
+    font-size: 16px;
+    color: #FFFFFF;
+    height: 130px;
+    width: 105px;
+}
+
+#profile_link {
+    color: #FFFFFFB3;
+    font-weight: 1000;
+    font-size: 20px;
+    cursor: pointer;
+    font-family: Gotham, sans-serif;
+    text-decoration: none;
+    align-self: center;
+    margin-bottom: 2px;
+    padding-bottom: 10px;
+    /* border-bottom: 1px inset rgba(255, 255, 255, 0.383); */
+}
+
+#profile_link:hover {
+    color: #ffffff;
+    text-decoration:underline;
+    text-decoration-color: #FF00BF;
+}
+
+#home_link {
+    color: #FFFFFFB3;
+    font-weight: 1000;
+    font-size: 20px;
+    cursor: pointer;
+    font-family: Gotham, sans-serif;
+    text-decoration: none;
+    align-self: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+}
+
+#home_link:hover {
+    color: #ffffff;
+    text-shadow: 1px 1px 1px rgb(155, 0, 0);
+}
+
+#logout_div {
+    color: #FFFFFFB3;
+    font-weight: 1000;
+    font-size: 20px;
+    cursor: pointer;
+    font-weight: 500;
+    font-family: Gotham, sans-serif;
+    align-self: center;
+}
+#logout_div:hover {
+    color: #9e073e;
+    font-weight: 1000;
+}
+
+#kitt {
+    position: absolute;
+    top: 27%;
+    left: 12%;
+    width: 105px;
+    height: 20px;
+  }
+.one, .two, .three, .four, .five, .six, .seven, .eight, .nine, .ten {
+    width: 8px;
+    height: 8px;
+    background: red;
+    margin: 0;
+    display: inline-block;
+    box-shadow: 0 0 30px red, inset 0 0 5px rgba(255,255,255, 0.5);
+    border-radius: 5px;
+    animation-duration: 0.7s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+  }
+  .one {
+     animation-name: first ;
+  }
+  .two {
+    animation-name: second ;
+  }
+  .three {
+    animation-name: third ;
+  }
+  .four {
+    animation-name: fourth ;
+  }
+  .five {
+    animation-name: fifth ;
+  }
+  .six {
+    animation-name: sixth ;
+  }
+  .seven {
+    animation-name: seventh ;
+  }
+  .eight {
+    animation-name: eighth ;
+  }
+  .nine {
+    animation-name: ninth ;
+  }
+  .ten {
+    animation-name: tenth ;
+  }
+  @keyframes first {
+    0%   {opacity:0.2;}
+    10%  {opacity:1;}
+    20%  {opacity:0.2;}
+    100% {opacity:0;}
+  }
+  @keyframes second {
+    0%   {opacity:0;}
+    10%   {opacity:0.2;}
+    20%  {opacity:1;}
+    30%  {opacity:0.2;}
+    100% {opacity:0;}
+  }
+  @keyframes third {
+    0%   {opacity:0;}
+    20%  {opacity:0.2;}
+    30%  {opacity:1;}
+    40%  {opacity:0.2;}
+    100% {opacity:0;}
+  }
+  @keyframes fourth {
+    0%   {opacity:0;}
+    30%  {opacity:0.2;}
+    40%  {opacity:1;}
+    50%  {opacity:0.2;}
+    100% {opacity:0;}
+  }
+  @keyframes fifth {
+    0%   {opacity:0;}
+    40%  {opacity:0.2;}
+    50%  {opacity:1;}
+    60%  {opacity:0.2;}
+    100% {opacity:0;}
+  }
+  @keyframes sixth {
+    0%   {opacity:0;}
+    50%  {opacity:0.2;}
+    60%  {opacity:1;}
+    70%  {opacity:0.2;}
+    100% {opacity:0;}
+  }
+  @keyframes seventh {
+    0%   {opacity:0;}
+    60%  {opacity:0.2;}
+    70%  {opacity:1;}
+    80%  {opacity:0.2;}
+    100% {opacity:0;}
+  }
+  @keyframes eighth {
+    0%   {opacity:0;}
+    70%  {opacity:0.2;}
+    80%  {opacity:1;}
+    90%  {opacity:0.2;}
+    100% {opacity:0;}
+  }
+  @keyframes ninth {
+    0%   {opacity:0;}
+    80%  {opacity:0.2;}
+    90%  {opacity:1;}
+    100% {opacity:0.2;}
+  }
+  @keyframes tenth {
+    0%   {opacity:0;}
+    90%  {opacity:0.2;}
+    100%  {opacity:1;}
+  }

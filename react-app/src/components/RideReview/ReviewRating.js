@@ -3,7 +3,7 @@ import { Rating } from 'react-simple-star-rating'
 import './Review.css'
 
 const ReviewRating = ({review}) => {
-  const [rating, setRating] = useState(0)
+  const [rating, setRating] = useState(review?.rating)
 
   const handleRating = (rate = Number) => setRating(rate)
 
@@ -12,7 +12,7 @@ const ReviewRating = ({review}) => {
         <Rating
           id='review_rating_stars'
           onClick={handleRating}
-          ratingValue={review?.rating}
+          ratingValue={rating}
           transition
           size={35}
           showTooltip
