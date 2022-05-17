@@ -21,6 +21,7 @@ const EditReview = ({review}) => {
       };
       console.log(updated_review)
       await dispatch(update_user_review(updated_review));
+      setContent("")
     };
 
     return (

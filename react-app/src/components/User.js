@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { Redirect, useParams } from 'react-router-dom';
 import Review from './RideReview';
 import './User.css'
 
 function User() {
+  const somethingclever = useSelector(state => state.session.user)
   const [user, setUser] = useState({});
   const { userId }  = useParams();
 
@@ -24,6 +26,7 @@ function User() {
 
   return (
     <>
+    {user && somethingclever?.id === +userId ?
       <div id='user_content'>
         <div id='user_content_container'>
           <div id='user_left_side_content'>
@@ -46,6 +49,7 @@ function User() {
             </div>
         </div>
       </div>
+      : <Redirect to="/home" />}
     </>
   );
 }
