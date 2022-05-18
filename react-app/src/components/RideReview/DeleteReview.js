@@ -11,7 +11,7 @@ function DeleteReview ({ review }) {
 
   return (
     <form id="review_delete_form" onSubmit={handleSubmit}>
-      <button id="delete_review_button" className="deleteButton" type="submit">Delete</button>
+      <button id="delete_review_button" type="submit">Delete</button>
     </form>
   )
 }

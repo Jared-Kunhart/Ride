@@ -120,7 +120,6 @@ const Ride = () => {
                   position={{lat:user_booking?.destination.lat, lng:user_booking?.destination.lng}}
                   title={user_booking?.name}
                   icon={ridersmall}
-                  onClick={(e)=>makeDestination(e)}
                   streetView={false} />
                   <Marker key={user_bookings?.id}
                   position={{lat:user_booking?.origin.lat, lng:user_booking?.origin.lng}}
