@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
+import Popup from 'reactjs-popup';
 import { Rating } from 'react-simple-star-rating'
 import { useDispatch } from "react-redux";
 import { update_user_review } from "../../store/review";
 
 const EditReview = ({review, swapUpdateDiv}) => {
     const dispatch = useDispatch();
-    const [content, setContent] = useState("");
+    const [content, setContent] = useState(review?.content);
     const [rating, setRating] = useState(review?.rating)
     const [errors, setErrors] = useState([]);
 
     const handleRating = (rate = Number) => setRating(rate)
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e, close) => {
       e.preventDefault();
       const updated_review = {
           ...review,
@@ -21,10 +22,24 @@ const EditReview = ({review, swapUpdateDiv}) => {
       console.log(updated_review)
       await dispatch(update_user_review(updated_review));
       setContent("")
+      close()
     };
 
     return (
-      <form className="review_edit_form" onSubmit={handleSubmit}>
+      <Popup
+      trigger={
+
+          <label>
+              <span>
+              Edit Review
+              </span>
+          </label>
+      }
+      modal
+      nested
+      >
+        {close => (
+      <form className="review_edit_form" onSubmit={(e) => handleSubmit(e, close)}>
         <ul>
           {errors.map((error) => <li key={error}>{error}</li>)}
         </ul>
@@ -50,8 +65,11 @@ const EditReview = ({review, swapUpdateDiv}) => {
             'Perfect'
           ]}
         />
-        <button onClick={swapUpdateDiv} id="review_button" type="submit" disabled={errors.length > 0}>Update Review</button>
+        <button id="review_button" type="submit">Update Review</button>
+        <button id="review_button" onClick={(e) => close()}>Cancel</button>
       </form>
+      )}
+      </Popup>
     )
 }
 
