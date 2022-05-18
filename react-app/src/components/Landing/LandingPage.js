@@ -22,7 +22,7 @@ export default function LandingPage() {
                     </div>
                 </div>
                 <div id='page_content'>
-                    <div id='page_content_main_picture'><img id='roger' alt='' src='/static/images/roger.jpg' /></div>
+                    <div id='page_content_main_picture'><img id='roger' alt='' src='/static/images/chris.jpg' /></div>
                     <div id='page_content_side_content'>
                     <div id='page_content_text'><h1>Let's ride !</h1></div>
                     <div id='page_content_buttons'>

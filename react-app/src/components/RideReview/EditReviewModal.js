@@ -1,22 +1,22 @@
-import Popup from 'reactjs-popup';
-import 'reactjs-popup/dist/index.css';
+import { Modal } from '../../context/Modal';
+import { useState } from 'react';
 import EditReview from './EditReview'
 
 
 const EditReviewModal = ({review}) => {
+    const [showModal, setShowModal] = useState(false);
   return (
     <>
-      <Popup
-        trigger={<span id='update_review_div'> Edit Review </span>}
-        modal
-        nested
-      >
-
-        {close => (
-                <EditReview review={review} close={close} />
-
-        )}
-      </Popup>
+      <span id="review_button" className="editReview" onClick={() => setShowModal(true)}>
+        Edit Review
+      </span>
+      {showModal && (
+        <Modal onClose={() => setShowModal(false)}>
+            <div>
+            <EditReview review={review} hideModal={() => setShowModal(false)} />
+            </div>
+        </Modal>
+      )}
     </>
   )
 }

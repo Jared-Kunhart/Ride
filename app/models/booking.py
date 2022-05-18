@@ -15,6 +15,8 @@ class Booking(db.Model):
     created_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
     updated_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
 
+    #default=datetime.now()
+
     user = db.relationship("User", back_populates="bookings")
     origin = db.relationship("Marker", back_populates="origin_id", cascade='all, delete', foreign_keys=[origin_id])
     destination = db.relationship("Marker", back_populates="destination_id", cascade='all, delete', foreign_keys=[destination_id])

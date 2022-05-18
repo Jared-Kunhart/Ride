@@ -10,7 +10,7 @@ const PostReview = ({booking}) => {
     const user = useSelector(store => store.session.user)
     const dispatch = useDispatch()
     const [content, setContent] = useState("");
-    const [rating, setRating] = useState(0)
+    const [rating, setRating] = useState(20)
     const [errors, setErrors] = useState([]);
     console.log(rating)
 
