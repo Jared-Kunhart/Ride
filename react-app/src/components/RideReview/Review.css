@@ -96,8 +96,21 @@
 #update_review_div {
     position: relative;
     top: 30%;
-    width: 700px;
-    height: 165px;
+}
+
+.my-update-modal-content {
+    background-color: hotpink;
+}
+
+.my-update-modal {
+    position: relative;
+    border-radius: 5px;
+    box-shadow: 0 .2em .2em #000000, 0 0 5px #000000, 0 0 3px #000000;
+    left: 69px;
+    bottom: 20px;
+    height: 225px;
+    width:625px;
+    background-color: #2c2c2f;
 }
 
 #update_content {
@@ -114,17 +127,39 @@
     resize: none;
 }
 
-#edit_review_input {
+.my-update-content {
     position: relative;
-    bottom: 17px;
-    left: 1px;
-    width: 675px;
-    height: 22px;
+    border-radius: 5px;
+    box-shadow: 0 .2em .2em #000000, 0 0 5px #000000, 0 0 3px #000000;
+    left: 69px;
+    bottom: 20px;
+    height: 225px;
+    width:625px;
+    background-color: #2c2c2f;
+}
+
+#edit_review_input {
+    border: none;
+    overflow: auto;
+    outline: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    box-sizing: border-box;
+    background-color: transparent;
+    resize: none;
+    overflow-y: hidden;
+    position: relative;
+    left: 17px;
+    top: 5px;
+    width: 560px;
+    margin: 15px;
+    height: 125px;
     font-family: ProximaNova,sans-serif;
     font-weight: 1000;
     font-size: 16px;
     color: #FFFFFF;
-    background-color: #2c2c2f8d;
+    background-color: #3c3c438d;
     border-radius: 5px;
     min-width: 80px;
     text-indent: 5px;
@@ -134,7 +169,83 @@
     resize: none;
 }
 
-#update_review_rating_stars {
-    position: fixed;
-    z-index: 500;
+#edit_review_input:focus {
+    border: none;
+    overflow: auto;
+    outline: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    box-sizing: border-box;
+    background-color: transparent;
+    resize: none;
+    color: #fff;
+    overflow-y: hidden;
+    position: relative;
+    left: 17px;
+    top: 5px;
+    width: 560px;
+    margin: 15px;
+    height: 125px;
+    font-family: ProximaNova,sans-serif;
+    font-weight: 1000;
+    font-size: 16px;
+    color: #FFFFFF;
+    background-color: #3c3c438d;
+    border-radius: 5px;
+    min-width: 80px;
+    text-indent: 5px;
+    padding: 10px;
+    overflow-x: hidden;
+    word-wrap:break-word;
+    resize: none;
+}
+
+
+#update_button_row {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 5px;
+}
+
+#update_review_button {
+    position: relative;
+    left: 15px;
+    border: 1px solid transparent;
+    border-radius: 48px;
+    box-sizing: border-box;
+    user-select: none;
+    min-height: 48px;
+    min-width: 150px;
+    cursor: pointer;
+    appearance: none !important;
+    background-color: #BCB4FF;
+    font-family: ProximaNova, sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+#update_review_button:hover {
+    background-color: #bcb4ffdf;
+}
+
+#cancel_review_button {
+    position: relative;
+    left: 15px;
+    border: 1px solid transparent;
+    border-radius: 48px;
+    box-sizing: border-box;
+    user-select: none;
+    min-height: 48px;
+    min-width: 150px;
+    cursor: pointer;
+    appearance: none !important;
+    background-color: #9e073e;
+    font-family: ProximaNova, sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+#cancel_review_button:hover {
+    background-color: #e80000;
 }

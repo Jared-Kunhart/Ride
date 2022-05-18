@@ -27,13 +27,13 @@ const Review = () => {
                     Review Content:
                     <Popup
                         trigger={<div id='dots' className="menu-item"> ... </div>}
-                        position="right left"
+                        position="bottom center"
                         on="click"
-                        closeOnDocumentClick={false}
-                        mouseLeaveDelay={300}
+                        mouseLeaveDelay={0}
                         mouseEnterDelay={0}
                         contentStyle={{ padding: '0px', border: 'none' }}
                         arrow={false}
+                        nested
                         >
                         <div className="menu">
                             <div className="menu-item"><EditReviewModal review={review} /></div>
