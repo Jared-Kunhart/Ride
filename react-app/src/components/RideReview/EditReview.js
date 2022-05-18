@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import { Rating } from 'react-simple-star-rating'
 import { useDispatch } from "react-redux";
 import { update_user_review } from "../../store/review";
-import ReviewRating from './ReviewRating';
 
-const EditReview = ({review}) => {
+const EditReview = ({review, swapUpdateDiv}) => {
     const dispatch = useDispatch();
     const [content, setContent] = useState("");
     const [rating, setRating] = useState(review?.rating)
@@ -29,16 +28,14 @@ const EditReview = ({review}) => {
         <ul>
           {errors.map((error) => <li key={error}>{error}</li>)}
         </ul>
-        <label>
-          Update Review:
-          <input
+          <textarea
+            id='edit_review_input'
             type="text"
             value={content}
             onChange={(e) => setContent(e.target.value)}
           />
-        </label>
         <Rating
-          id='review_rating_stars'
+          id='update_review_rating_stars'
           onClick={handleRating}
           ratingValue={rating}
           transition
@@ -53,7 +50,7 @@ const EditReview = ({review}) => {
             'Perfect'
           ]}
         />
-        <button id="review_button" type="submit" disabled={errors.length > 0}>Update Review</button>
+        <button onClick={swapUpdateDiv} id="review_button" type="submit" disabled={errors.length > 0}>Update Review</button>
       </form>
     )
 }

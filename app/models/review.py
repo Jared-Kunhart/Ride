@@ -19,4 +19,5 @@ class Review(db.Model):
             'rating': self.rating,
             'is_driver_review': self.is_driver_review,
             'user_id': self.user_id,
+            'user': self.user.to_dict()
         }

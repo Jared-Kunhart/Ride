@@ -35,5 +35,6 @@ class User(db.Model, UserMixin):
             'firstname': self.firstname,
             'lastname': self.lastname,
             'is_driver': self.is_driver,
-            'is_available': self.is_available
+            'is_available': self.is_available,
+            'bookings': [booking.to_dict() for booking in self.bookings]
         }
