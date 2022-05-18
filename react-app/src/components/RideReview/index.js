@@ -5,7 +5,7 @@ import { useDispatch ,useSelector } from "react-redux";
 import { Rating } from 'react-simple-star-rating'
 import DeleteReview from './DeleteReview';
 import './Review.css'
-import EditReview from './EditReview';
+import EditReviewModal from './EditReviewModal';
 
 const Review = () => {
     const user = useSelector(store => store.session.user)
@@ -27,16 +27,16 @@ const Review = () => {
                     Review Content:
                     <Popup
                         trigger={<div id='dots' className="menu-item"> ... </div>}
-                        position="right left"
+                        position="bottom center"
                         on="click"
-                        closeOnDocumentClick={false}
-                        mouseLeaveDelay={300}
+                        mouseLeaveDelay={0}
                         mouseEnterDelay={0}
                         contentStyle={{ padding: '0px', border: 'none' }}
                         arrow={false}
+                        nested
                         >
                         <div className="menu">
-                            <div closeOnDocumentClick={false} className="menu-item"><EditReview review={review} /></div>
+                            <div className="menu-item"><EditReviewModal review={review} /></div>
                             <div className="menu-item"><DeleteReview review={review} /></div>
                         </div>
                     </Popup>
