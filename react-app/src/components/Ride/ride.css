@@ -39,10 +39,6 @@
     position: absolute;
 }
 
-::-webkit-scrollbar {
-    display: none;
-}
-
 #nav_logo_home {
     margin-top: 15px;
     margin-left: 15px;

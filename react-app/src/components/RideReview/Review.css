@@ -185,7 +185,7 @@
     font-weight: 1000;
     font-size: 16px;
     color: #FFFFFF;
-    border: none;
+    border: 0px;
     background-color: #17171fd2;
 }
 
@@ -196,7 +196,7 @@
     font-weight: 1000;
     font-size: 16px;
     color: #ff7474;
-    border: none;
+    border: 0px;
     background-color: #17171fd2;
 }
 
