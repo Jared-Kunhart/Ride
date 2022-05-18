@@ -12,7 +12,6 @@ const PostReview = ({booking}) => {
     const [content, setContent] = useState("");
     const [rating, setRating] = useState(20)
     const [errors, setErrors] = useState([]);
-    console.log(rating)
 
     const handleSubmitNoReview = (e, close) => {
         e.preventDefault()

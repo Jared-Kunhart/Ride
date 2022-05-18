@@ -11,6 +11,7 @@ const RideUpdateForm = ({booking}) => {
     const [destinationAddress, setDestinationAddress] = useState('')
     const [destination, setDestination] = useState('')
     const [submitted, setSubmitted] = useState(false)
+    const [errors, setErrors] = useState([]);
 
     useEffect(() => {
         if (destination && submitted) {
@@ -38,7 +39,7 @@ const RideUpdateForm = ({booking}) => {
             setDestination({lat, lng})
             },
             (error) => {
-            console.error(error);
+            setErrors(["Invalid Address"]);
             }
         );
         setSubmitted(true)
@@ -63,6 +64,11 @@ const RideUpdateForm = ({booking}) => {
                    placeholder="Update your destination"
                    onChange={(e)=>setDestinationAddress(e.target.value)}
                    />
+                    <div id='error_div_update'>
+                    {errors.map((error, ind) => (
+                    <div key={ind}>{error}</div>
+                    ))}
+                    </div>
                    <div id='update_separator_button_div'></div>
                    <div id='update_dest_button_div'>
               <button id='update_submit_button' type="submit">Update Destination</button>
