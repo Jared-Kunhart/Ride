@@ -214,7 +214,25 @@
 }
 
 #error_div {
-    font-family: ProximaNova, sans-serif;
+    font-family: GothamBold;
+    font-weight: 1000;
+    color: #ba056f;
+}
+
+#error_div_update {
+    position: relative;
+    top: 15px;
+    left: 125px;
+    font-family: GothamBold;
+    font-weight: 1000;
+    color: #ba056f;
+}
+
+#error_div_post {
+    position: relative;
+    bottom: 169px;
+    left: 85px;
+    font-family: GothamBold;
     font-weight: 1000;
     color: #ba056f;
 }

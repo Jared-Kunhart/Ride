@@ -19,12 +19,10 @@ const SignUpForm = () => {
 
   const onSignUp = async (e) => {
     e.preventDefault();
-    if (password === repeatPassword) {
-      const data = await dispatch(signUp(email, firstname, lastname, password, is_driver, is_available));
+      const data = await dispatch(signUp(email, firstname, lastname, password, repeatPassword, is_driver, is_available));
       if (data) {
         setErrors(data)
       }
-    }
   };
 
   const updatefirstname = (e) => {

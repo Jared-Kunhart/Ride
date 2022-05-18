@@ -13,6 +13,7 @@ const RideForm = () => {
     const [destination, setDestination] = useState('')
     const [origin, setOrigin] = useState('')
     const [submitted, setSubmitted] = useState(false)
+    const [errors, setErrors] = useState([]);
 
 
     useEffect(() => {
@@ -48,7 +49,7 @@ const RideForm = () => {
                 setOrigin({lat, lng})
             },
             (error) => {
-            console.error(error);
+            setErrors(["Invalid Address"]);
             }
         );
         Geocode.fromAddress(destinationAddress).then(
@@ -57,7 +58,7 @@ const RideForm = () => {
             setDestination({lat, lng})
             },
             (error) => {
-            console.error(error);
+            setErrors(["Invalid Address"]);
             }
         );
         setSubmitted(true)
@@ -87,6 +88,11 @@ const RideForm = () => {
                 <img alt='' id='ride_pickup_logo' src='/static/images/ridepickup.png' />
                 <img alt='' id='ride_dropoff_logo' src='/static/images/ridedropoff.png' />
                 <div id='future_auto_complete_div'>
+                <div id='error_div_post'>
+                    {errors.map((error, ind) => (
+                    <div key={ind}>{error}</div>
+                    ))}
+                </div>
               <button
               id='ride_submit_button'
               type="submit"
