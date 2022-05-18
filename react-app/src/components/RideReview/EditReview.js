@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import Popup from 'reactjs-popup';
 import { Rating } from 'react-simple-star-rating'
 import { useDispatch } from "react-redux";
 import { update_user_review } from "../../store/review";
 
-const EditReview = ({review, close}) => {
+const EditReview = ({review, hideModal}) => {
     const dispatch = useDispatch();
     const [content, setContent] = useState(review?.content);
     const [rating, setRating] = useState(review?.rating)
@@ -22,11 +21,16 @@ const EditReview = ({review, close}) => {
       console.log(updated_review)
       await dispatch(update_user_review(updated_review));
       setContent("")
-      return close()
+      hideModal()
+    };
+
+    const handleCancelClick = (e) => {
+      e.preventDefault()
+      hideModal()
     };
 
     return (
-        <form className="review_edit_form" onSubmit={(e) => handleSubmit(e, close)}>
+        <form className="review_edit_form" onSubmit={handleSubmit}>
         <ul>
           {errors.map((error) => <li key={error}>{error}</li>)}
         </ul>
@@ -54,7 +58,7 @@ const EditReview = ({review, close}) => {
           ]}
         />
         <button id="update_review_button" type="submit">Update Review</button>
-        <button id="cancel_review_button">Cancel</button>
+        <button id="cancel_review_button" onClick={handleCancelClick}>Cancel</button>
         </div>
       </form>
     )

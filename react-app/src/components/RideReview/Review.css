@@ -152,7 +152,7 @@
     position: relative;
     left: 17px;
     top: 5px;
-    width: 560px;
+    width: 590px;
     margin: 15px;
     height: 125px;
     font-family: ProximaNova,sans-serif;
@@ -167,6 +167,37 @@
     overflow-x: hidden;
     word-wrap:break-word;
     resize: none;
+}
+
+#review_button {
+    padding-top: 7px;
+    display: flex;
+    justify-content: center;
+    font-family: ProximaNova,sans-serif;
+    font-weight: 1000;
+    font-size: 16px;
+}
+
+#delete_review_button {
+    display: flex;
+    justify-content: center;
+    font-family: ProximaNova,sans-serif;
+    font-weight: 1000;
+    font-size: 16px;
+    color: #FFFFFF;
+    border: none;
+    background-color: #17171fd2;
+}
+
+#delete_review_button:hover {
+    display: flex;
+    justify-content: center;
+    font-family: ProximaNova,sans-serif;
+    font-weight: 1000;
+    font-size: 16px;
+    color: #ff7474;
+    border: none;
+    background-color: #17171fd2;
 }
 
 #edit_review_input:focus {
@@ -184,7 +215,7 @@
     position: relative;
     left: 17px;
     top: 5px;
-    width: 560px;
+    width: 590px;
     margin: 15px;
     height: 125px;
     font-family: ProximaNova,sans-serif;
