@@ -5,7 +5,7 @@ import { useDispatch ,useSelector } from "react-redux";
 import { Rating } from 'react-simple-star-rating'
 import DeleteReview from './DeleteReview';
 import './Review.css'
-import EditReview from './EditReview';
+import EditReviewModal from './EditReviewModal';
 
 const Review = () => {
     const user = useSelector(store => store.session.user)
@@ -36,7 +36,7 @@ const Review = () => {
                         arrow={false}
                         >
                         <div className="menu">
-                            <div closeOnDocumentClick={false} className="menu-item"><EditReview review={review} /></div>
+                            <div className="menu-item"><EditReviewModal review={review} /></div>
                             <div className="menu-item"><DeleteReview review={review} /></div>
                         </div>
                     </Popup>
