@@ -32,21 +32,33 @@ function User() {
           <div id='user_left_side_content'>
             <div id='user_left_side_profile'>
               <div className='profile_div'>
-              <img id='profile_placeholder' alt='' src='/static/images/profile_placeholder.png' />
+              <img className='profile_placeholder' alt='' src='/static/images/profile_placeholder.png' />
               </div>
               <div className='profile_div'>
-              {user.firstname} {user.lastname}
+              {user?.firstname} {user?.lastname}
               </div>
               <div id='email_div' className='profile_div'>
-              {user.email}
+              {user?.email}
               </div>
             </div>
           </div>
           <div id='user_right_side_content'>
+            <div id='user_right_side_container'>
+            <h1>Profile</h1>
+            <div id='user_right_side_profile_info'>
+              <div>
+              <img className='profile_placeholder_large' alt='' src='/static/images/profile_placeholder.png' />
+              </div>
+              <div id='user_right_side_profile_bottom'>
+              {user?.firstname} {user?.lastname}
+              </div>
+            </div>
             <div id='user_right_side_reviews'>
+              Your Reviews
+            </div>
               <Review />
-            </div>
-            </div>
+          </div>
+        </div>
         </div>
       </div>
       : <Redirect to="/home" />}

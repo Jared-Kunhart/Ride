@@ -1,8 +1,140 @@
-#edit_review_index {
-   display: flex;
-   margin-bottom: 50px;
+@font-face {
+    font-family: GothamBold;
+    src: url("../../public/static/fonts/Gotham\ Bold.otf");
 }
 
-#review_edit_rating_div {
+@font-face {
+    font-family: ProximaNova;
+    src: url("../../public/static/fonts/ProximaNova-Regular.otf");
+}
+
+@font-face {
+    font-family: Gotham;
+    src: url("../../public/static/fonts/Gotham\ Book.otf");
+}
+
+#reviews_outer_container {
+    margin-top: 15px;
+}
+
+#reviews_inner_container {
+    margin-top: 10px;
+    padding: 5px;
+    border-bottom: 1px inset #8c8c8cbe;
+    width: 700px;
+    height: 165px;
+}
+
+#reviews_container {
+    width: 700px;
+}
+
+#reviews_content_container {
     display: flex;
+    justify-content: space-between;
+    font-family: GothamBold;
+    padding: 5px;
+    height: 25px;
+    width: 700px;
+}
+
+#review_content {
+    border: 1px inset #17171f9e;
+    background-color: #2c2c3dc2;
+    border-radius: 5px;
+    padding-top: 5px;
+    text-indent: 10px;
+    font-size: 15px;
+    font-family: Gotham;
+    height: 75px;
+    overflow-x: hidden;
+    word-wrap:break-word;
+    resize: none;
+}
+
+#edit_review_index {
+    display: flex;
+    margin-bottom: 50px;
+ }
+
+ #review_edit_rating_div {
+     display: flex;
+ }
+
+.menu {
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 .1em .1em #000000;
+    background-color: #17171fd2;
+    color: #FFFFFF;
+    border-radius: 5px;
+}
+
+.menu-item {
+    cursor: pointer;
+    padding: 5px;
+    height: 28px;
+
+}
+
+.menu-item:hover {
+    color: #bcb4ff;
+}
+
+#dots {
+    font-size: 26px;
+    position: relative;
+    bottom: 15px;
+}
+
+#current_review_div {
+    width: 700px;
+    height: 165px;
+}
+
+#update_review_div {
+    position: relative;
+    top: 30%;
+    width: 700px;
+    height: 165px;
+}
+
+#update_content {
+    border: 1px inset #17171f9e;
+    background-color: #2c2c3dc2;
+    border-radius: 5px;
+    padding-top: 5px;
+    text-indent: 10px;
+    font-size: 15px;
+    font-family: Gotham;
+    height: 75px;
+    overflow-x: hidden;
+    word-wrap:break-word;
+    resize: none;
+}
+
+#edit_review_input {
+    position: relative;
+    bottom: 17px;
+    left: 1px;
+    width: 675px;
+    height: 22px;
+    font-family: ProximaNova,sans-serif;
+    font-weight: 1000;
+    font-size: 16px;
+    color: #FFFFFF;
+    background-color: #2c2c2f8d;
+    border-radius: 5px;
+    min-width: 80px;
+    text-indent: 5px;
+    padding: 10px;
+    overflow-x: hidden;
+    word-wrap:break-word;
+    resize: none;
+}
+
+#update_review_rating_stars {
+    position: fixed;
+    z-index: 500;
 }

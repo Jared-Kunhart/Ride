@@ -38,16 +38,16 @@ const NavBar = () => {
           <div id='nav_popup_content'>
             <Link onClick={onToggle} id='home_link' to="/home">Home</Link>
               <div id='kitt'>
-                <div class='one'></div>
-                <div class='two'></div>
-                <div class='three'></div>
-                <div class='four'></div>
-                <div class='five'></div>
-                <div class='six'></div>
-                <div class='seven'></div>
-                <div class='eight'></div>
-                <div class='nine'></div>
-                <div class='ten'></div>
+                <div className='one'></div>
+                <div className='two'></div>
+                <div className='three'></div>
+                <div className='four'></div>
+                <div className='five'></div>
+                <div className='six'></div>
+                <div className='seven'></div>
+                <div className='eight'></div>
+                <div className='nine'></div>
+                <div className='ten'></div>
               </div>
             <Link onClick={onToggle} id='profile_link' to={`/home/${user.id}`}>Profile</Link>
             <LogoutButton />
