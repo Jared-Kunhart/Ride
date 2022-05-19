@@ -64,13 +64,13 @@
   font-size: 24px;
   background: #ffffff;
   border-radius: 18px;
-  border: 1px solid #cfcece;
+  border: 1px solid #cfcecf;
 }
 
 .modal_cancel_ride_button {
   position: relative;
   bottom: 47px;
-  left: 17px;
+  left: 15px;
   border: 1px solid transparent;
   border-radius: 48px;
   user-select: none;
@@ -92,13 +92,13 @@
   display: flex;
   justify-content: center;
   position: relative;
-  left: 20px;
+  right: 110px;
   font-family: ProximaNova, sans-serif;
 }
 
 .modal_complete_ride_button {
   position: relative;
-  left: 425px;
+  left: 430px;
   border: 1px solid transparent;
   border-radius: 48px;
   user-select: none;

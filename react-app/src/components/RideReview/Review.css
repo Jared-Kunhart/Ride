@@ -69,17 +69,19 @@
     background-color: #17171fd2;
     color: #FFFFFF;
     border-radius: 5px;
+    border: none;
 }
 
 .menu-item {
     cursor: pointer;
     padding: 5px;
     height: 28px;
-
+    border: none;
 }
 
 .menu-item:hover {
     color: #bcb4ff;
+    border: none;
 }
 
 #dots {
@@ -185,7 +187,7 @@
     font-weight: 1000;
     font-size: 16px;
     color: #FFFFFF;
-    border: 0px;
+    border: none;
     background-color: #17171fd2;
 }
 
@@ -196,7 +198,7 @@
     font-weight: 1000;
     font-size: 16px;
     color: #ff7474;
-    border: 0px;
+    border: none;
     background-color: #17171fd2;
 }
 
@@ -279,4 +281,9 @@
 
 #cancel_review_button:hover {
     background-color: #e80000;
+}
+
+#placeholdererrors {
+    color: hotpink;
+    font-size: 24px;
 }

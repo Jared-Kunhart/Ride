@@ -37,9 +37,11 @@ export const create_user_review = (review) => async(dispatch) => {
     if (response.ok) {
         const new_review = await response.json()
         dispatch(create_review(new_review))
-    } else {
-        return "ERROR AT CREATE REVIEW THUNK"
-    }
+    } else if (response.status < 500) {
+        const data = await response.json();
+        console.log(data.errors, "<<<<<<<<<<<<<<<<<<<<<thunk")
+        if (data.errors) return data.errors;
+    } else return ['ERROR AT CREATE REVIEW THUNK']
 }
 
 // UPDATE REVIEW

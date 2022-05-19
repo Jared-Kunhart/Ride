@@ -206,7 +206,7 @@
     font-size: 16px;
     position: relative;
     left: 70px;
-    top: 20px;
+    top: 10px;
 }
 
 .footer_signup a {
@@ -224,14 +224,37 @@
     top: 15px;
     left: 125px;
     font-family: GothamBold;
+    font-size: 18px;
     font-weight: 1000;
     color: #ba056f;
 }
 
 #error_div_post {
+    position: fixed;
+    bottom: 325px;
+    left: 135px;
+    font-size: 22px;
+    font-family: GothamBold;
+    font-weight: 1000;
+    color: #ba056f;
+}
+
+#error_div_review_post {
+    width: 250px;
     position: relative;
-    bottom: 169px;
-    left: 85px;
+    right: -265px;
+    top: 50px;
+    font-size: 14px;
+    font-family: GothamBold;
+    font-weight: 1000;
+    color: #ba056f;
+}
+
+#error_div_review_update {
+    position: relative;
+    top: 10px;
+    left: 10px;
+    font-size: 14px;
     font-family: GothamBold;
     font-weight: 1000;
     color: #ba056f;

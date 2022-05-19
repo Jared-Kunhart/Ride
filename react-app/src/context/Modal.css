@@ -24,9 +24,10 @@
   width: 650px;
   height: 250px;
   font-size: 20px;
-  background-color:#2b2e35;
+  background-color:#191a1d;
   padding: 0px;
   box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
   margin: auto;
   color: #acb2b8;
+  border-radius: 15px;
 }

@@ -10,7 +10,7 @@ const PostReview = ({booking}) => {
     const user = useSelector(store => store.session.user)
     const dispatch = useDispatch()
     const [content, setContent] = useState("");
-    const [rating, setRating] = useState(20)
+    const [rating, setRating] = useState(0)
     const [errors, setErrors] = useState([]);
 
     const handleSubmitNoReview = (e, close) => {
@@ -25,6 +25,13 @@ const PostReview = ({booking}) => {
 
     const handleSubmitReview = (e, close) => {
         e.preventDefault()
+
+        const error_array = []
+        if (rating === 0) error_array.push("Please give a rating to your driver or review later. ")
+        if (content.length > 350) error_array.push("  Content can't be longer than 350 characters.")
+
+        if (error_array.length) return setErrors(error_array)
+
         const complete_booking = {
             booking_id: booking.id,
             is_complete: true
@@ -36,7 +43,6 @@ const PostReview = ({booking}) => {
         }
         dispatch(completeBooking(complete_booking))
         dispatch(create_user_review(review))
-        // also has to submit review
         close()
     }
 
@@ -61,9 +67,6 @@ const PostReview = ({booking}) => {
             <div className="content">
             <div id='sub_content_modal_div'>
             <form id="submit_review_form" onSubmit={(e)=>handleSubmitReview(e, close)}>
-            <ul>
-                {errors.map((error) => <li key={error}>{error}</li>)}
-            </ul>
                 <textarea
                 type="text"
                 id='review_content_input'
@@ -72,6 +75,11 @@ const PostReview = ({booking}) => {
                 onChange={(e) => setContent(e.target.value)}
                 />
                 <div id='review_rating_div'>
+                <div id='error_div_review_post'>
+                {errors.length > 0 && (
+                   errors.map(error => error)
+                )}
+                </div>
               <Rating
               id='review_rating_stars'
               onClick={handleRating}

@@ -394,11 +394,13 @@
     align-self: center;
     margin-bottom: 15px;
     padding-bottom: 10px;
+    border: none;
 }
 
 #home_link:hover {
     color: #ffffff;
     text-shadow: 1px 1px 1px rgb(155, 0, 0);
+    border: none;
 }
 
 #logout_div {
