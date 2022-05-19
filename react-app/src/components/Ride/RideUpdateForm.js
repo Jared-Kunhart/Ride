@@ -33,6 +33,11 @@ const RideUpdateForm = ({booking}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+
+        const error_array = []
+        if (destinationAddress.length > 125) error_array.push("Address must be shorter than 125 characters")
+        if (error_array.length) return setErrors(error_array)
+
         Geocode.fromAddress(destinationAddress).then(
             (response) => {
             const {lat, lng} = response?.results[0].geometry.location

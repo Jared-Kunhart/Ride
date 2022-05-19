@@ -221,6 +221,7 @@
 
 #error_div_update {
     position: relative;
+    width: 300px;
     top: 15px;
     left: 125px;
     font-family: GothamBold;
@@ -231,6 +232,7 @@
 
 #error_div_post {
     position: fixed;
+    width: 300px;
     bottom: 325px;
     left: 135px;
     font-size: 22px;
