@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useMemo, useRef, useEffect } from 'react';
-import { GoogleMap, useJsApiLoader, Marker, DirectionsService, DirectionsRenderer, LoadScript } from '@react-google-maps/api';
+import { GoogleMap, useJsApiLoader, Marker, DirectionsService, DirectionsRenderer } from '@react-google-maps/api';
 import { getAllBookings } from "../../store/bookings"
 import { useDispatch, useSelector } from 'react-redux';
 import DeckGL from 'deck.gl';
@@ -8,11 +8,11 @@ import RideForm from './RideForm';
 import RideUpdateForm from './RideUpdateForm';
 import PostReview from '../RideReview/PostReview';
 import CancelRide from './CancelRide';
-import Review from '../RideReview'
-import { nightblue, waterblue, sincity } from './utils';
+import { nightblue } from './utils';
 import stick from '../../public/static/images/stick.png'
 import ridersmall from '../../public/static/images/ridersmall.png'
 import './ride.css'
+import PlacesAutocomplete from './AutoComplete';
 
 const Ride = () => {
     const user = useSelector(state => state.session.user)
@@ -112,7 +112,7 @@ const Ride = () => {
                 <CancelRide booking={user_booking}/> <PostReview booking={user_booking} />
                 </div>
                 </>
-                : <RideForm /> }
+                :<RideForm />}
                 </div>
                 {user_booking ?
                 <>
