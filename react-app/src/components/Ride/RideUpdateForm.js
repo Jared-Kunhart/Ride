@@ -29,7 +29,6 @@ const RideUpdateForm = ({booking}) => {
             dispatch(updateBooking(destination_marker));
             setSubmitted(false)
             setDestinationAddress("")
-            setErrors([])
         }
     }, [dispatch, destination, booking?.id, user?.lastname, destinationAddress, submitted])
 
@@ -50,6 +49,7 @@ const RideUpdateForm = ({booking}) => {
             }
         );
         setSubmitted(true)
+        setErrors([])
     };
 
     Geocode.setApiKey(key);

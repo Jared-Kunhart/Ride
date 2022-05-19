@@ -27,7 +27,7 @@ const PostReview = ({booking}) => {
         e.preventDefault()
 
         const error_array = []
-        if (rating === 0) error_array.push("Please give a rating to your driver or review later. ")
+        if (rating === 0) error_array.push("Please give a rating to your driver.")
         if (content.length > 350) error_array.push("  Content can't be longer than 350 characters.")
 
         if (error_array.length) return setErrors(error_array)
@@ -70,7 +70,7 @@ const PostReview = ({booking}) => {
                 <textarea
                 type="text"
                 id='review_content_input'
-                placeholder='Leave your driver review here or leave it blank but give your driving a rating!'
+                placeholder='Leave your driver a review OR leave the review empty but please give your driving a rating!'
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
                 />

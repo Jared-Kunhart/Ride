@@ -136,6 +136,14 @@
   resize: none;
 }
 
+#review_content_input::placeholder {
+  font-family: ProximaNova,sans-serif;
+  color: rgba(236, 235, 235, 0.878);
+  font-weight: 600;
+  letter-spacing: 1px;
+  font-size: 18px;
+}
+
 #review_rating_input {
   display: flex;
   position: relative;
