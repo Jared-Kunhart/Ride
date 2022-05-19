@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Route, Switch, Redirect, Link } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import { authenticate } from './store/session';
@@ -50,7 +50,7 @@ function App() {
           <ProtectedRoute path='/home' exact={true} >
             <NavBar />
             <Ride />
-            <a id="dev-link" target="_blank" href='https://www.linkedin.com/in/jared-kunhart-307661236'>
+            <a id="dev-link" target="_blank" rel="noreferrer" href='https://www.linkedin.com/in/jared-kunhart-307661236'>
               <Footer />
             </a>
           </ProtectedRoute>

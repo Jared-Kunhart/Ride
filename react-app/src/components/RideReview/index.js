@@ -14,7 +14,7 @@ const Review = () => {
 
     useEffect(() => {
         dispatch(get_all_reviews(user?.id))
-    }, [dispatch])
+    }, [dispatch, user?.id])
 
     return (
       <>

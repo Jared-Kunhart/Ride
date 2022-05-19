@@ -74,7 +74,7 @@ const LoginForm = () => {
       </div>
       </div>
     </form>
-    <div className='footer_login'>Ride. A lyft clone by<a id="dev-link" target="_blank" href='https://github.com/Jared-Kunhart'> Jared Kunhart.</a></div>
+    <div className='footer_login'>Ride. A lyft clone by<a id="dev-link" target="_blank" rel="noreferrer" href='https://github.com/Jared-Kunhart'> Jared Kunhart.</a></div>
     </div>
     </div>
     </div>
