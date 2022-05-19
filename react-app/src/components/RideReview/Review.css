@@ -100,10 +100,6 @@
     top: 30%;
 }
 
-.my-update-modal-content {
-    background-color: hotpink;
-}
-
 .my-update-modal {
     position: relative;
     border-radius: 5px;
@@ -281,9 +277,4 @@
 
 #cancel_review_button:hover {
     background-color: #e80000;
-}
-
-#placeholdererrors {
-    color: hotpink;
-    font-size: 24px;
 }
