@@ -86,7 +86,7 @@ const RideForm = () => {
 
     return (
         <>
-        <div id='form_header'><h1>Where to {user.firstname}{user.lastname} ?</h1></div>
+        <div id='form_header'><h1>Where to {user.firstname} {user.lastname} ?</h1></div>
           <form onSubmit={(e)=>handleSubmit(e)}>
                   <input
                     id='origin_input'
