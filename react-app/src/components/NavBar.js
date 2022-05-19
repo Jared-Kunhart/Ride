@@ -21,7 +21,7 @@ const NavBar = () => {
         <div id='nav_logout_home'>
           <Popup
             position="bottom right"
-            on="hover"
+            on="click"
             contentStyle={{ padding: '0px', border: 'none' }}
             trigger={
             <div>
