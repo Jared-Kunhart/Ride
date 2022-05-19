@@ -70,7 +70,7 @@ const PostReview = ({booking}) => {
                 <textarea
                 type="text"
                 id='review_content_input'
-                placeholder='Leave your driver review here.'
+                placeholder='Leave your driver review here or leave it blank but give your driving a rating!'
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
                 />
