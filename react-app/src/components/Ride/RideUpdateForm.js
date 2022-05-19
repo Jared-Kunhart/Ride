@@ -20,7 +20,7 @@ const RideUpdateForm = ({booking}) => {
                 booking_id: booking?.id,
                 destination_name: user?.lastname,
                 destination_color: "#75e062",
-                destination_address: "updateaddressfornow",
+                destination_address: destinationAddress,
                 destination_city: "updatecityfornow",
                 destination_state: "updatestatefornow",
                 destination_lat: destination?.lat,
