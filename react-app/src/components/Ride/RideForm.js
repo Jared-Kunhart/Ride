@@ -15,12 +15,22 @@ const RideForm = () => {
     const [submitted, setSubmitted] = useState(false)
     const [errors, setErrors] = useState([]);
 
+    // console.log(originAddress)
+    // function parts(str) {
+    //     return str?.split(/Drive |Dr |Road |Rd |Street |St |Lane |Ln |Avenue |Ave |Parkway [A-Za-z]{2,}\, [A-Z]{2} \d{5}/);
+    // }
+    // const originSubmitAddress = parts(originAddress)
+    // setSubmitOrigin(originSubmitAddress)
+    // const [address, citystate] = origin_address
+    // const [city, state] = citystate?.split(", ")
+    // console.log(address,"<<<<address citystate>>>>>", citystate?.split(", "))
+
     useEffect(() => {
         if (origin && destination && submitted) {
             const origin_marker = {
                 origin_name: user?.firstname,
                 origin_color: "#75e062",
-                origin_address: "Test Origin Address",
+                origin_address: originAddress,
                 origin_city: "Test Origin City",
                 origin_state: "Test Origin State",
                 origin_lat: origin?.lat,
@@ -29,7 +39,7 @@ const RideForm = () => {
             const destination_marker = {
                 destination_name: user?.lastname,
                 destination_color: "#75e062",
-                destination_address: "Test Destination Address",
+                destination_address: destinationAddress,
                 destination_city: "Test Destination Address",
                 destination_state: "Test Destination Address",
                 destination_lat: destination?.lat,
