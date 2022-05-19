@@ -121,7 +121,7 @@ const SignUpForm = () => {
         <Link to='/demo'><button className='blue_login_button'>Demo</button></Link>
       </div>
     </form>
-    <div className='footer_signup'>Ride. A lyft clone by<a href='https://github.com/Jared-Kunhart/'> Jared Kunhart.</a></div>
+    <div className='footer_signup'>Ride. A lyft clone by<a id="dev-link" target="_blank" href='https://github.com/Jared-Kunhart'> Jared Kunhart.</a></div>
     </div>
     </div>
     </div>

@@ -15,7 +15,6 @@ const RideForm = () => {
     const [submitted, setSubmitted] = useState(false)
     const [errors, setErrors] = useState([]);
 
-
     useEffect(() => {
         if (origin && destination && submitted) {
             const origin_marker = {

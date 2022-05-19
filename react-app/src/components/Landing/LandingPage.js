@@ -37,6 +37,7 @@ export default function LandingPage() {
                     <div id='page_content_main_picture'><img id='roger' alt='' src={source} type='image/jpeg' /></div>
                     <div id='page_content_side_content'>
                     <div id='page_content_text'><h1>Let's ride !</h1></div>
+
                     <div id='page_content_buttons'>
                     <div id='page_content_driver_signup_button'><Link className='no_text_decoration' to='/login'><button id='button_drive'>Login to Ride</button></Link></div>
                     <div id='page_content_rider_signup_button'><Link className='no_text_decoration' to='/rider'><button id='button_ride'>Sign up to Ride</button></Link></div>
@@ -107,9 +108,11 @@ export default function LandingPage() {
                     </div>
                     </SwiperSlide>
                 </Swiper>
+
                 </div>
                 </div>
             </div>
         </div>
+
     )
 }
