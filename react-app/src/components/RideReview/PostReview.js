@@ -103,13 +103,6 @@ const PostReview = ({booking}) => {
               </button>
             </label>
             </form>
-                <form onSubmit={(e)=>handleSubmitNoReview(e, close)}>
-                  <button
-                    className="modal_cancel_ride_button"
-                    >
-                    Review later.
-                  </button>
-                  </form>
                   </div>
             </div>
           </div>

@@ -48,7 +48,7 @@ const RideForm = () => {
             dispatch(createBooking({...origin_marker, ...destination_marker}));
             setSubmitted(false)
         }
-    }, [dispatch, origin, destination])
+    }, [dispatch, origin, destination, originAddress, destinationAddress, submitted, user?.firstname, user?.lastname])
 
     const handleSubmit = (e) => {
         e.preventDefault()

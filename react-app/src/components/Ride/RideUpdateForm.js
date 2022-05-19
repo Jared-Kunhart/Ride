@@ -28,8 +28,10 @@ const RideUpdateForm = ({booking}) => {
             };
             dispatch(updateBooking(destination_marker));
             setSubmitted(false)
+            setDestinationAddress("")
+            setErrors([])
         }
-    }, [dispatch, destination])
+    }, [dispatch, destination, booking?.id, user?.lastname, destinationAddress, submitted])
 
     const handleSubmit = (e) => {
         e.preventDefault()
