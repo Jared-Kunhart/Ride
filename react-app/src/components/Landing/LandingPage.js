@@ -6,12 +6,24 @@ import 'swiper/modules/pagination/pagination.min.css'
 import 'swiper/modules/navigation/navigation.min.css'
 import "./styles.css";
 import './landing.css'
+import { useState } from 'react';
 
 export default function LandingPage() {
+    const [source, setSource] = useState();
+
+    function randomImg() {
+    let images = [
+    "/static/images/backgrounds/chris.jpg",
+    "/static/images/backgrounds/roger.jpg",
+    ]
+    let random = images[Math.floor(Math.random() * images.length)];
+    // document.querySelector("#roger").style.backgroundImage = 'url(' + random + ')';
+    setSource(random)
+    }
     // <div id='nav_driver'>DRIVER</div>
-    // <div id='page_content_driver_signup_button'><button id='button_drive'>Apply to drive</button></div>
+    //
     return (
-        <div id='landing_page'>
+        <div id='landing_page'  onLoad={randomImg}>
             <div id='main_content'>
                 <div id='nav'>
                     <div id='nav_content'>
@@ -22,12 +34,12 @@ export default function LandingPage() {
                     </div>
                 </div>
                 <div id='page_content'>
-                    <div id='page_content_main_picture'><img id='roger' alt='' src='/static/images/chris.jpg' /></div>
+                    <div id='page_content_main_picture'><img id='roger' alt='' src={source} type='image/jpeg' /></div>
                     <div id='page_content_side_content'>
                     <div id='page_content_text'><h1>Let's ride !</h1></div>
                     <div id='page_content_buttons'>
-
-                    <div id='page_content_rider_signup_button'><Link className='no_text_decoration' to='/rider'><button id='button_ride'>Sign up to ride</button></Link></div>
+                    <div id='page_content_driver_signup_button'><Link className='no_text_decoration' to='/login'><button id='button_drive'>Login to Ride</button></Link></div>
+                    <div id='page_content_rider_signup_button'><Link className='no_text_decoration' to='/rider'><button id='button_ride'>Sign up to Ride</button></Link></div>
                     </div>
                     </div>
                 </div>
@@ -49,11 +61,11 @@ export default function LandingPage() {
                     <SwiperSlide>
                     <div><div className='slider_pics'>
                     <img alt='' id='slider_jfif' src='/static/images/steve.jfif'/></div>
-                    “As a student, it's hard to complete my class work around a schedule. I started driving more with Lyft and realized it was the perfect opportunity to make money and work on my own time! Driving with Lyft gives me freedom in my schedule to focus on school, which is my main priority.” {"\n"}
+                    “As a student, it's hard to complete my class work around a schedule. I started driving more with Ride and realized it was the perfect opportunity to make money and work on my own time! Driving with Ride gives me freedom in my schedule to focus on school, which is my main priority.” {"\n"}
                     {"\n"}
                      — Steve
                     {"\n"}
-                    Driving with Lyft Since 1984.
+                    Driving with Ride Since 1984.
                     </div>
                     </SwiperSlide>
                     <SwiperSlide><div><div className='slider_pics'>
@@ -67,7 +79,7 @@ export default function LandingPage() {
                     </SwiperSlide>
                     <SwiperSlide><div><div className='slider_pics'>
                     <img alt='' id='slider_jfif' src='/static/images/roger.jfif'/></div>
-                    “Driving with Lyft is the perfect way to make money and be there for my family's needs. I love providing a way to get my passengers from point A to B. Independence is key for me, and I enjoy meeting new people while driving!”{"\n"}
+                    “Driving with Ride is the perfect way to make money and be there for my family's needs. I love providing a way to get my passengers from point A to B. Independence is key for me, and I enjoy meeting new people while driving!”{"\n"}
                     {"\n"}
                     — Roger
                     {"\n"}

@@ -21,7 +21,8 @@ const NavBar = () => {
         <div id='nav_logout_home'>
           <Popup
             position="bottom right"
-            nested
+            on="hover"
+            contentStyle={{ padding: '0px', border: 'none' }}
             trigger={
             <div>
             <Hamburger
@@ -34,6 +35,7 @@ const NavBar = () => {
               rounded
             />
             </div>}
+            onClose={onToggle}
           >
           <div id='nav_popup_content'>
             <Link onClick={onToggle} id='home_link' to="/home">Home</Link>

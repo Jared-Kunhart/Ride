@@ -9,10 +9,17 @@ const EditReview = ({review, hideModal}) => {
     const [rating, setRating] = useState(review?.rating)
     const [errors, setErrors] = useState([]);
 
+
+
     const handleRating = (rate = Number) => setRating(rate)
 
     const handleSubmit = async (e) => {
       e.preventDefault();
+
+      const error_array = []
+      if (content.length > 350) error_array.push("  Content can't be longer than 350 characters.")
+      if (error_array.length) return setErrors(error_array)
+
       const updated_review = {
           ...review,
           content,
@@ -30,10 +37,13 @@ const EditReview = ({review, hideModal}) => {
     };
 
     return (
+      <>
+      <div id='error_div_review_update'>
+      {errors.length > 0 && (
+         errors.map(error => error)
+      )}
+      </div>
         <form className="review_edit_form" onSubmit={handleSubmit}>
-        <ul>
-          {errors.map((error) => <li key={error}>{error}</li>)}
-        </ul>
           <textarea
             id='edit_review_input'
             type="text"
@@ -61,6 +71,7 @@ const EditReview = ({review, hideModal}) => {
         <button id="cancel_review_button" onClick={handleCancelClick}>Cancel</button>
         </div>
       </form>
+      </>
     )
 }
 

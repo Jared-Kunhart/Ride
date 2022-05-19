@@ -15,22 +15,33 @@ def get_user_reviews(id):
     return {'reviews': review_list}
 
 
+def validation_errors_to_error_messages(validation_errors):
+    errorMessages = []
+    for field in validation_errors:
+        for error in validation_errors[field]:
+            errorMessages.append(f'{field} : {error}')
+    return errorMessages
+
+
 @review_routes.route("/new", methods=["POST"])
 def create_user_review():
     form = ReviewForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
-    new_review = Review(
-        content = form.content.data,
-        rating = form.rating.data,
-        is_driver_review = False,
-        user_id = current_user.id
-    )
+    if form.validate_on_submit():
+        new_review = Review(
+            content = form.content.data,
+            rating = form.rating.data,
+            is_driver_review = False,
+            user_id = current_user.id
+        )
+        db.session.add(new_review)
+        db.session.commit()
+        return new_review.to_dict()
+    else:
+        print({'errors': validation_errors_to_error_messages(form.errors)}, "<<<<<<<<<<<<<<<<<<<<<<<<backend")
+        return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
-    db.session.add(new_review)
-    db.session.commit()
-
-    return new_review.to_dict()
 
 
 @review_routes.route("/<int:id>/update", methods=["PUT"])
