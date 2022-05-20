@@ -9,7 +9,7 @@ import RideUpdateForm from './RideUpdateForm';
 import PostReview from '../RideReview/PostReview';
 import CancelRide from './CancelRide';
 import { nightblue } from './utils';
-import stick from '../../public/static/images/stick.png'
+import stick from '../../public/static/images/stickgreyglow.png'
 import ridersmall from '../../public/static/images/ridersmall.png'
 import './ride.css'
 // import PlacesAutocomplete from './AutoComplete';
