@@ -138,10 +138,10 @@
 
 #review_content_input::placeholder {
   font-family: ProximaNova,sans-serif;
-  color: rgba(236, 235, 235, 0.878);
+  color: rgba(236, 235, 235, 0.581);
   font-weight: 600;
   letter-spacing: 1px;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 #review_rating_input {
