@@ -28,7 +28,7 @@ const Review = () => {
                     <Popup
                         trigger={<div id='dots' className="menu-item"> ... </div>}
                         position="bottom center"
-                        on="hover"
+                        on="click"
                         mouseLeaveDelay={0}
                         mouseEnterDelay={0}
                         contentStyle={{ padding: '0px', border: 'none' }}

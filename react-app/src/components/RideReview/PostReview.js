@@ -13,15 +13,15 @@ const PostReview = ({booking}) => {
     const [rating, setRating] = useState(0)
     const [errors, setErrors] = useState([]);
 
-    const handleSubmitNoReview = (e, close) => {
-        e.preventDefault()
-        const complete_booking = {
-            booking_id: booking.id,
-            is_complete: true
-        }
-        dispatch(completeBooking(complete_booking))
-        close()
-    }
+    // const handleSubmitNoReview = (e, close) => {
+    //     e.preventDefault()
+    //     const complete_booking = {
+    //         booking_id: booking.id,
+    //         is_complete: true
+    //     }
+    //     dispatch(completeBooking(complete_booking))
+    //     close()
+    // }
 
     const handleSubmitReview = (e, close) => {
         e.preventDefault()
@@ -70,7 +70,7 @@ const PostReview = ({booking}) => {
                 <textarea
                 type="text"
                 id='review_content_input'
-                placeholder='Leave your driver a review OR leave the review empty but please give your driving a rating!'
+                placeholder='Leave your driver a review OR leave the review empty but please give your driving a rating! You can edit your review later.'
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
                 />
