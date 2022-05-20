@@ -65,6 +65,10 @@
     color: #FFFFFF;
 }
 
+#reposition_please {
+    height: 69vh;
+}
+
 #directions_modal_form {
     width: 400px;
     height: 80vh;
@@ -94,9 +98,7 @@
     bottom: 5px;
 }
 
-#reposition_please {
-    height: 69vh;
-}
+
 
 #origin_input {
     font-family: ProximaNova,sans-serif;

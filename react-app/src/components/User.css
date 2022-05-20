@@ -46,6 +46,7 @@
 }
 
 #user_right_side_container {
+    position: relative;
     margin-top: 50px;
     height: 768px;
     width: 791px;
