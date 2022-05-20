@@ -24,6 +24,10 @@ const RideForm = () => {
     // const [address, citystate] = origin_address
     // const [city, state] = citystate?.split(", ")
     // console.log(address,"<<<<address citystate>>>>>", citystate?.split(", "))
+    /*
+    Info for submitting a destination
+    Handle Submit -> useEffect
+    */
 
     useEffect(() => {
         if (origin && destination && submitted) {
