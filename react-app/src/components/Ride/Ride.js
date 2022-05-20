@@ -9,7 +9,7 @@ import RideUpdateForm from './RideUpdateForm';
 import PostReview from '../RideReview/PostReview';
 import CancelRide from './CancelRide';
 import { nightblue } from './utils';
-import stick from '../../public/static/images/stick.png'
+import stick from '../../public/static/images/stickgreyglow.png'
 import ridersmall from '../../public/static/images/ridersmall.png'
 import './ride.css'
 // import PlacesAutocomplete from './AutoComplete';
@@ -29,7 +29,7 @@ const Ride = () => {
     // console.log(user_bookings, "<<<<<<<<<<<<<<<<<<<<<<<<user bookings")
     const user_booking = user_bookings[user_bookings?.length - 1]
     // {user_booking && user_booking.is_complete === false ? <RideUpdateForm /> : <RideForm>}
-    // console.log(user_booking, "<<<<<<<<<<<<<<<<<<<<<<<<user booking")
+    console.log(user_booking, "<<<<<<<<<<<<<<<<<<<<<<<<user booking")
 
     //Destination
     const dest_lat = user_booking?.destination.lat
@@ -69,11 +69,40 @@ const Ride = () => {
       height: '100%'
     };
 
-    // const [map, setMap] = useState(null) - What does this do ???
-    // onUnmount={onUnmount}
+    // *******-MarkerDrag-*******\\
+  //   const onMarkerDragEnd = (e) => {
+  //     const lat = e.latLng.lat();
+  //     const lng = e.latLng.lng();
+  //     setCurrentPosition({ lat, lng})
+  //   };
+  //   <GoogleMap
+  //   mapContainerStyle={mapStyles}
+  //   zoom={13}
+  //   center={currentPosition}>
+  //   {
+  //     currentPosition.lat ?
+  //     <Marker
+  //     position={currentPosition}
+  //     onDragEnd={(e) => onMarkerDragEnd(e)}
+  //     draggable={true} /> :
+  //     null
+  //   }
+  // </GoogleMap>
+
+
+
+    // const [map, setMap] = useState(null)
     // const onUnmount = useCallback(function callback(map) {
     //   setMap(null)
     // }, [])
+    // onUnmount={onUnmount}
+
+    // useEffect(() => {
+    //   if (map) {
+    //     map.panTo(center)
+    //   }
+    // }, [map])
+
 
     const mapRef = useRef()
 
@@ -84,6 +113,33 @@ const Ride = () => {
 
     const onLoad = useCallback(map => (mapRef.current = map), [])
 
+    //*******-Pan to New Marker-******\\
+    // const [mapInstance, setMapInstance] = useState(null);
+    // const [zoom, setZoom] = useState(6);
+
+    // const onMapLoad = useCallback((map) => {
+    //   setMapInstance(map);
+    //   }, []);
+
+    // const panTo = useCallback(({ lat, lng }) => {
+    //   mapRef?.current?.panTo({ lat, lng });
+    //   mapRef?.current?.setZoom(18);
+    // }, []);
+
+    // useEffect(()=>{
+    //   if(mapInstance){
+    //       mapInstance.panTo({lat, lng});
+    //       setZoom(18);
+    //   }
+    // },[mapInstance]);
+
+    // useEffect(() => {
+    //     const lat = user_booking?.origin.lat
+    //     const lng = user_booking?.origin.lng
+    //     return panTo({ lat:user_booking?.origin.lat, lng:user_booking?.origin.lng });
+    // }, [panTo]);
+
+
     return (
       // Important! Always set the container height explicitly
       <div className="map_page__container">
@@ -91,7 +147,7 @@ const Ride = () => {
             {isLoaded &&  center ?
             <GoogleMap
               mapContainerStyle={containerStyle}
-              zoom={16}
+              zoom={13}
               options={{
               styles: nightblue,
               fullscreenControl: false,
@@ -99,7 +155,7 @@ const Ride = () => {
               zoomControl: false,
               streetViewControl: false,
               }}
-              center={center}
+              center={user_booking ? {lat:user_booking?.origin.lat, lng:user_booking?.origin.lng} : center}
               onLoad={onLoad}
               >
                 <div id='directions_modal_form'>
@@ -120,6 +176,7 @@ const Ride = () => {
                   position={{lat:user_booking?.origin.lat, lng:user_booking?.origin.lng}}
                   title={user_booking?.name}
                   icon={stick}
+
                   streetView={false} />
                   <Marker key={user_booking?.id}
                   position={{lat:user_booking?.destination.lat, lng:user_booking?.destination.lng}}
