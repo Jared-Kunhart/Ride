@@ -15,18 +15,16 @@ const RideForm = () => {
     const [submitted, setSubmitted] = useState(false)
     const [errors, setErrors] = useState([]);
 
-    // console.log(originAddress)
-    // function parts(str) {
-    //     return str?.split(/Drive |Dr |Road |Rd |Street |St |Lane |Ln |Avenue |Ave |Parkway [A-Za-z]{2,}\, [A-Z]{2} \d{5}/);
-    // }
-    // const originSubmitAddress = parts(originAddress)
-    // setSubmitOrigin(originSubmitAddress)
-    // const [address, citystate] = origin_address
-    // const [city, state] = citystate?.split(", ")
-    // console.log(address,"<<<<address citystate>>>>>", citystate?.split(", "))
     /*
     Info for submitting a destination
-    Handle Submit -> useEffect
+    Pickup Form Values -> originAddress/setOriginAddress
+    Destination Form Values -> destinationAddress/setDestinationAddress
+    handleSubmit -> Takes the address value from form, routes through google and
+    turns that address into a lat/lng that sets those values in state origin/setOrigin & destination/setDestination
+    useEffect triggers because state now has origin & destination & has been submitted
+    useEffect sends origin_marker and destination_marker to backend which creates a
+    booking with is_complete set to false, a user_id, and assigns both marker id's to the
+    booking origin_id and destination_id
     */
 
     useEffect(() => {
@@ -87,6 +85,8 @@ const RideForm = () => {
     Geocode.setLanguage("en");
     Geocode.setLocationType("ROOFTOP");
     Geocode.enableDebug();
+
+    
 
     return (
         <>
