@@ -3,6 +3,7 @@ import { GoogleMap, useJsApiLoader, Marker, DirectionsService, DirectionsRendere
 import { getAllBookings } from "../../store/bookings"
 import { useDispatch, useSelector } from 'react-redux';
 // import DeckGL from 'deck.gl';
+// import {GeoJsonLayer, ArcLayer} from '@deck.gl/react';
 // import {GoogleMapsOverlay as DeckOverlay} from '@deck.gl/google-maps';
 import RideForm from './RideForm';
 import RideUpdateForm from './RideUpdateForm';
@@ -29,7 +30,6 @@ const Ride = () => {
     // console.log(user_bookings, "<<<<<<<<<<<<<<<<<<<<<<<<user bookings")
     const user_booking = user_bookings[user_bookings?.length - 1]
     // {user_booking && user_booking.is_complete === false ? <RideUpdateForm /> : <RideForm>}
-    console.log(user_booking, "<<<<<<<<<<<<<<<<<<<<<<<<user booking")
 
     //Destination
     const dest_lat = user_booking?.destination.lat
@@ -41,13 +41,6 @@ const Ride = () => {
     useEffect(()=>{
         dispatch(getAllBookings())
     },[dispatch])
-
-    // const makeDestination = (e) => {
-    //     const lat = e.latLng?.lat();
-    //     const lng = e.latLng?.lng();
-
-    //     setDestination({lat, lng})
-    // }
 
     const directionsCallback = (response) => {
         if (response !== null) {
@@ -68,6 +61,13 @@ const Ride = () => {
       width: '100%',
       height: '100%'
     };
+
+    const makeDestination = (e) => {
+        const lat = e.latLng?.lat();
+        const lng = e.latLng?.lng();
+
+        setDestination({lat, lng})
+    }
 
     // *******-MarkerDrag-*******\\
   //   const onMarkerDragEnd = (e) => {
@@ -113,32 +113,12 @@ const Ride = () => {
 
     const onLoad = useCallback(map => (mapRef.current = map), [])
 
-    //*******-Pan to New Marker-******\\
-    // const [mapInstance, setMapInstance] = useState(null);
-    // const [zoom, setZoom] = useState(6);
 
-    // const onMapLoad = useCallback((map) => {
-    //   setMapInstance(map);
-    //   }, []);
-
-    // const panTo = useCallback(({ lat, lng }) => {
-    //   mapRef?.current?.panTo({ lat, lng });
-    //   mapRef?.current?.setZoom(18);
-    // }, []);
-
-    // useEffect(()=>{
-    //   if(mapInstance){
-    //       mapInstance.panTo({lat, lng});
-    //       setZoom(18);
-    //   }
-    // },[mapInstance]);
-
-    // useEffect(() => {
-    //     const lat = user_booking?.origin.lat
-    //     const lng = user_booking?.origin.lng
-    //     return panTo({ lat:user_booking?.origin.lat, lng:user_booking?.origin.lng });
-    // }, [panTo]);
-
+    const divStyle = {
+      background: `none`,
+      border: `1px solid #ccc`,
+      padding: 10
+    }
 
     return (
       // Important! Always set the container height explicitly
@@ -176,7 +156,6 @@ const Ride = () => {
                   position={{lat:user_booking?.origin.lat, lng:user_booking?.origin.lng}}
                   title={user_booking?.name}
                   icon={stick}
-
                   streetView={false} />
                   <Marker key={user_booking?.id}
                   position={{lat:user_booking?.destination.lat, lng:user_booking?.destination.lng}}
@@ -202,6 +181,7 @@ const Ride = () => {
             {
               response !== null && (
                 <DirectionsRenderer
+
                   options={{
                     directions: response
                   }}
