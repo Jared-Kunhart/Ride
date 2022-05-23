@@ -47,7 +47,10 @@
 
 
 ## Reviews
-  Leave a review for your driver after completing a ride !
+  Leave a review for your driver after completing a ride ! Just click on your profile to see your reviews.
+  
+  ![image](https://user-images.githubusercontent.com/89172742/169741692-32afc562-e465-4d55-a731-9444e8436893.png)
+
 
 ## Conclusion
   My favorite part about this project is how modular it is, I'll be working on this one for several more months adding features like autocomplete, directions service, a drivers login, a chat feature for driver/rider, moving markers and deck.gl implementation.
