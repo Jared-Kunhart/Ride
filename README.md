@@ -39,7 +39,7 @@
 ## Trips
   After signing in enter your current location and where you'd like to go !
   
-![image](https://user-images.githubusercontent.com/89172742/169740841-45a98094-6113-40e6-b847-fb9b5a9d21c9.png)
+![image](https://user-images.githubusercontent.com/89172742/169741613-9e581ea7-ee8b-4e50-b85a-caf337e8690e.png)
 
   After that you can cancel your ride, update your destionation or complete your ride to leave a review !
   
