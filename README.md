@@ -25,9 +25,27 @@
 ![alt text](https://github.com/Workshape/tech-icons/blob/master/icons/python.svg)
 
 #### How to use this application
+1. Clone this repository (https://github.com/Jared-Kunhart/Ride.git)
+2. Install dependencies - pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
+3. Create a .env file based on the .env.example with proper settings required for the development environment
+4. Setup PostgreSQL user, password and database and to make sure it matches the .env file
+5. Get into pipenv, migrate the database, seed the database, and run the flask app using the following commands:
+6. pipenv shell
+7. flask db upgrade
+8. flask seed all
+9. flask run
+10. To run the React App in development, checkout the README inside the react-app directory.
 
 ## Trips
+  After signing in enter your current location and where you'd like to go !
+![image](https://user-images.githubusercontent.com/89172742/169740841-45a98094-6113-40e6-b847-fb9b5a9d21c9.png)
+
+  After that you can cancel your ride, update your destionation or complete your ride to leave a review !
+![image](https://user-images.githubusercontent.com/89172742/169740894-f44b31c4-8321-420f-967d-45076d4bf255.png)
+
 
 ## Reviews
+  Leave a review for your driver after completing a ride !
 
 ## Conclusion
+  My favorite part about this project is how modular it is, I'll be working on this one for several more months adding features like autocomplete, directions service, a drivers login, a chat feature for driver/rider, moving markers and deck.gl implementation.
