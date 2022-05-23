@@ -43,7 +43,7 @@
 
   After that you can cancel your ride, update your destionation or complete your ride to leave a review !
   
-![image](https://user-images.githubusercontent.com/89172742/169740894-f44b31c4-8321-420f-967d-45076d4bf255.png)
+![image](https://user-images.githubusercontent.com/89172742/169741559-015a4930-de03-432c-84f4-32ef3e9f9938.png)
 
 
 ## Reviews
