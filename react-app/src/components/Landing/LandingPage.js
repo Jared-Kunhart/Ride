@@ -15,6 +15,7 @@ export default function LandingPage() {
     let images = [
     "/static/images/backgrounds/chris.jpg",
     "/static/images/backgrounds/roger.jpg",
+    "/static/images/backgrounds/2825802.gif"
     ]
     let random = images[Math.floor(Math.random() * images.length)];
     // document.querySelector("#roger").style.backgroundImage = 'url(' + random + ')';
@@ -61,8 +62,8 @@ export default function LandingPage() {
                 >
                     <SwiperSlide>
                     <div><div className='slider_pics'>
-                    <img alt='' id='slider_jfif' src='/static/images/steve.jfif'/></div>
-                    “As a student, it's hard to complete my class work around a schedule. I started driving more with Ride and realized it was the perfect opportunity to make money and work on my own time! Driving with Ride gives me freedom in my schedule to focus on school, which is my main priority.” {"\n"}
+                    <a href='https://fiasco071.github.io/Portfolio/' target="_blank" rel="noreferrer"><img alt='' id='slider_jfif' src='/static/images/steve.jfif'/></a></div>
+                    “I thrive and perform well in pressure and approach every task with a sense of ownership. I am a full stack developer currently working on a React/redux and Flask project and various python DSA exercises.” {"\n"}
                     {"\n"}
                      — Steve
                     {"\n"}
@@ -70,8 +71,8 @@ export default function LandingPage() {
                     </div>
                     </SwiperSlide>
                     <SwiperSlide><div><div className='slider_pics'>
-                    <img alt='' id='slider_jfif' src='/static/images/damian.jfif'/></div>
-                    “My motto is very simple. It doesn't cost you a penny to be nice and kind, but it will cost you everything if you're not. If I'm free and somebody needs my help, I'll be the first one to jump in, in a heartbeat.” {"\n"}
+                    <a href='https://jaydrojas.github.io/' target="_blank" rel="noreferrer"><img alt='' id='slider_jfif' src='/static/images/damian.jfif'/></a></div>
+                    “I'm Damian Rojas, I am from Albuquerque, New mexico. I really enjoy learning programming languages and frameworks like React and Angular. Machine learning and artificial intelligence are technologies I hope to learn in the future.” {"\n"}
                     {"\n"}
                     — Damian
                     {"\n"}
@@ -79,8 +80,8 @@ export default function LandingPage() {
                     </div>
                     </SwiperSlide>
                     <SwiperSlide><div><div className='slider_pics'>
-                    <img alt='' id='slider_jfif' src='/static/images/roger.jfif'/></div>
-                    “Driving with Ride is the perfect way to make money and be there for my family's needs. I love providing a way to get my passengers from point A to B. Independence is key for me, and I enjoy meeting new people while driving!”{"\n"}
+                    <a href='https://rogercamps.github.io' target="_blank" rel="noreferrer"><img alt='' id='slider_jfif' src='/static/images/roger.jfif'/></a></div>
+                    “Born and raised in Barcelona, currently residing in SoCal. Coding full time and enjoying the sun and waves part time!”{"\n"}
                     {"\n"}
                     — Roger
                     {"\n"}
@@ -88,8 +89,8 @@ export default function LandingPage() {
                      </div>
                      </SwiperSlide>
                     <SwiperSlide><div><div className='slider_pics'>
-                    <img alt='' id='slider_jfif' src='/static/images/jason.jfif'/></div>
-                    "I got to the drop-off address, and he said it wasn't where he lived. He couldn't communicate an address because he was so drunk. He told me to turn on certain streets, but we were going in circles. We approached a liquor store, and he told me to stop so he could go in. Then he threatened me and left his food in the car."
+                    <a href='https://jdvien.github.io/' target="_blank" rel="noreferrer"><img alt='' id='slider_jfif' src='/static/images/jason.jfif'/></a></div>
+                    "I am a software developer who has never been happier where he is than here and now. I love spending my time building something, with a keyboard or with my hands."
                     {"\n"}
                     {"\n"}
                     — Jason
@@ -98,8 +99,8 @@ export default function LandingPage() {
                     </div>
                     </SwiperSlide>
                     <SwiperSlide><div><div className='slider_pics'>
-                    <img alt='' id='slider_jfif' src='/static/images/chris.jfif'/></div>
-                    "I picked up this guy who was drunk, and he asked me to take him to this bar. It was the bar he had just come out of."
+                    <a href='https://chrismizelldev.software/' target="_blank" rel="noreferrer"><img alt='' id='slider_jfif' src='/static/images/chris.jfif'/></a></div>
+                    "Backend Engineer, based in San Francisco Bay area. Passion for learning and fixing broken projects! Debugging and building upon my existing skills is a skill I take great pride in."
                     {"\n"}
                     {"\n"}
                     — Chris

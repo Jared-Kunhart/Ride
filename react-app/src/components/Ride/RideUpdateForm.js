@@ -1,6 +1,7 @@
 import Geocode from 'react-geocode'
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Autocomplete } from '@react-google-maps/api';
 import { updateBooking } from '../../store/bookings';
 
 
@@ -57,6 +58,10 @@ const RideUpdateForm = ({booking}) => {
     Geocode.setLocationType("ROOFTOP");
     Geocode.enableDebug();
 
+    const onUpdateAutoComplete = (e) => {
+        setDestinationAddress(e)
+    }
+
     return (
         <>
         <div className='update_destination'>
@@ -65,12 +70,15 @@ const RideUpdateForm = ({booking}) => {
             <h1>Update your route</h1>
         </div>
           <form onSubmit={(e)=>handleSubmit(e)}>
+            <Autocomplete>
                   <input type='text'
                    className='update_destination_input'
                    value={destinationAddress}
                    placeholder="Update your destination"
+                   onBlur={(e) => onUpdateAutoComplete(e.target.value)}
                    onChange={(e)=>setDestinationAddress(e.target.value)}
                    />
+            </Autocomplete>
                     <div id='error_div_update'>
                     {errors.map((error, ind) => (
                     <div key={ind}>{error}</div>

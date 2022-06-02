@@ -13,7 +13,6 @@ import { nightblue } from './utils';
 import stick from '../../public/static/images/stickgreyglow.png'
 import ridersmall from '../../public/static/images/ridersmall.png'
 import './ride.css'
-// import PlacesAutocomplete from './AutoComplete';
 
 const Ride = () => {
     const user = useSelector(state => state.session.user)
@@ -22,25 +21,29 @@ const Ride = () => {
     const [response, setResponse] = useState(null)
     const [destination, setDestination] = useState('')
     const dispatch = useDispatch()
+    // console.log(response)
+    // console.log(destination)
     // console.log(response?.routes[0]?.legs[0]?.end_address) Only works, response is on click
     //console.log(response.routes[0].legs[0].start_address)
+    const google = window.google = window.google ? window.google : {}
 
     const user_bookings = bookings?.filter(booking =>
       booking?.user_id === user?.id && booking?.is_complete === false)
     // console.log(user_bookings, "<<<<<<<<<<<<<<<<<<<<<<<<user bookings")
     const user_booking = user_bookings[user_bookings?.length - 1]
     // {user_booking && user_booking.is_complete === false ? <RideUpdateForm /> : <RideForm>}
-
+    // console.log(user_booking)
     //Destination
-    const dest_lat = user_booking?.destination.lat
-    const dest_lng = user_booking?.destination.lng
+    // const dest_lat = user_booking?.destination.lat
+    // const dest_lng = user_booking?.destination.lng
     //Origin
-    const origin_lat = user_booking?.origin.lat
-    const origin_lng = user_booking?.origin.lng
+    // const origin_lat = user_booking?.origin.lat
+    // const origin_lng = user_booking?.origin.lng
 
     useEffect(()=>{
         dispatch(getAllBookings())
     },[dispatch])
+
 
     const directionsCallback = (response) => {
         if (response !== null) {
@@ -52,9 +55,12 @@ const Ride = () => {
       }
     }
 
+    const [ libraries ] = useState(['places']);
+
     const { isLoaded } = useJsApiLoader({
       id: 'google-map-script',
-      googleMapsApiKey: key
+      googleMapsApiKey: key,
+      libraries,
     })
 
     const containerStyle = {
@@ -89,21 +95,12 @@ const Ride = () => {
   //   }
   // </GoogleMap>
 
-
-
     // const [map, setMap] = useState(null)
     // const onUnmount = useCallback(function callback(map) {
     //   setMap(null)
     // }, [])
     // onUnmount={onUnmount}
-
-    // useEffect(() => {
-    //   if (map) {
-    //     map.panTo(center)
-    //   }
-    // }, [map])
-
-
+    // {user_booking?.origin.address}
     const mapRef = useRef()
 
     const center = useMemo(() => ({
@@ -112,13 +109,6 @@ const Ride = () => {
     }), [])
 
     const onLoad = useCallback(map => (mapRef.current = map), [])
-
-
-    const divStyle = {
-      background: `none`,
-      border: `1px solid #ccc`,
-      padding: 10
-    }
 
     return (
       // Important! Always set the container height explicitly
@@ -133,7 +123,10 @@ const Ride = () => {
               fullscreenControl: false,
               mapTypeControl: false,
               zoomControl: false,
-              streetViewControl: false,
+              streetViewControl: true,
+              streetViewControlOptions: {
+                position: google.maps.ControlPosition.RIGHT_CENTER,
+              },
               }}
               center={user_booking ? {lat:user_booking?.origin.lat, lng:user_booking?.origin.lng} : center}
               onLoad={onLoad}
@@ -148,47 +141,53 @@ const Ride = () => {
                 <CancelRide booking={user_booking}/> <PostReview booking={user_booking} />
                 </div>
                 </>
-                :<RideForm />}
+                : <RideForm />}
                 </div>
                 {user_booking ?
                 <>
-                  <Marker key={user_bookings?.id}
+                  <Marker
+                  key={user_booking?.origin?.id}
                   position={{lat:user_booking?.origin.lat, lng:user_booking?.origin.lng}}
                   title={user_booking?.name}
                   icon={stick}
-                  streetView={false} />
-                  <Marker key={user_booking?.id}
+                  streetView={true} />
+                  <Marker
+                  key={user_booking?.destination?.id}
                   position={{lat:user_booking?.destination.lat, lng:user_booking?.destination.lng}}
                   title={user_booking?.name}
                   icon={ridersmall}
-                  streetView={false} />
-                  </> : <></>
-                }
+                  onClick={(e) => makeDestination(e)}
+                  streetView={true} />
+
             {(destination !== '' && response === null) && (
+              // Destination is coming through because it's not a empty string when there is a booking.
+              // But response is not coming through because it's not equal to null after first onClick and
+              // it's already been set/saved and persists until hard refresh. Refresh resets response back to null.
+              // Need a way to set it to null again once a route updates or a booking is cancelled/completed.
                 <DirectionsService
                   // required
                   options={{
-                    destination: {lat:dest_lat, lng:dest_lng},
-                    origin: {lat:origin_lat, lng:origin_lng},
-                    travelMode: 'DRIVING'
+                    destination: {lat:user_booking?.destination.lat, lng:user_booking?.destination.lng},
+                    origin: {lat:user_booking?.origin.lat, lng:user_booking?.origin.lng},
+                    travelMode: 'DRIVING',
                   }}
                   // required
                   callback={directionsCallback}
                 />
               )
+              //
             }
 
             {
               response !== null && (
                 <DirectionsRenderer
-
                   options={{
                     directions: response
                   }}
-
                 />
               )
             }
+            </> : <></>}
         </GoogleMap>:null}
         </div>
       </div>
