@@ -21,6 +21,8 @@ const Ride = () => {
     const [response, setResponse] = useState(null)
     const [destination, setDestination] = useState('')
     const dispatch = useDispatch()
+    // console.log(response)
+    // console.log(destination)
     // console.log(response?.routes[0]?.legs[0]?.end_address) Only works, response is on click
     //console.log(response.routes[0].legs[0].start_address)
     const google = window.google = window.google ? window.google : {}
@@ -42,13 +44,11 @@ const Ride = () => {
         dispatch(getAllBookings())
     },[dispatch])
 
+
     const directionsCallback = (response) => {
-      console.log(response, "first")
         if (response !== null) {
           if (response?.status === 'OK') {
-            console.log(response, "before")
             setResponse(response)
-            console.log(response, "after")
         } else {
             console.log("Route: " + response?.status);
         }
@@ -160,19 +160,22 @@ const Ride = () => {
                   streetView={true} />
 
             {(destination !== '' && response === null) && (
+              // Destination is coming through because it's not a empty string when there is a booking.
+              // But response is not coming through because it's not equal to null after first onClick and
+              // it's already been set/saved and persists until hard refresh. Refresh resets response back to null.
+              // Need a way to set it to null again once a route updates or a booking is cancelled/completed.
                 <DirectionsService
                   // required
                   options={{
                     destination: {lat:user_booking?.destination.lat, lng:user_booking?.destination.lng},
                     origin: {lat:user_booking?.origin.lat, lng:user_booking?.origin.lng},
                     travelMode: 'DRIVING',
-
                   }}
-
                   // required
                   callback={directionsCallback}
                 />
               )
+              //
             }
 
             {
@@ -181,7 +184,6 @@ const Ride = () => {
                   options={{
                     directions: response
                   }}
-
                 />
               )
             }
