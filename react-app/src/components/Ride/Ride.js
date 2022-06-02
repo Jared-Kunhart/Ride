@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useMemo, useRef, useEffect } from 'react';
-import { GoogleMap, useJsApiLoader, Marker, DirectionsService, DirectionsRenderer, StreetViewPanorama, } from '@react-google-maps/api';
+import { GoogleMap, useJsApiLoader, Marker, DirectionsService, DirectionsRenderer } from '@react-google-maps/api';
 import { getAllBookings } from "../../store/bookings"
 import { useDispatch, useSelector } from 'react-redux';
 // import DeckGL from 'deck.gl';
@@ -30,7 +30,7 @@ const Ride = () => {
     // console.log(user_bookings, "<<<<<<<<<<<<<<<<<<<<<<<<user bookings")
     const user_booking = user_bookings[user_bookings?.length - 1]
     // {user_booking && user_booking.is_complete === false ? <RideUpdateForm /> : <RideForm>}
-    console.log(user_booking)
+    // console.log(user_booking)
     //Destination
     // const dest_lat = user_booking?.destination.lat
     // const dest_lng = user_booking?.destination.lng
@@ -43,9 +43,12 @@ const Ride = () => {
     },[dispatch])
 
     const directionsCallback = (response) => {
+      console.log(response, "first")
         if (response !== null) {
           if (response?.status === 'OK') {
+            console.log(response, "before")
             setResponse(response)
+            console.log(response, "after")
         } else {
             console.log("Route: " + response?.status);
         }
@@ -124,7 +127,6 @@ const Ride = () => {
               streetViewControlOptions: {
                 position: google.maps.ControlPosition.RIGHT_CENTER,
               },
-              fullscreenControl: false,
               }}
               center={user_booking ? {lat:user_booking?.origin.lat, lng:user_booking?.origin.lng} : center}
               onLoad={onLoad}
@@ -176,7 +178,6 @@ const Ride = () => {
             {
               response !== null && (
                 <DirectionsRenderer
-
                   options={{
                     directions: response
                   }}
