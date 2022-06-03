@@ -34,46 +34,11 @@ const Ride = () => {
     // {user_booking && user_booking.is_complete === false ? <RideUpdateForm /> : <RideForm>}
     // console.log(user_booking)
     //Destination
-    // const dest_lat = user_booking?.destination.lat
-    // const dest_lng = user_booking?.destination.lng
+    const dest_lat = user_booking?.destination.lat
+    const dest_lng = user_booking?.destination.lng
     //Origin
     // const origin_lat = user_booking?.origin.lat
     // const origin_lng = user_booking?.origin.lng
-
-    useEffect(()=>{
-        dispatch(getAllBookings())
-    },[dispatch])
-
-
-    const directionsCallback = (response) => {
-        if (response !== null) {
-          if (response?.status === 'OK') {
-            setResponse(response)
-        } else {
-            console.log("Route: " + response?.status);
-        }
-      }
-    }
-
-    const [ libraries ] = useState(['places']);
-
-    const { isLoaded } = useJsApiLoader({
-      id: 'google-map-script',
-      googleMapsApiKey: key,
-      libraries,
-    })
-
-    const containerStyle = {
-      width: '100%',
-      height: '100%'
-    };
-
-    const makeDestination = (e) => {
-        const lat = e.latLng?.lat();
-        const lng = e.latLng?.lng();
-
-        setDestination({lat, lng})
-    }
 
     // *******-MarkerDrag-*******\\
   //   const onMarkerDragEnd = (e) => {
@@ -101,6 +66,60 @@ const Ride = () => {
     // }, [])
     // onUnmount={onUnmount}
     // {user_booking?.origin.address}
+
+    useEffect(()=>{
+        dispatch(getAllBookings())
+    },[dispatch])
+
+
+    const directionsCallback = (response) => {
+        if (response !== null) {
+          if (response?.status === 'OK') {
+            console.log(response, "<<<<<<<<<<<<<<<<<<<")
+            setResponse(response)
+        } else {
+            console.log("Route: " + response?.status);
+        }
+      }
+    }
+
+    const [ libraries ] = useState(['places']);
+
+    const { isLoaded } = useJsApiLoader({
+      id: 'google-map-script',
+      googleMapsApiKey: key,
+      libraries,
+    })
+
+    const containerStyle = {
+      width: '100%',
+      height: '100%'
+    };
+
+    console.log(google?.maps?.DirectionsRenderer?.prototype)
+
+    const resetDirections = () => {
+      google?.maps?.DirectionsRenderer?.prototype.setMap(null)
+      setResponse(null)
+      setDestination('')
+    }
+
+    useEffect(() => {
+      if (response && destination && user_booking === undefined) {
+        google?.maps?.DirectionsRenderer?.prototype.setMap(null)
+        setResponse(null)
+        setDestination('')
+      }
+    })
+    console.log(response)
+    console.log(destination)
+
+    const makeDestination = (e) => {
+        const lat = e.latLng.lat();
+        const lng = e.latLng.lng();
+        setDestination({lat, lng})
+    }
+
     const mapRef = useRef()
 
     const center = useMemo(() => ({
@@ -156,7 +175,6 @@ const Ride = () => {
                   position={{lat:user_booking?.destination.lat, lng:user_booking?.destination.lng}}
                   title={user_booking?.name}
                   icon={ridersmall}
-                  onClick={(e) => makeDestination(e)}
                   streetView={true} />
 
             {(destination !== '' && response === null) && (
@@ -171,7 +189,7 @@ const Ride = () => {
                     origin: {lat:user_booking?.origin.lat, lng:user_booking?.origin.lng},
                     travelMode: 'DRIVING',
                   }}
-                  // required
+                  // require
                   callback={directionsCallback}
                 />
               )
