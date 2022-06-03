@@ -96,23 +96,23 @@ const Ride = () => {
       height: '100%'
     };
 
-    console.log(google?.maps?.DirectionsRenderer?.prototype)
+    // console.log(google?.maps?.DirectionsRenderer?.prototype)
 
-    const resetDirections = () => {
-      google?.maps?.DirectionsRenderer?.prototype.setMap(null)
-      setResponse(null)
-      setDestination('')
-    }
+    // const resetDirections = () => {
+    //   google?.maps?.DirectionsRenderer?.prototype.setMap(null)
+    //   setResponse(null)
+    //   setDestination('')
+    // }
 
-    useEffect(() => {
-      if (response && destination && user_booking === undefined) {
-        google?.maps?.DirectionsRenderer?.prototype.setMap(null)
-        setResponse(null)
-        setDestination('')
-      }
-    })
-    console.log(response)
-    console.log(destination)
+    // useEffect(() => {
+    //   if (response && destination && user_booking === undefined) {
+    //     google?.maps?.DirectionsRenderer?.prototype.setMap(null)
+    //     setResponse(null)
+    //     setDestination('')
+    //   }
+    // })
+    // console.log(response)
+    // console.log(destination)
 
     const makeDestination = (e) => {
         const lat = e.latLng.lat();
@@ -175,6 +175,7 @@ const Ride = () => {
                   position={{lat:user_booking?.destination.lat, lng:user_booking?.destination.lng}}
                   title={user_booking?.name}
                   icon={ridersmall}
+                  onClick={(e) => makeDestination(e)}
                   streetView={true} />
 
             {(destination !== '' && response === null) && (
