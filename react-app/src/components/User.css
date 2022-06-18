@@ -37,6 +37,12 @@
     background: none repeat scroll 0 0 #17171F;
 }
 
+@media (max-width: 1440px) {
+    #user_left_side_content {
+        width: 19%;
+    }
+  }
+
 #user_right_side_content {
     width: 100%;
     margin-left: 10px;
