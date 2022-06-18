@@ -9,22 +9,22 @@ import './landing.css'
 import { useState } from 'react';
 
 export default function LandingPage() {
-    const [source, setSource] = useState();
+    // const [source, setSource] = useState();
 
-    function randomImg() {
-    let images = [
-    "/static/images/backgrounds/chris.jpg",
-    "/static/images/backgrounds/roger.jpg",
-    "/static/images/backgrounds/2825802.gif"
-    ]
-    let random = images[Math.floor(Math.random() * images.length)];
+    // function randomImg() {
+    // let images = [
+    // "/static/images/backgrounds/chris.jpg",
+    // "/static/images/backgrounds/roger.jpg",
+    // "/static/images/backgrounds/2825802.gif"
+    // ]
+    // let random = images[Math.floor(Math.random() * images.length)];
     // document.querySelector("#roger").style.backgroundImage = 'url(' + random + ')';
-    setSource(random)
-    }
+    // setSource(random)
+    // }
     // <div id='nav_driver'>DRIVER</div>
     //
     return (
-        <div id='landing_page'  onLoad={randomImg}>
+        <div id='landing_page'>
             <div id='main_content'>
                 <div id='nav'>
                     <div id='nav_content'>
@@ -35,7 +35,7 @@ export default function LandingPage() {
                     </div>
                 </div>
                 <div id='page_content'>
-                    <div id='page_content_main_picture'><img id='roger' alt='' src={source} type='image/jpeg' /></div>
+                    <div id='page_content_main_picture'><img id='roger' alt='' src="/static/images/backgrounds/2825802.gif" type='image/jpeg' /></div>
                     <div id='page_content_side_content'>
                     <div id='page_content_text'><h1>Let's ride !</h1></div>
 
