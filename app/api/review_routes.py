@@ -39,7 +39,7 @@ def create_user_review():
         db.session.commit()
         return new_review.to_dict()
     else:
-        print({'errors': validation_errors_to_error_messages(form.errors)}, "<<<<<<<<<<<<<<<<<<<<<<<<backend")
+        # print({'errors': validation_errors_to_error_messages(form.errors)}, "<<<<<<<<<<<<<<<<<<<<<<<<backend")
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 

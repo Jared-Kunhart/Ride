@@ -75,7 +75,7 @@ const Ride = () => {
     const directionsCallback = (response) => {
         if (response !== null) {
           if (response?.status === 'OK') {
-            console.log(response, "<<<<<<<<<<<<<<<<<<<")
+            // console.log(response, "<<<<<<<<<<<<<<<<<<<")
             setResponse(response)
         } else {
             console.log("Route: " + response?.status);
