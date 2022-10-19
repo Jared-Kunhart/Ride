@@ -108,7 +108,7 @@ def complete_booking(id):
 
     booking.is_complete = True
     db.session.commit()
-    print(booking.to_dict())
+    # print(booking.to_dict())
     return booking.to_dict()
 
 
