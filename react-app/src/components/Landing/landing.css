@@ -36,6 +36,16 @@
     height: 81px;
 }
 
+@media screen and (max-width: 1000px) {
+    #nav_content {
+        width: 50vw;
+        margin-left: 100px;
+    }
+    #nav_content a {
+        width: 50px;
+    }
+}
+
 #nav_content a {
     color: #0C0B31;
     text-decoration: none !important;
@@ -104,6 +114,23 @@
     padding-top: 64px;
     padding-bottom: 64px;
 }
+
+@media screen and (max-width: 1000px) {
+    #page_content {
+        display: flex;
+        flex-direction: column-reverse;
+        align-self: center;
+        align-items: center;
+        height: 500px;
+    }
+    #page_content_text {
+        margin-left: 69px;
+    }
+    #page_content_buttons {
+        margin-bottom: 25px;
+        margin-left: 69px;
+    }
+  }
 
 #roger {
     width: 712px;
@@ -220,6 +247,12 @@
     font-size: 20px;
     line-height: 26px;
     white-space: pre-wrap;
+}
+
+@media screen and (max-width: 1000px) {
+    #sub_page_carousel {
+        width: 90vw;
+    }
 }
 
 #slider_jfif {

@@ -74,14 +74,15 @@
     color: #FFFFFF;
 }
 
-#reposition_please {
-    height: 69vh;
-}
+/* #update_dest_button {
+    min-height: 200px;
+    height: 700px;
+} */
 
 #directions_modal_form {
     width: 400px;
     height: 80vh;
-    /* height: 800px; */
+    height: 700px;
     max-height: 800px;
     top: 48px;
     bottom: 0px;
@@ -103,8 +104,7 @@
     z-index: 2;
     display: flex;
     justify-content: space-evenly;
-    position: relative;
-    bottom: 5px;
+    position: fixed;
 }
 
 
@@ -248,7 +248,7 @@
 }
 
 #update_separator_button_div {
-    height: 40vh;
+    height: 395px;
 }
 
 #future_auto_complete_div {
