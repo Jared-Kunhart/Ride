@@ -153,7 +153,7 @@ const Ride = () => {
                 <div id='directions_modal_form'>
                 {user_booking && user_booking?.is_complete === false ?
                 <>
-                <div id='reposition_please'>
+                <div id='update_dest_button'>
                 <RideUpdateForm booking={user_booking} />
                 </div>
                 <div id='submit_button_line'>
@@ -175,6 +175,7 @@ const Ride = () => {
                   position={{lat:user_booking?.destination.lat, lng:user_booking?.destination.lng}}
                   title={user_booking?.name}
                   icon={ridersmall}
+                  onClick={makeDestination}
                   streetView={true} />
 
             {(destination !== '' && response === null) && (

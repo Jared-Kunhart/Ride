@@ -61,6 +61,17 @@
     background: none repeat scroll 0 0 #17171F;
 }
 
+@media screen and (max-width: 1000px) {
+    #user_right_side_content {
+        width: 75vw;
+        height: 69vh;
+        margin-left: 200px;
+    }
+    #user_right_side_container {
+        /* max-width: 500px; */
+    }
+}
+
 #user_right_side_container h1 {
     font-family: Gotham;
     font-weight: 1000;
