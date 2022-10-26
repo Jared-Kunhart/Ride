@@ -1,1 +1,1 @@
-web /bin/sh -c gunicorn\ app:app
+web: /bin/sh -c gunicorn\ app:app
