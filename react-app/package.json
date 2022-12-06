@@ -27,7 +27,7 @@
   },
   "scripts": {
     "start": "BROWSER=none react-scripts start",
-    "build": "react-scripts build",
+    "build": "ride-app build --output public",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
