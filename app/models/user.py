@@ -2,16 +2,12 @@ from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from sqlalchemy import Identity
 from flask_login import UserMixin
-
-def mydefault():
-    global i
-    i += 1
-    return i
+from sqlalchemy import Sequence
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
-    id = db.Column(db.Integer, default=mydefault, primary_key=True)
+    id = db.Column(db.Integer, Sequence("user_id_seq", start=1), primary_key=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     firstname = db.Column(db.String(40), nullable=False)
     lastname = db.Column(db.String(40), nullable=False)
