@@ -1,5 +1,6 @@
 import os
-
+from sqlalchemy.dialects import registry
+from sqlalchemy import create_engine
 
 class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY')
@@ -12,3 +13,5 @@ class Config:
         'DATABASE_URL').replace('postgres://', 'postgresql://')
     SQLALCHEMY_ECHO = True
     REACT_APP_GOOGLE_MAPS_API=os.environ.get("REACT_APP_GOOGLE_MAPS_API")
+    engine = create_engine(os.environ["DATABASE_URL"])
+    registry.register("cockroachdb", "cockroachdb.sqlalchemy.dialect", "CockroachDBDialect")
