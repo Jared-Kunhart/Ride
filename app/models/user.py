@@ -7,7 +7,7 @@ from sqlalchemy import Sequence
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
-    id = db.Column(db.Integer, Sequence('', 0), primary_key=True)
+    id = db.Column(db.Integer, default=1, primary_key=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     firstname = db.Column(db.String(40), nullable=False)
     lastname = db.Column(db.String(40), nullable=False)
