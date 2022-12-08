@@ -36,7 +36,7 @@ def seed_users():
     # db.session.add(passenger_3)
     # db.session.add(driver_3)
 
-    db.session.commit()
+    # db.session.commit()
 
 
 # Uses a raw SQL query to TRUNCATE the users table.
