@@ -1,6 +1,6 @@
 <h1 align="center">🚕 Ride 🚕</h1>
 
-<h5 align="center">  By:  <a href="https://github.com/Jared-Kunhart">Jared Kunhart</a> - <a href="https://r1de-app.herokuapp.com/"><i>Live site</i></h5>
+<h5 align="center">  By:  <a href="https://github.com/Jared-Kunhart">Jared Kunhart</a> - <a href="https://ride-app.onrender.com/"><i>Live site</i></h5>
 
 ### Table of Contents
 - [Main purpose](#main)
